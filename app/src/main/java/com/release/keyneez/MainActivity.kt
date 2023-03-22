@@ -1,8 +1,8 @@
 package com.release.keyneez
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.kakao.sdk.common.util.Utility
 
 class MainActivity : AppCompatActivity() {
