@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Keyneez</string>
+
+    //search
+    <string name="search_content">제목, 키워드</string>
+    <string name="search_result">검색결과</string>
+    <string name="search_count">%s개</string>
+    <string name="search_no_result">검색결과가 없습니다.</string>
 </resources>
