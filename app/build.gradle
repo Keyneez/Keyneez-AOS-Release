@@ -55,9 +55,9 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:2.44.2"
 
     // ktx
-    implementation "androidx.activity:activity-ktx:1.6.1"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0"
-    implementation "androidx.fragment:fragment-ktx:1.5.5"
+    implementation "androidx.activity:activity-ktx:1.7.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.6"
 
     // recyclerview
     implementation "androidx.recyclerview:recyclerview:1.3.0"
@@ -83,8 +83,8 @@ dependencies {
 
     // lifecycle
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 
     // kakao login
     implementation "com.kakao.sdk:v2-user:2.8.6"
