@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.main.search.SearchActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <import type="android.view.View" />
-    </data>
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_search_result"
@@ -34,12 +31,8 @@
             android:inputType="text"
             android:maxLines="1"
             android:imeOptions="actionSearch"
-            android:background="@drawable/shape_gray400_bottomline_rect"
             android:hint="@string/search_content"
-            android:text="@={vm.key}"
             android:paddingBottom="14dp"
-            android:textColor="@color/gray900"
-            android:textColorHint="@color/gray400"
             app:layout_constraintEnd_toStartOf="@id/btn_search_result"
             app:layout_constraintStart_toEndOf="@id/btn_search_back"
             app:layout_constraintTop_toTopOf="parent" />
@@ -51,28 +44,23 @@
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="4dp"
             android:background="@null"
-            android:onClick="@{()->vm.getSearchPostData()}"
             android:padding="12dp"
-            android:src="@drawable/ic_like_search"
+            android:src="@drawable/ic_search_search"
             app:layout_constraintBottom_toBottomOf="@id/btn_search_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_search_back" />
 
         <TextView
             android:id="@+id/tv_search_after"
-            style="@style/PretendardSemibold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_result"
-            android:textColor="@color/gray900" />
+            android:text="@string/search_result" />
 
         <TextView
             android:id="@+id/tv_search_count"
-            style="@style/PretendardSemibold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_count"
-            android:textColor="@color/mint500" />
+            android:text="@string/search_count" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow_search"
@@ -96,6 +84,5 @@
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_search_content"
             tools:spanCount="2" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
