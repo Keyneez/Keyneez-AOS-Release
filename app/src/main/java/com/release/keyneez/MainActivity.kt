@@ -1,9 +1,9 @@
 package com.release.keyneez
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.kakao.sdk.common.util.Utility
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,6 +11,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val keyHash = Utility.getKeyHash(this)
-        Log.d("Hash", keyHash)
+        Timber.tag("Hash").d(keyHash)
     }
 }
