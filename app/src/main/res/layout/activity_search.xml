@@ -24,6 +24,7 @@
 
         <EditText
             android:id="@+id/et_search_content"
+            style="@style/PretendardMedium18"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="-12dp"
@@ -34,7 +35,9 @@
             android:maxLines="1"
             android:imeOptions="actionSearch"
             android:hint="@string/search_content"
-            android:paddingBottom="14dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/gray900"
+            android:textColorHint="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_search_back"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,12 +59,16 @@
             android:id="@+id/tv_search_after"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PretendardSemibold14"
+            android:textColor="@color/gray900"
             android:text="@string/search_result" />
 
         <TextView
             android:id="@+id/tv_search_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/PretendardSemibold14"
+            android:textColor="@color/mint500"
             android:text="@string/search_count" />
 
         <androidx.constraintlayout.helper.widget.Flow

@@ -24,6 +24,8 @@
 
         <TextView
             android:id="@+id/tv_search_category"
+            style="@style/PretendardBold10"
+            android:textColor="@color/mint500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
@@ -37,7 +39,7 @@
             android:src="@drawable/sel_search_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="18dp"
             app:layout_constraintStart_toStartOf="@id/iv_search_background"
             app:layout_constraintTop_toBottomOf="@id/iv_search_background" />
 
@@ -46,7 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_title"
-            android:textSize="12dp"
+            android:textColor="@color/gray900"
+            style="@style/PretendardBold16"
             app:layout_constraintStart_toStartOf="@id/iv_search_background"
             app:layout_constraintTop_toBottomOf="@id/iv_search_background" />
 
@@ -55,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_period"
-            android:textSize="10dp"
+            style="@style/PretendardBold10"
+            android:textColor="@color/mint600"
             app:layout_constraintStart_toEndOf="@id/iv_search_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_search_title" />
 
@@ -64,7 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_fee"
-            android:textSize="10dp"
+            style="@style/PretendardMedium10"
+            android:textColor="@color/mint600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_search_icon"
             app:layout_constraintTop_toBottomOf="@id/tv_search_date" />
