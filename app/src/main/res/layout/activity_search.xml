@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btn_search_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="54dp"
+            android:background="@null"
+            android:padding="12dp"
+            android:src="@drawable/ic_search_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_search_content"
+            style="@style/PretendardMedium18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="52dp"
+            android:paddingEnd="64dp"
+            android:inputType="text"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
+            android:hint="@string/search_content"
+            android:paddingBottom="20dp"
+            android:textColor="@color/gray900"
+            android:textColorHint="@color/gray400"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_search_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_search_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="4dp"
+            android:background="@null"
+            android:padding="12dp"
+            android:src="@drawable/ic_search_search"
+            app:layout_constraintBottom_toBottomOf="@id/btn_search_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_search_back" />
+
+        <TextView
+            android:id="@+id/tv_search_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PretendardSemibold14"
+            android:textColor="@color/gray900"
+            android:text="@string/search_result" />
+
+        <TextView
+            android:id="@+id/tv_search_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/PretendardSemibold14"
+            android:textColor="@color/mint500"
+            android:text="@string/search_count" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            app:constraint_referenced_ids="tv_search_after,tv_search_count"
+            app:flow_horizontalGap="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_result_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/flow_search"
+            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_search_content"
+            tools:spanCount="2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
