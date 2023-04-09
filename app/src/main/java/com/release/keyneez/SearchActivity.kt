@@ -2,6 +2,7 @@ package com.release.keyneez
 
 import android.os.Bundle
 import android.view.KeyEvent
+import com.google.android.material.internal.ViewUtils.hideKeyboard
 import com.release.keyneez.databinding.ActivitySearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,6 +15,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
         initSearchBtnClickListener()
+        initHideKeyboard()
     }
 
     private fun initSearchBtnClickListener() {
@@ -24,6 +26,12 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
             } else {
                 false
             }
+        }
+    }
+
+    private fun initHideKeyboard() {
+        binding.layoutSearchResult.setOnSingleClickListener {
+            hideKeyboard()
         }
     }
 }
