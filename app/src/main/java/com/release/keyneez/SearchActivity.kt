@@ -16,6 +16,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         binding.vm = viewModel
         initSearchBtnClickListener()
         initHideKeyboard()
+        initSearchBackBtnClickListener()
     }
 
     private fun initSearchBtnClickListener() {
@@ -32,6 +33,12 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initHideKeyboard() {
         binding.layoutSearchResult.setOnSingleClickListener {
             hideKeyboard()
+        }
+    }
+
+    private fun initSearchBackBtnClickListener() {
+        binding.btnSearchBack.setOnSingleClickListener {
+            finish()
         }
     }
 }
