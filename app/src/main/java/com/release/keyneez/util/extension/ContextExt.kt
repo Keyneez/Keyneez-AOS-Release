@@ -13,12 +13,17 @@ fun Context.hideKeyboard(view: View) {
     inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
 }
 
-/** Make a Snackbar to display a message for 2 seconds */
+/** Make a Snackbar to display a message for 1.5 seconds */
 fun Context.showSnackbar(view: View, msg: String) {
     Snackbar.make(view, msg, Toast.LENGTH_SHORT).show()
 }
 
-/** Make a Toast to display a message for 2 seconds */
+/** Make a Toast to display a message for 1.5 seconds */
 fun Context.showToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.dpToPx(dp: Int): Int {
+    val scale = resources.displayMetrics.density
+    return (dp * scale).toInt()
 }
