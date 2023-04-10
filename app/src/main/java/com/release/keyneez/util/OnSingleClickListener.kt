@@ -3,7 +3,7 @@ package com.release.keyneez.util
 import android.os.SystemClock
 import android.view.View
 
-class OnSingleClickListener (
+class OnSingleClickListener(
     private var interval: Int = 600,
     private var onSingleClick: (View) -> Unit
 ) : View.OnClickListener {
