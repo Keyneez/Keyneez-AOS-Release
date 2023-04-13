@@ -25,7 +25,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchBtnClickListener() {
         binding.btnSearchResult.setOnKeyListener { v, keyCode, event ->
             if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-            // viewModel.getSearchPostData()
+                // 뷰모델 통신하는 코드 작성하기
                 true
             } else {
                 false
