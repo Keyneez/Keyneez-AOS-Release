@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.model.response.ResponseGetSearchDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>()  {
+class lSearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>()  {
 
     var data = listOf<ResponseGetSearchDto>()
 
