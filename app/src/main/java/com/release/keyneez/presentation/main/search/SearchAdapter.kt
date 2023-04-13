@@ -1,9 +1,7 @@
 package com.release.keyneez.presentation.main.search
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.model.response.ResponseGetSearchDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
@@ -16,6 +14,12 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>()  {
         val binding =
             ItemSearchContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return getViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int = data.size
+
+    override fun onBindViewHolder(holder: getViewHolder, position: Int) {
+        holder.bind(data[position])
     }
 
     class getViewHolder(private val binding: ItemSearchContentBinding) :
