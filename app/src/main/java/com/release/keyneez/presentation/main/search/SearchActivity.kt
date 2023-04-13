@@ -15,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
     lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
