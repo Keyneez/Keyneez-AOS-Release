@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.release.keyneez.KeyneezApplication"
         android:allowBackup="true"
@@ -17,13 +18,18 @@
         tools:targetApi="31">
         <activity
             android:name=".presentation.main.MainActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presentation.tada.TadaActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
     </application>
+
 </manifest>

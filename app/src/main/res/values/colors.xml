@@ -49,7 +49,9 @@
     <color name="gray050">#FFFFFF</color>
 
     <!-- custom color -->
+    <color name="mint450_40">#6696EFFF</color>
     <color name="gray900_80">#CC000000</color>
     <color name="gray900_20">#33000000</color>
     <color name="gray050_80">#CCFFFFFF</color>
+    <color name="gray050_40">#66FFFFFF</color>
 </resources>
