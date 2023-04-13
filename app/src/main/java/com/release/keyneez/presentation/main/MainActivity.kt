@@ -1,8 +1,9 @@
-package com.release.keyneez
+package com.release.keyneez.presentation.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.kakao.sdk.common.util.Utility
+import com.release.keyneez.R
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {

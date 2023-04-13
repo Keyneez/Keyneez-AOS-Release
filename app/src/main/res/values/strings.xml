@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Keyneez</string>
 
+    // common
+    <string name="binding_error">Binding not initialized to reference the view.</string>
+
     // search
     <string name="search_content">제목, 키워드</string>
     <string name="search_result">검색결과</string>
