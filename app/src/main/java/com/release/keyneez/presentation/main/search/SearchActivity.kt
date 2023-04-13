@@ -1,8 +1,9 @@
-package com.release.keyneez
+package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
 import android.view.KeyEvent
 import com.google.android.material.internal.ViewUtils.hideKeyboard
+import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import dagger.hilt.android.AndroidEntryPoint
 
