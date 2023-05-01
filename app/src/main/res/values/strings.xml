@@ -21,4 +21,6 @@
     <string name="explore_culture">문화생활</string>
     <string name="explore_outside">외부활동</string>
     <string name="explore_career">진로</string>
+    <string name="explore_content_title">행주산성\n맛집 투어</string>
+    <string name="explore_date">%s-%s</string>
 </resources>
