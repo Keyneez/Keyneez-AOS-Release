@@ -24,17 +24,17 @@
 
         <EditText
             android:id="@+id/et_search_content"
-            style="@style/PretendardMedium18"
+            style="@style/TextAppearance.Keyneez.SubtitleMedium18"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="-12dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="52dp"
-            android:paddingEnd="64dp"
+            android:layout_marginEnd="16dp"
+            android:hint="@string/search_content"
+            android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
-            android:imeOptions="actionSearch"
-            android:hint="@string/search_content"
+            android:paddingEnd="64dp"
             android:paddingBottom="20dp"
             android:textColor="@color/gray900"
             android:textColorHint="@color/gray400"
@@ -57,19 +57,19 @@
 
         <TextView
             android:id="@+id/tv_search_after"
+            style="@style/TextAppearance.Keyneez.BodySemibold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PretendardSemibold14"
-            android:textColor="@color/gray900"
-            android:text="@string/search_result" />
+            android:text="@string/search_result"
+            android:textColor="@color/gray900" />
 
         <TextView
             android:id="@+id/tv_search_count"
+            style="@style/TextAppearance.Keyneez.BodySemibold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/PretendardSemibold14"
-            android:textColor="@color/mint500"
-            android:text="@string/search_count" />
+            android:text="@string/search_count"
+            android:textColor="@color/mint500" />
 
         <androidx.constraintlayout.helper.widget.Flow
             android:id="@+id/flow_search"
