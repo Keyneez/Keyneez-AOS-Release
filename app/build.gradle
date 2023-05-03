@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId "com.release.keyneez"
-        minSdk 21
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -25,9 +25,6 @@ android {
         buildConfigField "String", "BASE_URL", properties['base_url']
     }
 
-    lintOptions {
-        abortOnError false
-    }
 
     buildTypes {
         release {
@@ -45,6 +42,9 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+    }
+    lint {
+        abortOnError false
     }
 }
 

@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="236dp"
         android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="9dp">
+        android:layout_marginTop="16dp">
 
         <ImageView
             android:id="@+id/iv_explore_background"
@@ -24,7 +24,7 @@
 
         <TextView
             android:id="@+id/tv_explore_category"
-            style="@style/PretendardMedium10"
+            style="@style/TextAppearance.Keyneez.CaptionMedium10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="17dp"
@@ -51,7 +51,7 @@
 
         <TextView
             android:id="@+id/tv_explore_content_title"
-            style="@style/PretendardBold16"
+            style="@style/TextAppearance.Keyneez.BodyBold16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -65,7 +65,7 @@
 
         <TextView
             android:id="@+id/tv_explore_date"
-            style="@style/PretendardMedium10"
+            style="@style/TextAppearance.Keyneez.CaptionMedium10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -76,6 +76,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_content_title" />
+
         <ImageView
             android:id="@+id/iv_explore_content"
             android:layout_width="wrap_content"
@@ -86,7 +87,7 @@
             android:layout_marginBottom="9dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

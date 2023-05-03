@@ -1,148 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="TextAppearance.Keyneez" parent="">
+        <item name="android:fontFamily">@font/keyneez_font</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <!-- Heading -->
-    <style name="PretendardBold28">
+    <style name="TextAppearance.Keyneez.HeadingBold28">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">28sp</item>
-        <item name="android:lineSpacingExtra">5.41sp</item>
+        <item name="android:lineHeight">33sp</item>
     </style>
 
-    <style name="PretendardBold24">
+    <style name="TextAppearance.Keyneez.HeadingBold24">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
-        <item name="android:lineSpacingExtra">4.64sp</item>
+        <item name="android:lineHeight">29sp</item>
     </style>
 
-    <style name="PretendardMedium24">
-        <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">24sp</item>
-        <item name="android:lineSpacingExtra">4.64sp</item>
-    </style>
-
-    <style name="PretendardBold20">
-        <item name="android:fontFamily">@font/pretendard_bold</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:lineSpacingExtra">3.87sp</item>
-    </style>
-
-    <style name="PretendardSemibold20">
+    <style name="TextAppearance.Keyneez.HeadingSemibold24">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:lineSpacingExtra">3.87sp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineHeight">29sp</item>
+        <item name="android:letterSpacing">-0.02</item>
     </style>
 
-    <style name="PretendardMedium20">
+    <style name="TextAppearance.Keyneez.HeadingMedium24">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:lineHeight">29sp</item>
+    </style>
+
+    <style name="TextAppearance.Keyneez.HeadingBold20">
+        <item name="android:fontFamily">@font/pretendard_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
-        <item name="android:lineSpacingExtra">3.87sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Keyneez.HeadingSemibold20">
+        <item name="android:fontFamily">@font/pretendard_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+    </style>
+
+    <style name="TextAppearance.Keyneez.HeadingMedium20">
+        <item name="android:fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
     </style>
 
     <!-- Subtitle -->
-    <style name="PretendardBold18">
+    <style name="TextAppearance.Keyneez.SubtitleBold18">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:lineSpacingExtra">3.48sp</item>
+        <item name="android:lineHeight">21sp</item>
     </style>
 
-    <style name="PretendardSemibold18">
+    <style name="TextAppearance.Keyneez.SubtitleSemibold18">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:lineSpacingExtra">3.48sp</item>
+        <item name="android:lineHeight">21sp</item>
     </style>
 
-    <style name="PretendardMedium18">
+    <style name="TextAppearance.Keyneez.SubtitleMedium18">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:lineSpacingExtra">3.48sp</item>
+        <item name="android:lineHeight">21sp</item>
     </style>
 
     <!-- Body -->
-    <style name="PretendardBold16">
+    <style name="TextAppearance.Keyneez.BodyBold16">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:lineSpacingExtra">3.09sp</item>
+        <item name="android:lineHeight">19sp</item>
     </style>
 
-    <style name="PretendardSemibold16">
+    <style name="TextAppearance.Keyneez.BodySemibold16">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:lineSpacingExtra">3.09sp</item>
+        <item name="android:lineHeight">19sp</item>
     </style>
 
-    <style name="PretendardMedium16">
+    <style name="TextAppearance.Keyneez.BodyMedium16">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:lineSpacingExtra">3.09sp</item>
+        <item name="android:lineHeight">19sp</item>
     </style>
 
-    <style name="PretendardBold14">
+    <style name="TextAppearance.Keyneez.BodyBold14">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">2.71sp</item>
+        <item name="android:lineHeight">17sp</item>
     </style>
 
-    <style name="PretendardSemibold14">
+    <style name="TextAppearance.Keyneez.BodySemibold14">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">2.71sp</item>
+        <item name="android:lineHeight">17sp</item>
     </style>
 
-    <style name="PretendardMedium14">
+    <style name="TextAppearance.Keyneez.BodyMedium14">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:lineSpacingExtra">2.71sp</item>
+        <item name="android:lineHeight">17sp</item>
         <item name="android:letterSpacing">-0.045</item>
     </style>
 
     <!-- Caption -->
-    <style name="PretendardSemibold12">
+    <style name="TextAppearance.Keyneez.CaptionSemibold12">
         <item name="android:fontFamily">@font/pretendard_semibold</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:lineSpacingExtra">2.32sp</item>
+        <item name="android:lineHeight">14sp</item>
     </style>
 
-    <style name="PretendardMedium12">
+    <style name="TextAppearance.Keyneez.CaptionMedium12">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:lineSpacingExtra">2.32sp</item>
+        <item name="android:lineHeight">14sp</item>
     </style>
 
-    <style name="PretendardBold10">
+    <style name="TextAppearance.Keyneez.CaptionBold10">
         <item name="android:fontFamily">@font/pretendard_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:lineSpacingExtra">1.93sp</item>
+        <item name="android:lineHeight">12sp</item>
     </style>
 
-    <style name="PretendardMedium10">
+    <style name="TextAppearance.Keyneez.CaptionMedium10">
         <item name="android:fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:lineSpacingExtra">1.93sp</item>
-    </style>
-
-    <!-- Emoji -->
-    <style name="PretendardMedium40">
-        <item name="fontFamily">@font/pretendard_medium</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:lineSpacingExtra">8.01sp</item>
+        <item name="android:lineHeight">12sp</item>
     </style>
 </resources>
