@@ -49,6 +49,15 @@
             app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
 
         <View
+            android:id="@+id/view_explore_semi_baseline"
+            android:layout_width="0dp"
+            android:layout_height="0.4dp"
+            android:background="@color/gray300"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
+
+        <View
             android:id="@+id/view_explore_baseline"
             android:layout_width="0dp"
             android:layout_height="2dp"
