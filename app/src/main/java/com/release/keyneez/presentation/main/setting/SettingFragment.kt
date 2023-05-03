@@ -1,8 +1,10 @@
 package com.release.keyneez.presentation.main.setting
 
-import androidx.fragment.app.Fragment
+import com.release.keyneez.R
+import com.release.keyneez.databinding.FragmentSettingBinding
+import com.release.keyneez.util.binding.BindingFragment
 
-class SettingFragment : Fragment() {
+class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
     companion object {
         fun newInstance() = SettingFragment()
