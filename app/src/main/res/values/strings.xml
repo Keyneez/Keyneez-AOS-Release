@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">Keyneez</string>
 
-    // common
+    <!-- common -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
 
-    // search
+    <!-- main -->
+    <string name="main_menu_home">홈</string>
+    <string name="main_menu_explore">탐색</string>
+    <string name="main_menu_like">좋아요</string>
+    <string name="main_menu_setting">설정</string>
+
+    <!-- search -->
     <string name="search_content">제목, 키워드</string>
     <string name="search_result">검색결과</string>
     <string name="search_count">%s개</string>
@@ -13,4 +19,6 @@
     <string name="search_title">국립 현대 미술관</string>
     <string name="search_period">%s–%s</string>
     <string name="search_fee">무료 입장</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

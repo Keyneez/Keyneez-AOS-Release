@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- TextAppearance -->
     <style name="TextAppearance.Keyneez" parent="">
         <item name="android:fontFamily">@font/keyneez_font</item>
         <item name="android:fontWeight">400</item>
@@ -140,5 +141,10 @@
         <item name="android:fontFamily">@font/pretendard_medium</item>
         <item name="android:textSize">10sp</item>
         <item name="android:lineHeight">12sp</item>
+    </style>
+
+    <!-- Widget -->
+    <style name="Widget.Keyneez.BottomNavigationView.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@null</item>
     </style>
 </resources>
