@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/motionlayout"
+    app:layoutDescription="@xml/cc"
+    app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/linearlayout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="dhkfhkdf" />
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/mint200"
+        />
+
+    <TextView
+        android:id="@+id/name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:autoSizeTextType="uniform"
+        android:text="최은정"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="@color/gray200"
+        app:layout_constraintBottom_toBottomOf="@id/linearlayout"
+        app:layout_constraintTop_toTopOf="@id/linearlayout"
+        app:layout_constraintEnd_toEndOf="@id/linearlayout"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@id/linearlayout"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn"
+        android:layout_width="65dp"
+        android:layout_height="32dp"
+        android:text="내 계좌"
+        android:textSize="13sp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="@id/name_tv"
+        app:layout_constraintBottom_toBottomOf="@id/name_tv"
+        app:layout_constraintStart_toEndOf="@id/name_tv"/>
+
+    <ImageView
+        android:id="@+id/profile_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@id/linearlayout"
+        app:layout_constraintEnd_toEndOf="@id/linearlayout"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="@id/linearlayout"
+        app:layout_constraintTop_toTopOf="@id/linearlayout" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

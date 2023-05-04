@@ -6,19 +6,10 @@
 
     <data></data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.appcompat.widget.Toolbar
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_explore"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:contentInsetStart="0dp"
-                app:layout_scrollFlags="scroll|enterAlways">
+                android:layout_height="match_parent">
 
                 <ImageButton
                     android:id="@+id/btn_explore_result"
@@ -31,19 +22,6 @@
                     android:background="@null"
                     android:padding="12dp"
                     android:src="@drawable/ic_search_search" />
-            </androidx.appcompat.widget.Toolbar>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_explore"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/tv_explore_title"
@@ -178,6 +156,4 @@
                     tools:listitem="@layout/item_explore_content"
                     tools:spanCount="2" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
