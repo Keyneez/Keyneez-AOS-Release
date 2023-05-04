@@ -1,157 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data></data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_explore"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_explore_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="94dp"
-            android:text="@string/explore_title"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/btn_explore_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="12dp"
-            android:background="@null"
-            android:padding="12dp"
-            android:src="@drawable/ic_search_search"
-            app:layout_constraintBottom_toBottomOf="@id/tv_explore_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_explore_title" />
-
-        <TextView
-            android:id="@+id/tv_explore_popular"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="14dp"
-            android:padding="12dp"
-            android:text="@string/explore_popular"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
-
-        <View
-            android:id="@+id/view_explore_semi_baseline"
-            android:layout_width="0dp"
-            android:layout_height="0.4dp"
-            android:background="@color/gray300"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
-
-        <View
-            android:id="@+id/view_explore_baseline"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginHorizontal="-4dp"
-            android:layout_marginTop="-1dp"
-            android:background="@color/gray900"
-            android:paddingHorizontal="12dp"
-            app:layout_constraintEnd_toEndOf="@id/tv_explore_popular"
-            app:layout_constraintStart_toStartOf="@id/tv_explore_popular"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
-
-        <TextView
-            android:id="@+id/tv_explore_recent"
-            style="@style/TextAppearance.Keyneez.HeadingMedium20"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="14dp"
-            android:padding="12dp"
-            android:text="@string/explore_recent"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_popular"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
-
-        <TextView
-            android:id="@+id/tv_explore_entire"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/shape_gray900_fill_10_rect"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_entire"
-            android:textColor="@color/gray050"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
-
-        <TextView
-            android:id="@+id/tv_explore_culture"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/shape_gray200_fill_10_rect"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_culture"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_entire"
-            app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
-
-        <TextView
-            android:id="@+id/tv_explore_outside"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/shape_gray200_fill_10_rect"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_outside"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_culture"
-            app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
-        <TextView
-            android:id="@+id/tv_explore_career"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/shape_gray200_fill_10_rect"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_career"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_outside"
-            app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_explore_content"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="11dp"
-            android:clipToPadding="false"
-            android:paddingHorizontal="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_entire"
-            tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_explore_content"
-            tools:spanCount="2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentInsetStart="0dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <ImageButton
+                    android:id="@+id/btn_explore_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="47dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="3dp"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:src="@drawable/ic_search_search" />
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_explore"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_explore_title"
+                    style="@style/TextAppearance.Keyneez.HeadingSemibold24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:text="@string/explore_title"
+                    android:textColor="@color/gray900"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tv_explore_popular"
+                    style="@style/TextAppearance.Keyneez.HeadingSemibold20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="14dp"
+                    android:padding="12dp"
+                    android:text="@string/explore_popular"
+                    android:textColor="@color/gray900"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
+
+                <View
+                    android:id="@+id/view_explore_semi_baseline"
+                    android:layout_width="0dp"
+                    android:layout_height="0.4dp"
+                    android:background="@color/gray300"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
+
+                <View
+                    android:id="@+id/view_explore_baseline"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="-4dp"
+                    android:layout_marginTop="-1dp"
+                    android:background="@color/gray900"
+                    android:paddingHorizontal="12dp"
+                    app:layout_constraintEnd_toEndOf="@id/tv_explore_popular"
+                    app:layout_constraintStart_toStartOf="@id/tv_explore_popular"
+                    app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
+
+                <TextView
+                    android:id="@+id/tv_explore_recent"
+                    style="@style/TextAppearance.Keyneez.HeadingMedium20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="14dp"
+                    android:padding="12dp"
+                    android:text="@string/explore_recent"
+                    android:textColor="@color/gray400"
+                    app:layout_constraintStart_toEndOf="@id/tv_explore_popular"
+                    app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
+
+                <TextView
+                    android:id="@+id/tv_explore_entire"
+                    style="@style/TextAppearance.Keyneez.BodyMedium16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/shape_gray900_fill_10_rect"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/explore_entire"
+                    android:textColor="@color/gray050"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
+
+                <TextView
+                    android:id="@+id/tv_explore_culture"
+                    style="@style/TextAppearance.Keyneez.BodyMedium16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_gray200_fill_10_rect"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/explore_culture"
+                    android:textColor="@color/gray400"
+                    app:layout_constraintStart_toEndOf="@id/tv_explore_entire"
+                    app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
+
+                <TextView
+                    android:id="@+id/tv_explore_outside"
+                    style="@style/TextAppearance.Keyneez.BodyMedium16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_gray200_fill_10_rect"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/explore_outside"
+                    android:textColor="@color/gray400"
+                    app:layout_constraintStart_toEndOf="@id/tv_explore_culture"
+                    app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
+
+                <TextView
+                    android:id="@+id/tv_explore_career"
+                    style="@style/TextAppearance.Keyneez.BodyMedium16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_gray200_fill_10_rect"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="6dp"
+                    android:text="@string/explore_career"
+                    android:textColor="@color/gray400"
+                    app:layout_constraintStart_toEndOf="@id/tv_explore_outside"
+                    app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_explore_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="11dp"
+                    android:clipToPadding="false"
+                    android:paddingHorizontal="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_explore_entire"
+                    android:nestedScrollingEnabled="false"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:listitem="@layout/item_explore_content"
+                    tools:spanCount="2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
