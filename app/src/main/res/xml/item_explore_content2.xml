@@ -35,7 +35,7 @@
             android:layout_marginBottom="3dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search_search" />
+            android:src="@drawable/ic_search" />
 
         <Constraint
             android:id="@+id/tv_explore_title"

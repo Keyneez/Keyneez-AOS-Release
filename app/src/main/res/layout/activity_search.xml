@@ -25,7 +25,7 @@
             android:layout_marginTop="54dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search_back"
+            android:src="@drawable/ic_back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
             android:layout_marginBottom="4dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search_search"
+            android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="@id/btn_search_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/btn_search_back" />

@@ -7,7 +7,7 @@
     <data></data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:id="@+id/layout_explore_motion"
+        android:id="@+id/layout_explore_entire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/item_explore_content2"
@@ -41,7 +41,7 @@
             android:layout_marginBottom="12dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search_search"
+            android:src="@drawable/ic_search"
             app:layout_constraintBottom_toBottomOf="@id/tv_explore_title"
             app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
             app:layout_constraintTop_toTopOf="@id/tv_explore_title" />
@@ -51,8 +51,19 @@
             android:id="@+id/layout_explore_scrollview"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_explore_main"
+                android:layout_width="match_parent"
+                android:layout_height="139dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_explore_popular"
@@ -65,7 +76,7 @@
                 android:text="@string/explore_popular"
                 android:textColor="@color/gray900"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_explore_title" />
+                app:layout_constraintTop_toTopOf="@id/tv_explore_title" />
 
             <View
                 android:id="@+id/view_explore_semi_baseline"
@@ -166,10 +177,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="11dp"
-                android:layout_marginBottom="140dp"
                 android:clipToPadding="false"
                 android:nestedScrollingEnabled="false"
                 android:paddingHorizontal="16dp"
+                android:layout_paddingBottom="140dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_explore_entire"
                 app:layout_constraintVertical_bias="1.0"
@@ -177,7 +188,7 @@
                 tools:layout_editor_absoluteX="0dp"
                 tools:listitem="@layout/item_explore_content"
                 tools:spanCount="2" />
-
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>
