@@ -21,28 +21,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tv_explore_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="74dp"
+            android:text="@string/explore_title"
+            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
+            android:textColor="@color/gray900"
+            app:layout_constraintStart_toStartOf="@id/layout_explore_toolbar"
+            app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
+
         <ImageButton
             android:id="@+id/btn_explore_result"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="3dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="12dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search_search" />
-
-        <TextView
-            android:id="@+id/tv_explore_title"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:text="@string/explore_title"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:src="@drawable/ic_search_search"
+            app:layout_constraintBottom_toBottomOf="@id/tv_explore_title"
+            app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
+            app:layout_constraintTop_toTopOf="@id/tv_explore_title" />
 
 
         <androidx.core.widget.NestedScrollView
