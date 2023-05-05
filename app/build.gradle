@@ -50,7 +50,7 @@ android {
 
 dependencies {
     // motionLayout
-    implementation 'com.android.support.constraint:constraint-layout:2.0.0-alpha2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
 
     // hilt
     implementation "com.google.dagger:hilt-android:2.44.2"

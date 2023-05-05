@@ -44,7 +44,6 @@
             android:layout_width="65dp"
             android:layout_height="32dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/ic_search_red"
             android:text="내 계좌"
             android:textSize="13sp"
             motion:layout_constraintBottom_toBottomOf="@id/name_tv"
