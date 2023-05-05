@@ -30,12 +30,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="3dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_search"
+            motion:layout_editor_absoluteY="30dp"
+            motion:layout_editor_absoluteX="368dp" />
 
         <Constraint
             android:id="@+id/tv_explore_title"
@@ -46,7 +45,9 @@
             android:text="@string/explore_title"
             android:textColor="@color/gray900"
             motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="44dp"
+            android:layout_marginLeft="28dp" />
 
     </ConstraintSet>
 
