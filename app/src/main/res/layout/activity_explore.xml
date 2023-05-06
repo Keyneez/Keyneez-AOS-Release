@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutDescription="@xml/motion_explore"
-        app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed">
+        app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
+        tools:context=".ExploreActivity"
+        tools:showPaths="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_explore_toolbar"
@@ -48,24 +50,13 @@
                 app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/layout_explore_scrollview"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar">
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_explore_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar">
 
                 <TextView
                     android:id="@+id/tv_explore_popular"
@@ -187,6 +178,5 @@
                     tools:listitem="@layout/item_explore_content"
                     tools:spanCount="2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.motion.widget.MotionLayout>
 </layout>

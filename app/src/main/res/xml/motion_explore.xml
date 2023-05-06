@@ -10,7 +10,7 @@
 
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@id/layout_explore_scrollview"
+            motion:touchAnchorId="@id/rv_explore_content"
             motion:touchAnchorSide="top" />
 
     </Transition>
