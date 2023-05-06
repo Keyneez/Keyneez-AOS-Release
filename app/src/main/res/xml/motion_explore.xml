@@ -4,9 +4,7 @@
 
     <Transition
         motion:constraintSetEnd="@+id/layout_explore_collapsed"
-        motion:constraintSetStart="@+id/layout_explore_expanded"
-        motion:duration="1000"
-        motion:motionInterpolator="linear">
+        motion:constraintSetStart="@+id/layout_explore_expanded">
 
         <OnSwipe
             motion:dragDirection="dragUp"

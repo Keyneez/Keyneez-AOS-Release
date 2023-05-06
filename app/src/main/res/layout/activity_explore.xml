@@ -21,7 +21,7 @@
             android:layout_height="122dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_explore_title"
@@ -48,15 +48,6 @@
                 android:src="@drawable/ic_search"
                 app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
                 app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar"/>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_explore_main"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar">
 
                 <TextView
                     android:id="@+id/tv_explore_popular"
@@ -68,7 +59,7 @@
                     android:text="@string/explore_popular"
                     android:textColor="@color/gray900"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/layout_explore_main" />
+                    app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
                 <View
                     android:id="@+id/view_explore_semi_baseline"
