@@ -36,12 +36,12 @@
         <item name="android:lineHeight">29sp</item>
     </style>
 
-    <styld name="TextAppearance.Keyneez.HeadingSemibold22">
+    <style name="TextAppearance.Keyneez.HeadingSemibold22">
         <item name="android:fontFamily">@font/font_pretendard_semibold</item>
         <item name="android:textSize">22sp</item>
         <item name="android:lineHeight">28sp</item>
         <item name="android:letterSpacing">-0.02</item>
-    </styld>
+    </style>
 
     <style name="TextAppearance.Keyneez.HeadingBold20">
         <item name="android:textStyle">bold</item>
