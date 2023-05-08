@@ -72,7 +72,6 @@
             android:layout_marginHorizontal="22dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/sel_signup_next_btn"
-
             android:text="다음"
             android:gravity="center"
             style="@style/TextAppearance.Keyneez.SubtitleMedium18"

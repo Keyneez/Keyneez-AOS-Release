@@ -13,4 +13,6 @@
     <string name="search_title">국립 현대 미술관</string>
     <string name="search_period">%s–%s</string>
     <string name="search_fee">무료 입장</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
