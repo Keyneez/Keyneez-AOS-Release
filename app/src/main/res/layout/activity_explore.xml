@@ -7,6 +7,7 @@
     <data></data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
+        android:background="@color/gray300"
         android:id="@+id/layout_explore_entire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
