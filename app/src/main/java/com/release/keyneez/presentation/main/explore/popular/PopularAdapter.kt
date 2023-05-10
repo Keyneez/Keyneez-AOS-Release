@@ -1,4 +1,4 @@
-package com.release.keyneez.presentation.main.explore.recent
+package com.release.keyneez.presentation.main.explore.popular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,10 +7,10 @@ import coil.load
 import com.release.keyneez.data.entity.ExploreData
 import com.release.keyneez.databinding.ItemExploreContentBinding
 
-class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
+class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
     var data = listOf<ExploreData>()
 
-    class RecentViewHolder(private val binding: ItemExploreContentBinding) :
+    class PopularViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ExploreData) {
             binding.ivExploreBackground.load(item.background)
@@ -22,15 +22,15 @@ class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
         val binding =
             ItemExploreContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecentViewHolder(binding)
+        return PopularViewHolder(binding)
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: RecentViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
         holder.bind(data[position])
     }
 }

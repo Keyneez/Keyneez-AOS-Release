@@ -1,4 +1,4 @@
-package com.release.keyneez.presentation.main.explore.recent
+package com.release.keyneez.presentation.main.explore.popular
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,16 +6,16 @@ import androidx.lifecycle.ViewModel
 import com.release.keyneez.R
 import com.release.keyneez.data.entity.ExploreData
 
-class RecentViewModel : ViewModel() {
+class PopularViewModel : ViewModel() {
     private val _itemList = MutableLiveData<List<ExploreData>>()
     val itemList: LiveData<List<ExploreData>>
         get() = _itemList
 
     init {
-        getRecentItemList()
+        getPopularItemList()
     }
 
-    private fun getRecentItemList() {
+    private fun getPopularItemList() {
         val mainList = listOf(
             ExploreData(
                 background = R.drawable.img_explore_background,
