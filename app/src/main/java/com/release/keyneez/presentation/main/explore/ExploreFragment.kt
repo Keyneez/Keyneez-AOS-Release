@@ -1,22 +1,38 @@
 package com.release.keyneez.presentation.main.explore
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import android.os.Bundle
+import android.view.View
+import com.google.android.material.tabs.TabLayoutMediator
+import com.release.keyneez.R
+import com.release.keyneez.databinding.FragmentExploreBinding
+import com.release.keyneez.util.binding.BindingFragment
 
-class ExploreFragment (fragmentManager: FragmentManager, lifecycle: Lifecycle) :
-    FragmentStateAdapter(fragmentManager, lifecycle) {
-    override fun getItemCount(): Int {
-        return 3
+class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragment_explore) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initExploreViewPagerAdapter()
     }
 
-    override fun createFragment(position: Int): Fragment {
-        when (position) {
-            0 -> return Explore()
-            1 -> return PopularFragment()
-            2 -> return NewFragment()
+    private fun initExploreViewPagerAdapter() {
+        val viewPager = binding.vpExplore
+        val tabLayout = binding.tabExplore
+
+        val homeTabTitles = listOf(
+            getString(R.string.explore_popular),
+            getString(R.string.explore_recent)
+        )
+
+        viewPager.adapter = ExploreAdapter(parentFragmentManager, lifecycle)
+
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = homeTabTitles[position]
+        }.attach()
+    }
+
+    companion object {
+        fun newInstance(): ExploreFragment {
+            return ExploreFragment()
         }
-        return RecommendFragment()
     }
 }
