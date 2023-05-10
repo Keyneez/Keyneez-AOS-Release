@@ -131,7 +131,7 @@
 
         <TextView
             android:id="@+id/tv_explore_culture"
-            style="16"
+            style="@style/BodyMedium16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
@@ -146,7 +146,7 @@
 
         <TextView
             android:id="@+id/tv_explore_outside"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
+            style="@style/BodyMedium16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
@@ -161,7 +161,7 @@
 
         <TextView
             android:id="@+id/tv_explore_career"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
+            style="@style/BodyMedium16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
