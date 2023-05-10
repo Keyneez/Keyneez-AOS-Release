@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Keyneez</string>
 
-    // common
+    <!-- error -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
 
-    // search
+    <!-- search -->
     <string name="search_content">제목, 키워드</string>
     <string name="search_result">검색결과</string>
     <string name="search_count">%s개</string>
@@ -13,7 +13,7 @@
     <string name="search_title">행주산성 맛집 투어</string>
     <string name="search_period">%s–%s</string>
 
-    //explore
+    <!-- explore -->
     <string name="explore_title">탐색하기</string>
     <string name="explore_popular">인기</string>
     <string name="explore_recent">최신</string>
@@ -24,4 +24,9 @@
     <string name="explore_career">진로</string>
     <string name="explore_content_title">행주산성\n맛집 투어</string>
     <string name="explore_date">%s-%s</string>
+    <string name="explore_toolbar_contentdescription">툴바</string>
+    <string name="explore_search_contentdescription">검색버튼</string>
+    <string name="explore_recycler_contentdescription">리사이클러뷰</string>
+    <string name="explore_heart_contentdescription">하트</string>
+    <string name="explore_content_contentdescription">콘텐츠</string>
 </resources>

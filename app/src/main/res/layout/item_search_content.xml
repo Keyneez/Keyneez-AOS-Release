@@ -2,14 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="data"
-            type="com.release.keyneez.data.model.response.ResponseGetSearchDto" />
-
-        <import type="android.view.View" />
-    </data>
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_search_rv"

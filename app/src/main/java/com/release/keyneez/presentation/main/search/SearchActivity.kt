@@ -12,17 +12,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
-    lateinit var searchAdapter: SearchAdapter
+    private lateinit var searchAdapter: SearchAdapter
     private val viewModel by viewModels<SearchViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
-        initSearchBtnClickListener()
+        searchBtnKeyListener()
         initHideKeyboard()
-        initSearchBackBtnClickListener()
+        initBackBtnClickListener()
     }
 
-    private fun initSearchBtnClickListener() {
+    private fun searchBtnKeyListener() {
         binding.btnSearchResult.setOnKeyListener { v, keyCode, event ->
             if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
                 // 뷰모델 통신하는 코드 작성하기
@@ -39,7 +39,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         }
     }
 
-    private fun initSearchBackBtnClickListener() {
+    private fun initBackBtnClickListener() {
         binding.btnSearchBack.setOnSingleClickListener {
             finish()
         }

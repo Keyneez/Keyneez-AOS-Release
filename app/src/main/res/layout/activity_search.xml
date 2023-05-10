@@ -3,17 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="vm"
-            type="com.release.keyneez.presentation.main.search.SearchViewModel" />
-
-        <import type="android.view.View" />
-    </data>
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_search_result"
+        android:id="@+id/layout_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -7,32 +6,36 @@
     <data></data>
 
     <androidx.constraintlayout.motion.widget.MotionLayout
-        android:background="@color/gray300"
         android:id="@+id/layout_explore_entire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutDescription="@xml/motion_explore"
+        android:background="@color/gray300"
+        app:layoutDescription="@xml/motion_explore_toolbar"
         app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
         tools:context=".ExploreActivity"
         tools:showPaths="true">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_explore_content"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="11dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="15dp"
+            android:paddingBottom="113dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_entire"
+            app:layout_constraintTop_toBottomOf="@id/tv_explore_all"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_explore_content"
             tools:spanCount="2" />
 
         <ImageView
             android:id="@+id/layout_explore_toolbar"
+            android:contentDescription="@string/explore_toolbar_contentdescription"
             android:layout_width="match_parent"
             android:layout_height="122dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +44,7 @@
 
         <TextView
             android:id="@+id/tv_explore_title"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
+            style="@style/HeadingSemibold24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -60,14 +63,14 @@
             android:layout_marginEnd="11dp"
             android:background="@null"
             android:padding="12dp"
+            android:contentDescription="@string/explore_search_contentdescription"
             android:src="@drawable/ic_search"
             app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
-            app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
         <TextView
             android:id="@+id/tv_explore_popular"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold20"
+            style="@style/SubtitleSemibold18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
@@ -101,7 +104,7 @@
 
         <TextView
             android:id="@+id/tv_explore_recent"
-            style="@style/TextAppearance.Keyneez.HeadingMedium20"
+            style="@style/SubtitleMedium18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"
@@ -112,8 +115,8 @@
             app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar" />
 
         <TextView
-            android:id="@+id/tv_explore_entire"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
+            android:id="@+id/tv_explore_all"
+            style="@style/BodyMedium16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
@@ -128,7 +131,7 @@
 
         <TextView
             android:id="@+id/tv_explore_culture"
-            style="@style/TextAppearance.Keyneez.BodyMedium16"
+            style="16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
@@ -138,7 +141,7 @@
             android:paddingVertical="6dp"
             android:text="@string/explore_culture"
             android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_entire"
+            app:layout_constraintStart_toEndOf="@id/tv_explore_all"
             app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
 
         <TextView

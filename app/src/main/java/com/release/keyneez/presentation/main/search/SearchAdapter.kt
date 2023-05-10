@@ -3,12 +3,12 @@ package com.release.keyneez.presentation.main.search
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.release.keyneez.data.model.response.ResponseGetSearchDto
+import com.release.keyneez.data.model.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
 
-    var data = listOf<ResponseGetSearchDto>()
+    var data = listOf<ResponseGetSearchResultDto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): getViewHolder {
         val binding =
@@ -24,7 +24,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
 
     class getViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ResponseGetSearchDto) {
+        fun bind(item: ResponseGetSearchResultDto) {
             binding.data = item
             binding.root.setOnClickListener {
 //                val intent = Intent(binding.root.context, DetailActivity::class.java)  홈 상세페이지로 이동
