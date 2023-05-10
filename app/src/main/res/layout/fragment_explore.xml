@@ -68,51 +68,33 @@
             app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
-        <TextView
-            android:id="@+id/tv_explore_popular"
-            style="@style/SubtitleSemibold18"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:padding="12dp"
-            android:text="@string/explore_popular"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar" />
-
-        <View
-            android:id="@+id/view_explore_semi_baseline"
-            android:layout_width="0dp"
-            android:layout_height="0.4dp"
+            android:layout_marginTop="13dp"
+            android:paddingBottom="9dp"
             android:background="@color/gray300"
-            app:layout_constraintBottom_toBottomOf="@id/view_explore_baseline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/view_explore_baseline" />
+            app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar"
+            app:tabIndicatorColor="@color/gray900"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="@color/gray900"
+            app:tabTextAppearance="@style/SubtitleSemibold18"
+            app:tabTextColor="@color/gray400" />
 
         <View
             android:id="@+id/view_explore_baseline"
             android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginHorizontal="-4dp"
-            android:layout_marginTop="-2dp"
+            android:layout_height="0.4dp"
+            android:layout_marginTop="170dp"
             android:background="@color/gray900"
             android:paddingHorizontal="12dp"
-            app:layout_constraintEnd_toEndOf="@id/tv_explore_popular"
-            app:layout_constraintStart_toStartOf="@id/tv_explore_popular"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_popular" />
-
-        <TextView
-            android:id="@+id/tv_explore_recent"
-            style="@style/SubtitleMedium18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:padding="12dp"
-            android:text="@string/explore_recent"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_popular"
-            app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_explore_all"
