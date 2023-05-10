@@ -36,7 +36,7 @@
             android:text="@string/explore_culture"
             android:textColor="@color/gray400"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_all"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_explore_popular_outside"
@@ -50,7 +50,7 @@
             android:text="@string/explore_outside"
             android:textColor="@color/gray400"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_culture"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_explore_popular_career"
@@ -65,7 +65,7 @@
             android:text="@string/explore_career"
             android:textColor="@color/gray400"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_outside"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <androidx.recyclerview.widget.RecyclerView
