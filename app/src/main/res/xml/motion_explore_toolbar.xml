@@ -8,7 +8,7 @@
 
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@id/rv_explore_content"
+            motion:touchAnchorId="@id/rv_explore_popular"
             motion:touchAnchorSide="top" />
 
     </Transition>
@@ -25,7 +25,6 @@
 
         <Constraint
             android:id="@+id/tv_explore_expanded_title"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -61,7 +60,6 @@
 
         <Constraint
             android:id="@+id/tv_explore_collapsed_title"
-            style="@style/TextAppearance.Keyneez.HeadingSemibold24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="153dp"
