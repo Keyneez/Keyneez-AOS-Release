@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.release.keyneez.R
-import com.release.keyneez.data.entity.ExploreData
+import com.release.keyneez.domain.model.ExploreData
 
 class RecentViewModel : ViewModel() {
     private val _itemList = MutableLiveData<List<ExploreData>>()

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.release.keyneez.data.entity.ExploreData
+import com.release.keyneez.domain.model.ExploreData
 import com.release.keyneez.databinding.ItemExploreContentBinding
 
 class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {

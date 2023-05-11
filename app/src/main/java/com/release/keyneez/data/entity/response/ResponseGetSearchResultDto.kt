@@ -1,4 +1,4 @@
-package com.release.keyneez.data.model.response
+package com.release.keyneez.data.entity.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

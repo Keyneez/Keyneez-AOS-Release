@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.release.keyneez.R
-import com.release.keyneez.data.entity.ExploreData
+import com.release.keyneez.domain.model.ExploreData
 import com.release.keyneez.databinding.FragmentExplorePopularBinding
 import com.release.keyneez.presentation.main.explore.recent.RecentViewModel
 import com.release.keyneez.util.binding.BindingFragment

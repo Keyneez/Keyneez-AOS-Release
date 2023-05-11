@@ -1,4 +1,4 @@
-package com.release.keyneez.data.entity
+package com.release.keyneez.domain.model
 
 data class ExploreData(
     val background: Int,
