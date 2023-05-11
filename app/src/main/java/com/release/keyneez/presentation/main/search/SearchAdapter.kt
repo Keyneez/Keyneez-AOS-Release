@@ -25,7 +25,6 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
     class getViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResponseGetSearchResultDto) {
-            binding.data = item
             binding.root.setOnClickListener {
 //                val intent = Intent(binding.root.context, DetailActivity::class.java)  홈 상세페이지로 이동
 //                intent.putExtra("contentId", item.key)

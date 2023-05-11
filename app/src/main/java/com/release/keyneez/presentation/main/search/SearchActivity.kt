@@ -16,7 +16,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private val viewModel by viewModels<SearchViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.vm = viewModel
         searchBtnKeyListener()
         initHideKeyboard()
         initBackBtnClickListener()
@@ -34,7 +33,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun initHideKeyboard() {
-        binding.layoutSearchResult.setOnSingleClickListener {
+        binding.layoutSearch.setOnSingleClickListener {
             hideKeyboard()
         }
     }
