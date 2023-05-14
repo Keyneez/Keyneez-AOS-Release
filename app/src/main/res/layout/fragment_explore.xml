@@ -1,19 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data></data>
 
-    <androidx.constraintlayout.motion.widget.MotionLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_explore_entire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray300"
-        app:layoutDescription="@xml/motion_explore_toolbar"
-        app:layout_scrollFlags="scroll|enterAlwaysCollapsed|exitUntilCollapsed"
-        tools:context=".ExploreActivity"
-        tools:showPaths="true">
+        android:background="?android:colorBackground">
 
         <ImageView
             android:id="@+id/layout_explore_toolbar"
@@ -33,7 +28,6 @@
             android:layout_marginTop="81dp"
             android:text="@string/explore_title"
             android:textColor="@color/gray900"
-            app:autoSizeTextType="uniform"
             app:layout_constraintStart_toStartOf="@id/layout_explore_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
@@ -88,5 +82,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
 
-    </androidx.constraintlayout.motion.widget.MotionLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
