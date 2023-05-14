@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.release.keyneez.domain.model.ExploreData
 import com.release.keyneez.databinding.ItemExploreContentBinding
+import com.release.keyneez.domain.model.ExploreData
 
 class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
     var data = listOf<ExploreData>()
@@ -17,8 +17,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() 
             binding.tvExploreCategory.text = item.category
             binding.tvExploreContentTitle.text = item.title
             binding.tvExploreDate.text = item.date
-            binding.root.setOnClickListener {
-            }
+            binding.root.setOnClickListener {}
         }
     }
 

@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.release.keyneez.domain.model.ExploreData
 import com.release.keyneez.databinding.ItemExploreContentBinding
+import com.release.keyneez.domain.model.ExploreData
 
 class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
     var data = listOf<ExploreData>()
