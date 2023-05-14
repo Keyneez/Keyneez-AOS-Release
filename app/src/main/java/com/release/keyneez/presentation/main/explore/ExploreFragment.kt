@@ -18,7 +18,7 @@ class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragmen
         val viewPager = binding.vpExplore
         val tabLayout = binding.tabExplore
 
-        val homeTabTitles = listOf(
+        val exploreTabTitles = listOf(
             getString(R.string.explore_popular),
             getString(R.string.explore_recent)
         )
@@ -26,7 +26,7 @@ class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragmen
         viewPager.adapter = ExploreAdapter(parentFragmentManager, lifecycle)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = homeTabTitles[position]
+            tab.text = exploreTabTitles[position]
         }.attach()
     }
 
