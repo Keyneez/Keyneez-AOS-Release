@@ -10,6 +10,7 @@ import javax.annotation.Nonnull
 
 class ExploreAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
+
     @Override
     override fun getItemCount(): Int {
         return 2

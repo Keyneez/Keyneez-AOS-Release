@@ -34,7 +34,7 @@
             android:background="@drawable/shape_purple500_fill_49_rect"
             android:paddingHorizontal="8dp"
             android:paddingVertical="3dp"
-            android:text="@string/explore_main_outside"
+            android:text="@string/explore_activity"
             android:textColor="@color/gray050"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
