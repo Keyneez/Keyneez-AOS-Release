@@ -2,18 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_main_home"
-        android:icon="@drawable/ic_main_home_demo"
+        android:icon="@drawable/sel_main_drawable_bnv_home_icon"
         android:title="@string/main_menu_home" />
     <item
         android:id="@+id/menu_main_explore"
-        android:icon="@drawable/ic_main_home_demo"
+        android:icon="@drawable/sel_main_drawable_bnv_explore_icon"
         android:title="@string/main_menu_explore" />
     <item
         android:id="@+id/menu_main_like"
-        android:icon="@drawable/ic_main_home_demo"
+        android:icon="@drawable/sel_main_drawable_bnv_like_icon"
         android:title="@string/main_menu_like" />
     <item
         android:id="@+id/menu_main_setting"
-        android:icon="@drawable/ic_main_home_demo"
+        android:icon="@drawable/sel_main_drawable_bnv_setting_icon"
         android:title="@string/main_menu_setting" />
 </menu>
