@@ -4,9 +4,6 @@
     <!-- error -->
     <string name="binding_error">Binding not initialized to reference the view.</string>
 
-    <!-- common -->
-    <string name="binding_error">Binding not initialized to reference the view.</string>
-
     <!-- main -->
     <string name="main_menu_home">홈</string>
     <string name="main_menu_explore">탐색</string>
