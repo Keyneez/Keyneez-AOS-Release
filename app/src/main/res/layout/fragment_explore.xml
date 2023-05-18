@@ -44,22 +44,13 @@
             app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
-        <View
-            android:id="@+id/view_explore_baseline"
-            android:layout_width="0dp"
-            android:layout_height="0.4dp"
-            android:layout_marginTop="170dp"
-            android:background="@color/gray900"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="13dp"
+            android:background="?android:colorBackground"
             android:paddingBottom="9dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar"
@@ -69,6 +60,16 @@
             app:tabSelectedTextColor="@color/gray900"
             app:tabTextAppearance="@style/SubtitleSemibold18"
             app:tabTextColor="@color/gray400" />
+
+        <View
+            android:id="@+id/view_explore_baseline"
+            android:layout_width="0dp"
+            android:layout_height="0.4dp"
+            android:layout_marginTop="170dp"
+            android:background="@color/gray900"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_explore"
