@@ -32,7 +32,7 @@
             app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
 
         <ImageButton
-            android:id="@+id/btn_explore_result"
+            android:id="@+id/btn_explore_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
@@ -48,7 +48,7 @@
             android:id="@+id/tab_explore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="25dp"
             android:layout_marginTop="13dp"
             android:background="?android:colorBackground"
             android:paddingBottom="9dp"
