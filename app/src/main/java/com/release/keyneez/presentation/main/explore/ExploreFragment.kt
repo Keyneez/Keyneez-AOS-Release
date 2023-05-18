@@ -7,8 +7,7 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExploreBinding
 import com.release.keyneez.util.binding.BindingFragment
 
-class ExploreFragment :
-    BindingFragment<FragmentExploreBinding>(R.layout.fragment_explore) {
+class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragment_explore) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
