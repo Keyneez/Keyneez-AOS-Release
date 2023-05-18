@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/tv_explore_recent_all"
-            style="@style/BodyMedium16"
+            style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
@@ -26,7 +26,7 @@
 
         <TextView
             android:id="@+id/tv_explore_recent_culture"
-            style="@style/BodyMedium16"
+            style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/tv_explore_recent_outside"
-            style="@style/BodyMedium16"
+            style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/tv_explore_popular_career"
-            style="@style/BodyMedium16"
+            style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
