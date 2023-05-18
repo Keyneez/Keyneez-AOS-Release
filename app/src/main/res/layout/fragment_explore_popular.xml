@@ -82,6 +82,6 @@
             app:layout_constraintTop_toBottomOf="@id/tv_explore_popular_all"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_explore_content"
-            tools:spanCount="2" />
+            app:spanCount="2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
