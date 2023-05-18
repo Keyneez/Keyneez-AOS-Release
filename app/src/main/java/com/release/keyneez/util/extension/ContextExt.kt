@@ -22,8 +22,3 @@ fun Context.showSnackbar(view: View, msg: String) {
 fun Context.showToast(msg: String) {
     Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 }
-
-fun Context.dpToPx(dp: Int): Int {
-    val scale = resources.displayMetrics.density
-    return (dp * scale).toInt()
-}
