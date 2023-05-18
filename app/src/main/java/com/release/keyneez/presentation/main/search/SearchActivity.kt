@@ -1,7 +1,6 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
-import android.view.KeyEvent
 import androidx.activity.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
@@ -16,21 +15,20 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private val viewModel by viewModels<SearchViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        searchBtnKeyListener()
         initHideKeyboard()
         initBackBtnClickListener()
     }
 
-    private fun searchBtnKeyListener() {
-        binding.btnSearchResult.setOnKeyListener { v, keyCode, event ->
-            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                // 뷰모델 통신하는 코드 작성하기
-                true
-            } else {
-                false
-            }
-        }
-    }
+//    private fun searchBtnKeyListener() {
+//        binding.btnSearchResult.setOnKeyListener { v, keyCode, event ->
+//            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                // 뷰모델 통신하는 코드 작성하기
+//                true
+//            } else {
+//                false
+//            }
+//        }
+//    }
 
     private fun initHideKeyboard() {
         binding.layoutSearch.setOnSingleClickListener {
