@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.main.explore.ExploreFragment">
 
+    <data>
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_explore"
         android:layout_width="match_parent"
@@ -11,6 +15,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:text="explore fragment" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -125,7 +125,7 @@
     <!-- background -->
     <item>
         <shape>
-            <solid android:color="@color/white" />
+            <solid android:color="@color/gray050" />
         </shape>
     </item>
 </layer-list>
