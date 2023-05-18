@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.release.keyneez.presentation.signup.signupViewModel" />
+            name="vm"
+            type="com.release.keyneez.presentation.signup.SignupViewModel" />
 
         <import type="android.view.View" />
 
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="사용하실 닉네임을\n입력해주세요!"
-            style="semi"
+            style="@style/HeadingSemibold22"
             android:layout_marginTop="30dp"
             android:layout_marginHorizontal="25dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="닉네임 입력하기"
+            android:text="@={vm.nickname}"
+            android:maxLength="6"
             android:drawableRight="@drawable/ic_signup_check"
             android:paddingVertical="15dp"
             android:layout_marginHorizontal="27dp"
@@ -74,6 +76,7 @@
             android:background="@drawable/sel_signup_next_btn"
             android:text="다음"
             android:gravity="center"
+            android:enabled="@{vm.nickname.length > 0}"
             style="@style/TextAppearance.Keyneez.SubtitleMedium18"
             android:textColor="@color/gray050"
             android:paddingVertical="17dp"
