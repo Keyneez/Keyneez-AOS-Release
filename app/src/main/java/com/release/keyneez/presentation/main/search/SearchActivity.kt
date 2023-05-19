@@ -1,7 +1,6 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
@@ -12,7 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
     private lateinit var searchAdapter: SearchAdapter
-    private val viewModel by viewModels<SearchViewModel>()
+
+    // 뷰모델 관련 기초 코드 작성
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initHideKeyboard()
@@ -31,9 +31,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 //    }
 
     private fun initHideKeyboard() {
-        binding.layoutSearch.setOnSingleClickListener {
-            hideKeyboard()
-        }
+        this@SearchActivity.hideKeyboard()
     }
 
     private fun initBackBtnClickListener() {
