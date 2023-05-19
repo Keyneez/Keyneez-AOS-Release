@@ -13,11 +13,12 @@ class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
     class RecentViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
-            binding.ivExploreBackground.load(item.background)
-            binding.tvExploreCategory.text = item.category
-            binding.tvExploreContentTitle.text = item.title
-            binding.tvExploreDate.text = item.date
-            binding.root.setOnClickListener {
+            with(binding) {
+                ivExploreBackground.load(item.background)
+                tvExploreCategory.text = item.category
+                tvExploreContentTitle.text = item.title
+                tvExploreDate.text = item.date
+                // TODO : root.setOnSingleClickListener 구현
             }
         }
     }

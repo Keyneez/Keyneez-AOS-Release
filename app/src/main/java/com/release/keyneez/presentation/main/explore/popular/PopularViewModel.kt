@@ -7,9 +7,9 @@ import com.release.keyneez.R
 import com.release.keyneez.domain.model.Activity
 
 class PopularViewModel : ViewModel() {
-    private val _itemList = MutableLiveData<List<Activity>>()
-    val itemList: LiveData<List<Activity>>
-        get() = _itemList
+    private val _activityList = MutableLiveData<List<Activity>>()
+    val activityList: LiveData<List<Activity>>
+        get() = _activityList
 
     init {
         getPopularActivityList()
@@ -46,6 +46,6 @@ class PopularViewModel : ViewModel() {
                 liked = true
             )
         )
-        _itemList.value = mainList
+        _activityList.value = mainList
     }
 }

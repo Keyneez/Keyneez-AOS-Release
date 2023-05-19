@@ -5,15 +5,15 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExplorePopularBinding
-import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.binding.BindingFragment
 
 class PopularFragment :
     BindingFragment<FragmentExplorePopularBinding>(R.layout.fragment_explore_popular) {
+    private var _binding: FragmentExplorePopularBinding? = null
+        get() = _binding!!
 
     private val viewModel: PopularViewModel by viewModels()
-    val data = mutableListOf<Activity>()
-    private lateinit var PopularAdapter: PopularAdapter
+    private lateinit var popularAdapter: PopularAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupExploreData()
@@ -21,15 +21,20 @@ class PopularFragment :
     }
 
     private fun setupExploreData() {
-        viewModel.itemList.observe(viewLifecycleOwner) {
-            PopularAdapter.data = it
-            PopularAdapter.notifyDataSetChanged()
+        viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
+            popularAdapter.data = activityList
+            popularAdapter.notifyDataSetChanged()
         }
     }
 
     private fun initPopularAdapter() {
-        PopularAdapter = PopularAdapter()
-        binding.rvExplorePopular.adapter = PopularAdapter
+        popularAdapter = PopularAdapter()
+        binding.rvExplorePopular.adapter = popularAdapter
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {

@@ -7,11 +7,15 @@ import android.view.View
 import com.google.android.material.tabs.TabLayoutMediator
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExploreBinding
+import com.release.keyneez.databinding.FragmentExplorePopularBinding
 import com.release.keyneez.presentation.main.search.SearchActivity
 import com.release.keyneez.util.binding.BindingFragment
 import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragment_explore) {
+    private var _binding: FragmentExplorePopularBinding? = null
+        get() = _binding!!
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -37,6 +41,11 @@ class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragmen
         binding.btnExploreSearch.setOnSingleClickListener {
             startActivity(Intent(activity, SearchActivity::class.java))
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
