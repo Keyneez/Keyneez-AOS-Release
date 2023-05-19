@@ -16,11 +16,11 @@ class RecentFragment :
     private lateinit var recentAdapter: RecentAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupRecentData()
         initRecentAdapter()
+        setupRecentActivity()
     }
 
-    private fun setupRecentData() {
+    private fun setupRecentActivity() {
         viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
             recentAdapter.data = activityList
             recentAdapter.notifyDataSetChanged()

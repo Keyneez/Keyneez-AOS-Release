@@ -12,10 +12,10 @@ class RecentViewModel : ViewModel() {
         get() = _activityList
 
     init {
-        getRecentItemList()
+        getRecentActivityList()
     }
 
-    private fun getRecentItemList() {
+    private fun getRecentActivityList() {
         val mainList = listOf(
             Activity(
                 background = R.drawable.img_explore_background,

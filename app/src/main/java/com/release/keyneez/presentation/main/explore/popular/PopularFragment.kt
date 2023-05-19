@@ -16,11 +16,11 @@ class PopularFragment :
     private lateinit var popularAdapter: PopularAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupExploreData()
         initPopularAdapter()
+        setupPopularActivity()
     }
 
-    private fun setupExploreData() {
+    private fun setupPopularActivity() {
         viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
             popularAdapter.data = activityList
             popularAdapter.notifyDataSetChanged()
