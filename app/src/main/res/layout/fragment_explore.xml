@@ -5,7 +5,7 @@
     <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_explore_entire"
+        android:id="@+id/layout_explore"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:colorBackground">
@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/gray900"
-            app:tabIndicatorHeight="1.8dp"
+            app:tabIndicatorHeight="2dp"
             app:tabMaxWidth="0dp"
             app:tabMode="fixed"
             app:tabSelectedTextColor="@color/gray900"

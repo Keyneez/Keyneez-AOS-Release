@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
+import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
 
@@ -25,7 +26,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
     class getViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ResponseGetSearchResultDto) {
-            binding.root.setOnClickListener {
+            binding.root.setOnSingleClickListener {
 //                val intent = Intent(binding.root.context, DetailActivity::class.java)  홈 상세페이지로 이동
 //                intent.putExtra("contentId", item.key)
 //                ContextCompat.startActivity(binding.root.context, intent, null)
