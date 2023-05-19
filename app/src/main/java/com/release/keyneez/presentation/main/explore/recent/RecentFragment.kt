@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExploreRecentBinding
 import com.release.keyneez.domain.model.ExploreData
+import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.util.binding.BindingFragment
 
 class RecentFragment :
@@ -33,8 +34,7 @@ class RecentFragment :
     }
 
     companion object {
-        fun newInstance(): RecentFragment {
-            return RecentFragment()
-        }
+        @JvmStatic
+        fun newInstance() = RecentFragment()
     }
 }

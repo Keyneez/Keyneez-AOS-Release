@@ -1,5 +1,6 @@
 package com.release.keyneez.presentation.main.explore
 
+import ExploreAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -19,31 +20,27 @@ class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragmen
     }
 
     private fun initExploreViewPagerAdapter() {
-        val viewPager = binding.vpExplore
-        val tabLayout = binding.tabExplore
+        with(binding) {
+            val exploreTabTitles = listOf(
+                getString(R.string.explore_popular),
+                getString(R.string.explore_recent)
+            )
+            vpExplore.adapter = ExploreAdapter(parentFragmentManager, lifecycle)
 
-        val exploreTabTitles = listOf(
-            getString(R.string.explore_popular),
-            getString(R.string.explore_recent)
-        )
-
-        viewPager.adapter = ExploreAdapter(parentFragmentManager, lifecycle)
-
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = exploreTabTitles[position]
-        }.attach()
+            TabLayoutMediator(tabExplore, vpExplore) { tab, position ->
+                tab.text = exploreTabTitles[position]
+            }.attach()
+        }
     }
 
     private fun initSearchClickListener() {
         binding.btnExploreSearch.setOnSingleClickListener {
-            val intent = Intent(getActivity(), SearchActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(activity, SearchActivity::class.java))
         }
     }
 
     companion object {
-        fun newInstance(): ExploreFragment {
-            return ExploreFragment()
-        }
+        @JvmStatic
+        fun newInstance() = ExploreFragment()
     }
 }

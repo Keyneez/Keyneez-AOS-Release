@@ -1,5 +1,3 @@
-package com.release.keyneez.presentation.main.explore
-
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

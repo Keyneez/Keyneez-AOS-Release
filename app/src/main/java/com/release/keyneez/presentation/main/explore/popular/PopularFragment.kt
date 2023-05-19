@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExplorePopularBinding
 import com.release.keyneez.domain.model.ExploreData
+import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.util.binding.BindingFragment
 
 class PopularFragment :
@@ -33,8 +34,7 @@ class PopularFragment :
     }
 
     companion object {
-        fun newInstance(): PopularFragment {
-            return PopularFragment()
-        }
+        @JvmStatic
+        fun newInstance() = PopularFragment()
     }
 }
