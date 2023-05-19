@@ -18,6 +18,7 @@ class PopularViewModel : ViewModel() {
     private fun getPopularActivityList() {
         val mainList = listOf(
             Activity(
+                id = 1,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
@@ -25,6 +26,7 @@ class PopularViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
+                id = 1,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
@@ -32,6 +34,7 @@ class PopularViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
+                id = 1,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
@@ -39,6 +42,7 @@ class PopularViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
+                id = 1,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",

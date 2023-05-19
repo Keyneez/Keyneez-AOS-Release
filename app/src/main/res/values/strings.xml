@@ -2,7 +2,9 @@
     <string name="app_name">Keyneez</string>
 
     <!-- error -->
-    <string name="binding_error">Binding not initialized to reference the view.</string>
+    <string name="binding_error_msg">Binding not initialized to reference the view.</string>
+    <string name="unknown_error_msg">알 수 없는 오류가 발생했습니다.</string>
+    <string name="view_type_error_msg">Unknown View Type : %d</string>
 
     <!-- main -->
     <string name="main_menu_home">홈</string>

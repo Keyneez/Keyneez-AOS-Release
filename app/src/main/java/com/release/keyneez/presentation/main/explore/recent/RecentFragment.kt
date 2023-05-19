@@ -9,8 +9,6 @@ import com.release.keyneez.util.binding.BindingFragment
 
 class RecentFragment :
     BindingFragment<FragmentExploreRecentBinding>(R.layout.fragment_explore_recent) {
-    private var _binding: FragmentExploreRecentBinding? = null
-        get() = _binding!!
 
     private val viewModel: RecentViewModel by viewModels()
     private lateinit var recentAdapter: RecentAdapter
@@ -30,11 +28,6 @@ class RecentFragment :
     private fun initRecentAdapter() {
         recentAdapter = RecentAdapter()
         binding.rvExploreRecent.adapter = recentAdapter
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

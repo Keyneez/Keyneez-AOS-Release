@@ -9,8 +9,6 @@ import com.release.keyneez.util.binding.BindingFragment
 
 class PopularFragment :
     BindingFragment<FragmentExplorePopularBinding>(R.layout.fragment_explore_popular) {
-    private var _binding: FragmentExplorePopularBinding? = null
-        get() = _binding!!
 
     private val viewModel: PopularViewModel by viewModels()
     private lateinit var popularAdapter: PopularAdapter
@@ -30,11 +28,6 @@ class PopularFragment :
     private fun initPopularAdapter() {
         popularAdapter = PopularAdapter()
         binding.rvExplorePopular.adapter = popularAdapter
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     companion object {

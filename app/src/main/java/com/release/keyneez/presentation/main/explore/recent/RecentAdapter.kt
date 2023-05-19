@@ -2,12 +2,14 @@ package com.release.keyneez.presentation.main.explore.recent
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.release.keyneez.databinding.ItemExploreContentBinding
 import com.release.keyneez.domain.model.Activity
+import com.release.keyneez.util.DiffCallback
 
-class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
+class RecentAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     var data = listOf<Activity>()
 
     class RecentViewHolder(private val binding: ItemExploreContentBinding) :
@@ -23,15 +25,27 @@ class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecentViewHolder {
-        val binding =
-            ItemExploreContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return RecentViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return RecentViewHolder(
+            ItemExploreContentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = super.getItemCount()
 
-    override fun onBindViewHolder(holder: RecentViewHolder, position: Int) {
-        holder.bind(data[position])
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is RecentViewHolder) holder.bind(getItem(position))
+    }
+
+    companion object {
+        private val diffUtil =
+            DiffCallback<Activity>(
+                onItemsTheSame = { old, new -> old.id == new.id },
+                onContentsTheSame = { old, new -> old == new }
+            )
     }
 }
