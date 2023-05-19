@@ -5,19 +5,21 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.release.keyneez.databinding.ItemExploreContentBinding
-import com.release.keyneez.domain.model.ExploreData
+import com.release.keyneez.domain.model.Activity
 
 class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
-    var data = listOf<ExploreData>()
+    var data = listOf<Activity>()
 
     class PopularViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ExploreData) {
-            binding.ivExploreBackground.load(item.background)
-            binding.tvExploreCategory.text = item.category
-            binding.tvExploreContentTitle.text = item.title
-            binding.tvExploreDate.text = item.date
-            binding.root.setOnClickListener {}
+        fun bind(item: Activity) {
+            with(binding) {
+                ivExploreBackground.load(item.background)
+                tvExploreCategory.text = item.category
+                tvExploreContentTitle.text = item.title
+                tvExploreDate.text = item.date
+                // TODO : root.setOnSingleClickListener 구현
+            }
         }
     }
 

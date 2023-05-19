@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.release.keyneez.databinding.ItemExploreContentBinding
-import com.release.keyneez.domain.model.ExploreData
+import com.release.keyneez.domain.model.Activity
 
 class RecentAdapter : RecyclerView.Adapter<RecentAdapter.RecentViewHolder>() {
-    var data = listOf<ExploreData>()
+    var data = listOf<Activity>()
 
     class RecentViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ExploreData) {
+        fun bind(item: Activity) {
             binding.ivExploreBackground.load(item.background)
             binding.tvExploreCategory.text = item.category
             binding.tvExploreContentTitle.text = item.title

@@ -1,6 +1,6 @@
 package com.release.keyneez.domain.model
 
-data class ExploreData(
+data class Activity(
     val background: Int,
     val category: String,
     val title: String,

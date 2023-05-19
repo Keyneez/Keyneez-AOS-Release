@@ -5,15 +5,14 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExplorePopularBinding
-import com.release.keyneez.domain.model.ExploreData
-import com.release.keyneez.presentation.main.explore.ExploreFragment
+import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.binding.BindingFragment
 
 class PopularFragment :
     BindingFragment<FragmentExplorePopularBinding>(R.layout.fragment_explore_popular) {
 
     private val viewModel: PopularViewModel by viewModels()
-    val data = mutableListOf<ExploreData>()
+    val data = mutableListOf<Activity>()
     private lateinit var PopularAdapter: PopularAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

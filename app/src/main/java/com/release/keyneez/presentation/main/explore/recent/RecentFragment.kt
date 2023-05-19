@@ -5,15 +5,14 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentExploreRecentBinding
-import com.release.keyneez.domain.model.ExploreData
-import com.release.keyneez.presentation.main.explore.ExploreFragment
+import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.binding.BindingFragment
 
 class RecentFragment :
     BindingFragment<FragmentExploreRecentBinding>(R.layout.fragment_explore_recent) {
 
     private val viewModel: RecentViewModel by viewModels()
-    val data = mutableListOf<ExploreData>()
+    val data = mutableListOf<Activity>()
     private lateinit var RecentAdapter: RecentAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
