@@ -15,14 +15,6 @@ class RecentFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initRecentAdapter()
-        setupRecentActivity()
-    }
-
-    private fun setupRecentActivity() {
-        viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
-            recentAdapter.data = activityList
-            recentAdapter.notifyDataSetChanged()
-        }
     }
 
     private fun initRecentAdapter() {
