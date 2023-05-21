@@ -10,7 +10,6 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
 import com.release.keyneez.util.extension.setOnSingleClickListener
-import com.release.keyneez.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,13 +54,12 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun setupSearchActivityList() {
-        viewModel.activityList.observe(this) {
-            searchAdapter.data
-            searchAdapter.notifyDataSetChanged()
-            binding.tvSearchCount.setText(it.size.toString())
-            if (it.size == 0) {
-                showToast(getString(R.string.search_no_result))
-            }
+        viewModel.activityList.observe(this) { activityList ->
+            searchAdapter?.submitList(activityList)
+//            binding.tvSearchCount.setText(searchAdapter?.data?.size.toString())
+//            if (searchAdapter?.data?.size == 0) {
+//                showToast(getString(R.string.search_no_result))
+//            }
         }
     }
 

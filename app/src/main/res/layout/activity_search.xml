@@ -20,6 +20,7 @@
             android:background="@null"
             android:padding="12dp"
             android:src="@drawable/ic_search"
+            android:contentDescription="@string/search_contentdescription"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

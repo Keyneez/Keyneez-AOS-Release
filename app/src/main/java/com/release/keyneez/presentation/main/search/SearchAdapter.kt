@@ -5,14 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
 class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
-
-    var data = listOf<ResponseGetSearchResultDto>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SearchViewHolder(
@@ -41,7 +38,7 @@ class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
         }
     }
 
-    override fun getItemCount(): Int = data.size
+//    override fun getItemCount(): Int = data.size
 
     companion object {
         private val diffUtil = DiffCallback<Activity>(
