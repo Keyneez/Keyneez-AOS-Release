@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">Keyneez</string>
 
-    // common
-    <string name="binding_error">Binding not initialized to reference the view.</string>
+    <!-- error -->
+    <string name="binding_error_msg">Binding not initialized to reference the view.</string>
+    <string name="unknown_error_msg">알 수 없는 오류가 발생했습니다.</string>
+    <string name="view_type_error_msg">Unknown View Type : %d</string>
 
-    // search
+    <!-- main -->
+    <string name="main_menu_home">홈</string>
+    <string name="main_menu_explore">탐색</string>
+    <string name="main_menu_like">좋아요</string>
+    <string name="main_menu_setting">설정</string>
+
+    <!-- search -->
     <string name="search_content">제목, 키워드</string>
     <string name="search_cancel">취소</string>
     <string name="search_result">검색결과</string>
@@ -12,15 +20,25 @@
     <string name="search_category">기획</string>
     <string name="search_title">행주산성 맛집 투어</string>
     <string name="search_period">%s–%s</string>
+    <string name="search_fee">무료 입장</string>
 
-    //explore
+    <!-- explore -->
     <string name="explore_title">탐색하기</string>
     <string name="explore_popular">인기</string>
     <string name="explore_recent">최신</string>
     <string name="explore_entire">전체</string>
-    <string name="explore_culture">문화생활</string>
-    <string name="explore_outside">외부활동</string>
+    <string name="explore_hobby">취미</string>
+    <string name="explore_activity">활동</string>
     <string name="explore_career">진로</string>
     <string name="explore_content_title">행주산성\n맛집 투어</string>
     <string name="explore_date">%s-%s</string>
+    <string name="explore_toolbar_contentdescription">툴바</string>
+    <string name="explore_search_contentdescription">검색버튼</string>
+    <string name="explore_recycler_contentdescription">리사이클러뷰</string>
+    <string name="explore_heart_contentdescription">하트</string>
+    <string name="explore_content_contentdescription">콘텐츠</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

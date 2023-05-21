@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data></data>
 
@@ -15,8 +16,9 @@
             android:id="@+id/iv_explore_background"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:scaleType="centerCrop"
             android:background="@drawable/shape_gray050_fill_15_rect"
+            android:contentDescription="@string/explore_recycler_contentdescription"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,15 +26,15 @@
 
         <TextView
             android:id="@+id/tv_explore_category"
-            style="@style/TextAppearance.Keyneez.CaptionMedium10"
+            style="@style/CaptionMedium12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="17dp"
-            android:layout_marginStart="16dp"
-            android:background="@drawable/shape_purple500_fill_18_rect"
-            android:paddingHorizontal="7dp"
+            android:background="@drawable/shape_purple500_fill_49_rect"
+            android:paddingHorizontal="8dp"
             android:paddingVertical="3dp"
-            android:text="@string/explore_outside"
+            android:text="@string/explore_activity"
             android:textColor="@color/gray050"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,21 +44,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_marginEnd="4dp"
+            android:layout_marginEnd="3dp"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/sel_search_heart"
+            android:src="@drawable/sel_search_drawable_bnv_like_icon"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/tv_explore_content_title"
-            style="@style/TextAppearance.Keyneez.BodyBold16"
+            style="@style/BodyBold16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="15dp"
             android:text="@string/explore_content_title"
             android:textColor="@color/gray800"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,12 +68,11 @@
 
         <TextView
             android:id="@+id/tv_explore_date"
-            style="@style/TextAppearance.Keyneez.CaptionMedium10"
+            style="@style/CaptionMedium10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="4dp"
             android:text="@string/explore_date"
             android:textColor="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,12 +83,13 @@
             android:id="@+id/iv_explore_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="28dp"
+            android:layout_marginBottom="18dp"
+            android:contentDescription="@string/explore_content_contentdescription"
             android:src="@drawable/img_explore_background"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="9dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

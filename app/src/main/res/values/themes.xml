@@ -1,22 +1,24 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Theme.Keyneez" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Keyneez" parent="Theme.Material3.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/gray900</item>
-        <item name="colorPrimaryVariant">@color/gray900</item>
-        <item name="colorOnPrimary">@color/gray050</item>
+        <item name="colorPrimary">@color/gray050</item>
+        <item name="colorPrimaryVariant">@color/gray100</item>
+        <item name="colorOnPrimary">@color/gray900</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/gray900</item>
-        <!-- Neutral Key Color -->
+        <item name="colorSecondary">@color/gray400</item>
+        <item name="colorSecondaryVariant">@color/gray200</item>
+        <item name="colorOnSecondary">@color/gray500</item>
+        <!-- Neutral color -->
+        <item name="android:colorBackground">@color/gray100</item>
         <item name="colorOnBackground">@color/gray900</item>
+        <item name="colorSurface">@color/gray050</item>
+        <item name="colorOnSurface">@color/gray800</item>
+        <item name="colorOnError">@color/red500</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
         <!-- Remove font padding -->
         <item name="android:includeFontPadding">false</item>
-        <!-- Remove title bar -->
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
     </style>
 </resources>

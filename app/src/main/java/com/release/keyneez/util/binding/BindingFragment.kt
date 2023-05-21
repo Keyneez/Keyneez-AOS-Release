@@ -11,15 +11,15 @@ import androidx.fragment.app.Fragment
 import com.release.keyneez.R
 
 abstract class BindingFragment<T : ViewDataBinding>(
-    @LayoutRes private val layoutRes: Int
+    @LayoutRes private val layoutRes: Int,
 ) : Fragment() {
     private var _binding: T? = null
-    protected val binding get() = _binding ?: error(getString(R.string.binding_error))
+    protected val binding get() = requireNotNull(_binding) { getString(R.string.binding_error_msg) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         _binding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
