@@ -1,9 +1,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="@color/gray200" />
-<<<<<<<< HEAD:app/src/main/res/drawable/shape_gray200_fill_10_rect.xml
-    <corners android:radius="10dp" />
-========
     <corners android:radius="9dp" />
->>>>>>>> 65ca2f9447d1c5b096ef46cf5fd6ebb5a7167a66:app/src/main/res/drawable/shape_gray200_fill_9_rect.xml
 </shape>
