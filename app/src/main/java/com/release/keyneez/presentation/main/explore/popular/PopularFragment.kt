@@ -25,6 +25,7 @@ class PopularFragment : BindingFragment<FragmentPopularBinding>(R.layout.fragmen
     }
 
     private fun initCategoryBtnClickListener() {
+        // ocr result 코드 참고하기
         binding.tvExplorePopularAll.setOnSingleClickListener {}
         binding.tvExplorePopularHobby.setOnSingleClickListener {}
         binding.tvExplorePopularCareer.setOnSingleClickListener {}

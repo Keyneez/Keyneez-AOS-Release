@@ -1,6 +1,8 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
+import android.view.KeyEvent
+import androidx.recyclerview.widget.GridLayoutManager
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
@@ -15,10 +17,25 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBackBtnClickListener()
+        initSearchAdapter()
+        initSearchBtnKeyListener()
     }
 
-    private fun searchBtnKeyListener() {
-//        binding.btnSearch.setOnKeyListener {}
+    private fun initSearchBtnKeyListener() {
+        binding.btnSearch.setOnKeyListener { v, keyCode, event ->
+            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                viewModel.getSearchPostData()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun initSearchAdapter() {
+        searchAdapter = SearchAdapter()
+        binding.rvSearchResultContent.adapter = searchAdapter
+        binding.rvSearchResultContent.layoutManager = GridLayoutManager(this, 2)
     }
 
     private fun initBackBtnClickListener() {
