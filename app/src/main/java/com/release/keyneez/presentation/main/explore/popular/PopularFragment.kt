@@ -7,8 +7,7 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 
-class PopularFragment :
-    BindingFragment<FragmentPopularBinding>(R.layout.fragment_popular) {
+class PopularFragment : BindingFragment<FragmentPopularBinding>(R.layout.fragment_popular) {
 
     private val viewModel: PopularViewModel by viewModels()
     private var popularAdapter: PopularAdapter? = null
@@ -25,7 +24,7 @@ class PopularFragment :
 
     private fun setupPopularActivityList() {
         viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
-            popularAdapter?.data = activityList
+            popularAdapter?.submitList(activityList)
         }
     }
 

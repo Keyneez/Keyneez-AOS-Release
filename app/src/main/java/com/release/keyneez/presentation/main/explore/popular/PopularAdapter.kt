@@ -2,14 +2,14 @@ package com.release.keyneez.presentation.main.explore.popular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.release.keyneez.databinding.ItemExploreContentBinding
 import com.release.keyneez.domain.model.Activity
+import com.release.keyneez.util.DiffCallback
 
-class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() {
-    var data = listOf<Activity>()
-
+class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     class PopularViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
@@ -23,15 +23,24 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.PopularViewHolder>() 
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularViewHolder {
-        val binding =
-            ItemExploreContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return PopularViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return PopularViewHolder(
+            ItemExploreContentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is PopularViewHolder) holder.bind(getItem(position))
+    }
 
-    override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
-        holder.bind(data[position])
+    companion object {
+        private val diffUtil = DiffCallback<Activity>(
+            onItemsTheSame = { old, new -> old.id == new.id },
+            onContentsTheSame = { old, new -> old == new }
+        )
     }
 }
