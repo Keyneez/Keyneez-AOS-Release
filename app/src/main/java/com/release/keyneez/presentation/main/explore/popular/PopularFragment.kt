@@ -8,9 +8,9 @@ import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 
 class PopularFragment : BindingFragment<FragmentPopularBinding>(R.layout.fragment_popular) {
-
     private val viewModel: PopularViewModel by viewModels()
     private var popularAdapter: PopularAdapter? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPopularAdapter()

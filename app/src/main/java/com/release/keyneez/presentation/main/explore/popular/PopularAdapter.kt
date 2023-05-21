@@ -28,8 +28,8 @@ class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) 
             ItemExploreContentBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
@@ -40,7 +40,7 @@ class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) 
     companion object {
         private val diffUtil = DiffCallback<Activity>(
             onItemsTheSame = { old, new -> old.id == new.id },
-            onContentsTheSame = { old, new -> old == new }
+            onContentsTheSame = { old, new -> old == new },
         )
     }
 }

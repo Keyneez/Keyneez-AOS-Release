@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
-import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +14,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     // 뷰모델 관련 기초 코드 작성
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initHideKeyboard()
         initBackBtnClickListener()
     }
 
@@ -29,10 +27,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 //            }
 //        }
 //    }
-
-    private fun initHideKeyboard() {
-        this@SearchActivity.hideKeyboard()
-    }
 
     private fun initBackBtnClickListener() {
         binding.btnSearchBack.setOnSingleClickListener {
