@@ -8,14 +8,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?android:colorBackground">
 
         <ImageButton
-            android:id="@+id/btn_search_back"
+            android:id="@+id/btn_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="39dp"
+            android:layout_marginTop="36dp"
             android:background="@null"
             android:padding="12dp"
             android:src="@drawable/ic_search"
@@ -28,17 +29,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="37dp"
             android:background="@null"
             android:hint="@string/search_content"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
-            android:paddingVertical="12dp"
+            android:paddingVertical="11dp"
             android:textColor="@color/gray900"
             android:textColorHint="@color/gray400"
             app:layout_constraintEnd_toStartOf="@id/btn_search_cancel"
-            app:layout_constraintStart_toEndOf="@id/btn_search_back"
+            app:layout_constraintStart_toEndOf="@id/btn_search"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -46,22 +47,19 @@
             style="@style/BodyMedium16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
-            android:layout_marginEnd="23dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="11dp"
             android:padding="12dp"
             android:src="@drawable/ic_search"
             android:text="@string/search_cancel"
             android:textColor="@color/gray600"
-            app:layout_constraintBottom_toBottomOf="@id/btn_search_back"
+            app:layout_constraintBottom_toBottomOf="@id/btn_search"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/btn_search_back" />
+            app:layout_constraintTop_toTopOf="@id/btn_search" />
 
         <View
             android:id="@+id/view_search_baseline"
             android:layout_width="0dp"
             android:layout_height="0.4dp"
-            android:layout_marginTop="7dp"
             android:background="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,7 +75,7 @@
 
         <TextView
             android:id="@+id/tv_search_count"
-            style="@style/BodySemibold14"
+            style="@style/BodyBold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search_count"
@@ -87,23 +85,29 @@
             android:id="@+id/flow_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
+            android:layout_marginTop="34dp"
             app:constraint_referenced_ids="tv_search_after,tv_search_count"
-            app:flow_horizontalGap="4dp"
+            app:flow_horizontalGap="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_search_baseline" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_result_content"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="-1dp"
             android:paddingHorizontal="15dp"
+            android:clipToPadding="false"
+            android:paddingBottom="113dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/flow_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_search_content"
             tools:spanCount="2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

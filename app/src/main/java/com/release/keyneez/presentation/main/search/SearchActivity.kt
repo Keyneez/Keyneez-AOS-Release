@@ -29,7 +29,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 //    }
 
     private fun initBackBtnClickListener() {
-        binding.btnSearchBack.setOnSingleClickListener {
+        binding.btnSearchCancel.setOnSingleClickListener {
             finish()
         }
     }
