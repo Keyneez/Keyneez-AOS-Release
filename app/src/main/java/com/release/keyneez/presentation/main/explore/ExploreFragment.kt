@@ -23,7 +23,7 @@ class ExploreFragment : BindingFragment<FragmentExploreBinding>(R.layout.fragmen
         with(binding) {
             val exploreTabTitles = listOf(
                 getString(R.string.explore_popular),
-                getString(R.string.explore_recent),
+                getString(R.string.explore_recent)
             )
             vpExplore.adapter = ExploreAdapter(requireActivity())
             TabLayoutMediator(tabExplore, vpExplore) { tab, position ->

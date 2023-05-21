@@ -17,16 +17,9 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         initBackBtnClickListener()
     }
 
-//    private fun searchBtnKeyListener() {
-//        binding.btnSearchResult.setOnKeyListener { v, keyCode, event ->
-//            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//                // 뷰모델 통신하는 코드 작성하기
-//                true
-//            } else {
-//                false
-//            }
-//        }
-//    }
+    private fun searchBtnKeyListener() {
+//        binding.btnSearch.setOnKeyListener {}
+    }
 
     private fun initBackBtnClickListener() {
         binding.btnSearchCancel.setOnSingleClickListener {
