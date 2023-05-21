@@ -2,35 +2,51 @@ package com.release.keyneez.presentation.main.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
-import com.release.keyneez.util.extension.setOnSingleClickListener
+import com.release.keyneez.domain.model.Activity
+import com.release.keyneez.util.DiffCallback
 
-class SearchAdapter : RecyclerView.Adapter<SearchAdapter.getViewHolder>() {
+class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
 
     var data = listOf<ResponseGetSearchResultDto>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): getViewHolder {
-        val binding =
-            ItemSearchContentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return getViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return SearchViewHolder(
+            ItemSearchContentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is SearchViewHolder) holder.bind(getItem(position))
+    }
+
+    class SearchViewHolder(private val binding: ItemSearchContentBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Activity) {
+            with(binding) {
+                ivSearchBackground.load(item.background)
+                tvSearchCategory.text = item.category
+                tvSearchContentTitle.text = item.title
+                tvSearchDate.text = item.date
+                // TODO : root.setOnSingleClickListener 구현
+            }
+        }
     }
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(holder: getViewHolder, position: Int) {
-        holder.bind(data[position])
-    }
-
-    class getViewHolder(private val binding: ItemSearchContentBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: ResponseGetSearchResultDto) {
-            binding.root.setOnSingleClickListener {
-//                val intent = Intent(binding.root.context, DetailActivity::class.java)  홈 상세페이지로 이동
-//                intent.putExtra("contentId", item.key)
-//                ContextCompat.startActivity(binding.root.context, intent, null)
-            }
-        }
+    companion object {
+        private val diffUtil = DiffCallback<Activity>(
+            onItemsTheSame = { old, new -> old.id == new.id },
+            onContentsTheSame = { old, new -> old == new }
+        )
     }
 }
