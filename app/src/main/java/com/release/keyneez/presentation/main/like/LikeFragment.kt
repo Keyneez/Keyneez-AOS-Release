@@ -7,6 +7,7 @@ import com.release.keyneez.util.binding.BindingFragment
 class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like) {
 
     companion object {
+        @JvmStatic
         fun newInstance() = LikeFragment()
     }
 }

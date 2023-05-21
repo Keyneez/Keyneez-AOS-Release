@@ -7,6 +7,7 @@ import com.release.keyneez.util.binding.BindingFragment
 class HomeFragment : BindingFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     companion object {
+        @JvmStatic
         fun newInstance() = HomeFragment()
     }
 }
