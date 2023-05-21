@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_home_popular"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_explore_popular_all"
+            style="@style/BodyRegular16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:background="@drawable/shape_gray900_fill_9_rect"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="@string/explore_entire"
+            android:textColor="@color/gray050"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_explore_popular_culture"
+            style="@style/BodyRegular16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="@string/explore_hobby"
+            android:textColor="@color/gray400"
+            app:layout_constraintStart_toEndOf="@id/tv_explore_popular_all"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_explore_popular_outside"
+            style="@style/BodyRegular16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="@string/explore_activity"
+            android:textColor="@color/gray400"
+            app:layout_constraintStart_toEndOf="@id/tv_explore_popular_culture"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_explore_popular_career"
+            style="@style/BodyRegular16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="6dp"
+            android:text="@string/explore_career"
+            android:textColor="@color/gray400"
+            app:layout_constraintStart_toEndOf="@id/tv_explore_popular_outside"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_explore_popular"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="11dp"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="15dp"
+            android:paddingBottom="113dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_explore_popular_all"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/item_explore_content"
+            app:spanCount="2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

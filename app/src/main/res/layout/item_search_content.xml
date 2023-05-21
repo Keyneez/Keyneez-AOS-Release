@@ -39,7 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:src="@drawable/sel_search_icon"
             app:layout_constraintStart_toStartOf="@id/iv_search_background"
             app:layout_constraintTop_toBottomOf="@id/iv_search_background" />
 
@@ -68,7 +67,6 @@
             style="@style/CaptionMedium10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/search_fee"
             android:textColor="@color/mint600"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_search_icon"
@@ -80,7 +78,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:padding="12dp"
-            android:src="@drawable/sel_search_heart"
+            android:src="@drawable/sel_search_drawable_bnv_like_icon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/iv_search_background" />
     </androidx.constraintlayout.widget.ConstraintLayout>

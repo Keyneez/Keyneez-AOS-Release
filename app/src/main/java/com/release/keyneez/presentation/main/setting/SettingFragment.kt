@@ -7,6 +7,7 @@ import com.release.keyneez.util.binding.BindingFragment
 class SettingFragment : BindingFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
     companion object {
+        @JvmStatic
         fun newInstance() = SettingFragment()
     }
 }
