@@ -76,13 +76,13 @@
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="15dp"
             android:paddingBottom="113dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_recent_all"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_explore_content"
-            app:spanCount="2" />
+            app:spanCount="2"
+            tools:listitem="@layout/item_explore_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

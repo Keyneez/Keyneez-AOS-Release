@@ -23,7 +23,7 @@ class RecentViewModel : ViewModel() {
                 title = "행주산성\n맛집 투어",
                 category = "진로",
                 date = "%s-%s",
-                liked = true,
+                liked = true
             ),
             Activity(
                 id = 1,
@@ -31,7 +31,7 @@ class RecentViewModel : ViewModel() {
                 title = "행주산성\n맛집 투어",
                 category = "진로",
                 date = "%s-%s",
-                liked = true,
+                liked = true
             ),
             Activity(
                 id = 1,
@@ -39,7 +39,7 @@ class RecentViewModel : ViewModel() {
                 title = "행주산성\n맛집 투어",
                 category = "진로",
                 date = "%s-%s",
-                liked = true,
+                liked = true
             ),
             Activity(
                 id = 1,
@@ -47,8 +47,8 @@ class RecentViewModel : ViewModel() {
                 title = "행주산성\n맛집 투어",
                 category = "진로",
                 date = "%s-%s",
-                liked = true,
-            ),
+                liked = true
+            )
         )
         _activityList.value = mainList
     }

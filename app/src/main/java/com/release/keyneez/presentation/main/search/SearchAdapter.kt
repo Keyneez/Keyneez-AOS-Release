@@ -10,7 +10,7 @@ import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
 class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
-    var data = listOf<Activity>()
+//    var data = listOf<Activity>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SearchViewHolder(
             ItemSearchContentBinding.inflate(
@@ -25,7 +25,7 @@ class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
         if (holder is SearchViewHolder) holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = data.size
+//    override fun getItemCount(): Int = data.size
     class SearchViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
