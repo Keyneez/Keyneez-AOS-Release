@@ -11,6 +11,14 @@ import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
 import com.release.keyneez.util.extension.setOnSingleClickListener
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.internal.NopCollector.emit
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
@@ -45,6 +53,37 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
                 return false
             }
         })
+    }
+
+    private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
+        emit(1)
+        emit(2)
+        delay(500L)
+        emit(3)
+        emit(4)
+        delay(200L)
+        emit(5)
+        delay(700L)
+        emit(6)
+    }.debounce(300L)
+
+    fun main() = runBlocking<Unit> {
+        debounce().collect { }
+    }
+
+    fun <T> debounce(
+        timeMillis: Long = 300L,
+        coroutineScope: CoroutineScope,
+        block: (T) -> Unit
+    ): (T) -> Unit {
+        var debounceJob: Job? = null
+        return {
+            debounceJob?.cancel()
+            debounceJob = coroutineScope.launch {
+                delay(timeMillis)
+                block(it)
+            }
+        }
     }
 
     private fun initSearchAdapter() {
