@@ -16,7 +16,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.internal.NopCollector.emit
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -29,19 +28,14 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBackBtnClickListener()
-        initSearchAdapter()
         initSearchBtnKeyListener()
-        setupSearchActivityList()
     }
 
     private fun initSearchBtnKeyListener() {
-        binding.btnSearch.setOnKeyListener { v, keyCode, event ->
-            if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                viewModel.activityList
-                true
-            } else {
-                false
-            }
+        binding.btnSearch.setOnSingleClickListener {
+            initSearchAdapter()
+            setupSearchActivityList()
+            viewModel.activityList
         }
 
         binding.etSearchContent.setOnEditorActionListener(object : TextView.OnEditorActionListener {
