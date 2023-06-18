@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"
-            android:contentDescription="@string/search_recycler_contentdescription"
+            android:contentDescription="@string/recycler_contentdescription"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
