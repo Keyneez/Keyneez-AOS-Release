@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
-            android:background="@drawable/sel_explore_drawable_bnv_all_icon"
+            android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
@@ -30,7 +30,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/sel_explore_drawable_bnv_hobby_icon"
+            android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_hobby"
@@ -44,7 +44,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/sel_explore_drawable_bnv_outside_icon"
+            android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
@@ -58,14 +58,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/sel_explore_drawable_bnv_career_icon"
+            android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
             android:textColor="@drawable/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_outside"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_explore_recent"
