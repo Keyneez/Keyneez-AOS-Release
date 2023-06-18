@@ -43,6 +43,16 @@
     <string name="explore_heart_contentdescription">하트</string>
     <string name="explore_content_contentdescription">콘텐츠</string>
 
+    <!-- like -->
+    <string name="like_title">좋아요</string>
+    <string name="like_num">총 %s개</string>
+    <string name="like_edit">편집</string>
+    <string name="like_cancel">취소</string>
+    <string name="like_select">%s개 선택</string>
+    <string name="like_delete_title">삭제할 활동 선택</string>
+    <string name="like_delete_btn">삭제하기</string>
+    <string name="like_delete_complete">삭제 완료</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
