@@ -11,7 +11,7 @@
         android:background="?android:colorBackground">
 
         <ImageView
-            android:id="@+id/layout_explore_toolbar"
+            android:id="@+id/layout_like_toolbar"
             android:layout_width="match_parent"
             android:layout_height="122dp"
             android:contentDescription="@string/explore_toolbar_contentdescription"
@@ -20,32 +20,32 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_explore_title"
+            android:id="@+id/tv_like_title"
             style="@style/HeadingSemibold24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="81dp"
-            android:text="@string/explore_title"
+            android:text="@string/like_title"
             android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="@id/layout_explore_toolbar"
-            app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
+            app:layout_constraintStart_toStartOf="@id/layout_like_toolbar"
+            app:layout_constraintTop_toTopOf="@id/layout_like_toolbar" />
 
-        <ImageButton
-            android:id="@+id/btn_explore_search"
+        <TextView
+            android:id="@+id/btn_like_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
-            android:background="@null"
-            android:contentDescription="@string/explore_search_contentdescription"
+            style="@style/BodyMedium16"
+            android:textColor="@color/gray600"
+            android:text="@string/like_edit"
             android:padding="12dp"
-            android:src="@drawable/ic_search"
-            app:layout_constraintEnd_toEndOf="@id/layout_explore_toolbar"
-            app:layout_constraintTop_toTopOf="@id/layout_explore_toolbar" />
+            app:layout_constraintEnd_toEndOf="@id/layout_like_toolbar"
+            app:layout_constraintTop_toTopOf="@id/layout_like_toolbar" />
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_explore"
+            android:id="@+id/tab_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -53,7 +53,7 @@
             android:paddingTop="1dp"
             android:paddingBottom="14dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_explore_toolbar"
+            app:layout_constraintTop_toBottomOf="@id/layout_like_toolbar"
             app:tabGravity="fill"
             app:tabIndicatorColor="@color/gray900"
             app:tabIndicatorFullWidth="true"
@@ -64,18 +64,8 @@
             app:tabTextAppearance="@style/SubtitleSemibold18"
             app:tabTextColor="@color/gray400" />
 
-        <View
-            android:id="@+id/view_explore_baseline"
-            android:layout_width="0dp"
-            android:layout_height="0.4dp"
-            android:layout_marginTop="170dp"
-            android:background="@color/gray900"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/vp_explore"
+            android:id="@+id/vp_like"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -84,7 +74,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_explore_baseline" />
+            app:layout_constraintTop_toBottomOf="@id/tv_like_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
