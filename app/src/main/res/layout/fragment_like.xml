@@ -145,20 +145,31 @@
             app:spanCount="2"
             tools:listitem="@layout/item_like_content" />
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="78dp"
+            android:background="@color/gray050"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
         <TextView
             android:id="@+id/btn_edit"
             style="@style/BodyMedium16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/shape_gray900_fill_13_rect"
+            android:background="@drawable/sel_like_edit_btn"
+            android:enabled="@{vm.selectedEdits()}"
             android:gravity="center"
             android:paddingVertical="12dp"
-            android:text="@string/id_benefit"
-            android:textColor="@color/gray800"
-            app:layout_constraintEnd_toStartOf="@id/btn_id_main_photo"
-            app:layout_constraintStart_toStartOf="@id/iv_id_main_background"
-            app:layout_constraintTop_toBottomOf="@id/iv_id_main_background" />
+            android:text="@string/like_delete_btn"
+            android:textColor="@color/gray050"
+            android:layout_marginBottom="14dp"
+            android:layout_marginHorizontal="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
