@@ -5,19 +5,18 @@
 
     <data>
 
-        <import type="android.view.View" />
-
         <variable
-            name="visible"
-            type="java.lang.Boolean" />
+            name="vm"
+            type="com.release.keyneez.presentation.main.like.LikeViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_like"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?android:colorBackground"
-        android:visibility="@{visible ? View.GONE : View.VISIBLE}">
+        android:background="?android:colorBackground">
 
         <ImageView
             android:id="@+id/layout_like_toolbar"
@@ -43,12 +42,14 @@
         <TextView
             android:id="@+id/btn_like_edit"
             style="@style/BodyMedium16"
+            isSelected="@{vm.isEdit()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
+            android:onClick="@{()->vm.updateEditView()}"
             android:padding="12dp"
-            android:text="@string/like_edit"
+            android:text="@{vm.isEdit() ? @string/like_edit : @string/like_cancel}"
             android:textColor="@color/gray600"
             app:layout_constraintEnd_toEndOf="@id/layout_like_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_like_toolbar" />
@@ -121,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="18dp"
-            android:text="@string/like_num"
+            android:text="@{vm.isEdit() ? @string/like_num : @string/like_select}"
             android:textColor="@color/gray900"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_like_all" />
@@ -144,139 +145,20 @@
             app:spanCount="2"
             tools:listitem="@layout/item_like_content" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_delete"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:colorBackground"
-        android:visibility="gone">
-
-        <ImageView
-            android:id="@+id/layout_delete_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="122dp"
-            android:contentDescription="@string/toolbar_contentdescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
-            android:id="@+id/tv_delete_title"
-            style="@style/HeadingSemibold24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="81dp"
-            android:text="@string/like_title"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="@id/layout_delete_toolbar"
-            app:layout_constraintTop_toTopOf="@id/layout_delete_toolbar" />
-
-        <TextView
-            android:id="@+id/btn_delete_edit"
+            android:id="@+id/btn_edit"
             style="@style/BodyMedium16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="37dp"
-            android:layout_marginEnd="11dp"
-            android:padding="12dp"
-            android:text="@string/like_edit"
-            android:textColor="@color/gray600"
-            app:layout_constraintEnd_toEndOf="@id/layout_delete_toolbar"
-            app:layout_constraintTop_toTopOf="@id/layout_delete_toolbar" />
-
-
-        <TextView
-            android:id="@+id/tv_delete_all"
-            style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/sel_explore_drawable_bnv_category"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_entire"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_delete_toolbar" />
-
-        <TextView
-            android:id="@+id/tv_delete_hobby"
-            style="@style/BodyRegular16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/sel_explore_drawable_bnv_category"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_hobby"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
-            app:layout_constraintStart_toEndOf="@id/tv_delete_all"
-            app:layout_constraintTop_toBottomOf="@id/layout_delete_toolbar" />
-
-        <TextView
-            android:id="@+id/tv_delete_outside"
-            style="@style/BodyRegular16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/sel_explore_drawable_bnv_category"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_activity"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
-            app:layout_constraintStart_toEndOf="@id/tv_delete_hobby"
-            app:layout_constraintTop_toBottomOf="@id/layout_delete_toolbar" />
-
-        <TextView
-            android:id="@+id/tv_delete_career"
-            style="@style/BodyRegular16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="9dp"
-            android:layout_marginTop="11dp"
-            android:background="@drawable/sel_explore_drawable_bnv_category"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="6dp"
-            android:text="@string/explore_career"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
-            app:layout_constraintStart_toEndOf="@id/tv_delete_outside"
-            app:layout_constraintTop_toBottomOf="@id/layout_delete_toolbar" />
-
-        <TextView
-            android:id="@+id/tv_delete_num"
-            style="@style/BodyBold14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="18dp"
-            android:text="@string/like_num"
-            android:textColor="@color/gray900"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_delete_all" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_delete"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="11dp"
-            android:clipToPadding="false"
-            android:nestedScrollingEnabled="false"
-            android:paddingHorizontal="15dp"
-            android:paddingBottom="99dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_delete_num"
-            app:spanCount="2"
-            tools:listitem="@layout/item_like_content" />
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_gray900_fill_13_rect"
+            android:gravity="center"
+            android:paddingVertical="12dp"
+            android:text="@string/id_benefit"
+            android:textColor="@color/gray800"
+            app:layout_constraintEnd_toStartOf="@id/btn_id_main_photo"
+            app:layout_constraintStart_toStartOf="@id/iv_id_main_background"
+            app:layout_constraintTop_toBottomOf="@id/iv_id_main_background" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

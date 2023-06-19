@@ -4,6 +4,7 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
+import androidx.databinding.BindingAdapter
 
 object BindingAdapter {
     @JvmStatic
@@ -22,5 +23,11 @@ object BindingAdapter {
     @androidx.databinding.BindingAdapter("setGone")
     fun View.setGone(selected: Boolean) {
         isGone = selected
+    }
+
+    @JvmStatic
+    @BindingAdapter("isSelected")
+    fun View.isSelected(selected: Boolean) {
+        this.isSelected = selected
     }
 }
