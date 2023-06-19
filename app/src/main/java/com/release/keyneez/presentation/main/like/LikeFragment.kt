@@ -21,6 +21,10 @@ class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like
         setupLikeActivityList()
         initEditBtnKeyListener()
     }
+//  삭제하기 버튼 누르면 토스트 띄우게끔
+//    Toast toast = Toast.makeText(context, getString(R.string.like_toast), Toast.LENGTH_SHORT)
+//    toast.setGravity(Gravity.Top | Gravity.Bottom, 200 , 200)
+//    toast.show();
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter()
