@@ -12,17 +12,37 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like) {
     private val viewModel: LikeViewModel by viewModels()
     private var likeAdapter: LikeAdapter? = null
+    var btnState = false
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLikeAdapter()
         initCategoryBtnClickListener()
         setupLikeActivityList()
+        initEditBtnKeyListener()
     }
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter()
         binding.rvLike.adapter = likeAdapter
     }
+
+    private fun initEditBtnKeyListener() {
+        binding.btnLikeEdit.setOnSingleClickListener {
+            if (btnState) {
+                btnState = false
+                binding.btnLikeEdit.setText("편집")
+                binding.tvLikeNum.setText("총 %s개")
+                binding.tvLikeTitle.setText("좋아요")
+            } else {
+                btnState = true
+                binding.btnLikeEdit.setText("취소")
+                binding.tvLikeNum.setText("%s개 선택")
+                binding.tvLikeTitle.setText("삭제할 활동 선택")
+            }
+        }
+    }
+
     private fun initCategoryBtnClickListener() {
         // ocr result 코드 참고하기
         binding.tvLikeAll.setOnSingleClickListener {}
