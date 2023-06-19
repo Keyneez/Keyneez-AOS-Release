@@ -23,6 +23,7 @@ class LikeViewModel : ViewModel() {
     init {
         getLikeActivityList()
         _isEdit.value = false
+        _selectedEdits.value = LinkedHashSet()
     }
 
     /** 편집화면으로 전환 **/
