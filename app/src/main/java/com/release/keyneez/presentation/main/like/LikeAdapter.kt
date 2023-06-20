@@ -10,6 +10,8 @@ import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
 class LikeAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+
+    lateinit var likeList: List<Activity>
     class LikeViewHolder(private val binding: ItemLikeContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
