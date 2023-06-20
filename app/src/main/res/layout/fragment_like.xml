@@ -30,11 +30,12 @@
         <TextView
             android:id="@+id/tv_like_title"
             style="@style/HeadingSemibold24"
+            isSelected="@{vm.isEdit()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="81dp"
-            android:text="@{vm.isEdit() ? @string/like_title : @string/like_delete_title}"
+            android:text="@{vm.isEdit() ? @string/like_delete_title : @string/like_title}"
             android:textColor="@color/gray900"
             app:layout_constraintStart_toStartOf="@id/layout_like_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_like_toolbar" />
@@ -42,14 +43,13 @@
         <TextView
             android:id="@+id/btn_like_edit"
             style="@style/BodyMedium16"
-            isSelected="@{vm.isEdit()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
             android:onClick="@{()->vm.updateEditView()}"
             android:padding="12dp"
-            android:text="@{vm.isEdit() ? @string/like_edit : @string/like_cancel}"
+            android:text="@{vm.isEdit() ? @string/like_cancel : @string/like_edit}"
             android:textColor="@color/gray600"
             app:layout_constraintEnd_toEndOf="@id/layout_like_toolbar"
             app:layout_constraintTop_toTopOf="@id/layout_like_toolbar" />
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="18dp"
-            android:text="@{vm.isEdit() ? @string/like_num : @string/like_select}"
+            android:text="@{vm.isEdit() ? @string/like_select : @string/like_num}"
             android:textColor="@color/gray900"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_like_all" />
@@ -160,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/sel_like_edit_btn"
-            android:enabled="@{vm.selectedEdits.size() >= 0}"
+            android:enabled="@{vm.selectedEdits.size() >= 1}"
             android:gravity="center"
             android:paddingVertical="16dp"
             android:text="@string/like_delete_btn"
