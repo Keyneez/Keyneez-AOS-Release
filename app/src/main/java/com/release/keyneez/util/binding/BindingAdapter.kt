@@ -1,29 +1,31 @@
 package com.release.keyneez.util.binding
 
 import android.view.View
+import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.presentation.main.like.LikeAdapter
 
 object BindingAdapter {
     @JvmStatic
-    @androidx.databinding.BindingAdapter("setVisible")
+    @BindingAdapter("setVisible")
     fun View.setVisible(selected: Boolean) {
         isVisible = selected
     }
 
     @JvmStatic
-    @androidx.databinding.BindingAdapter("setInvisible")
+    @BindingAdapter("setInvisible")
     fun View.setInvisible(selected: Boolean) {
         isInvisible = selected
     }
 
     @JvmStatic
-    @androidx.databinding.BindingAdapter("setGone")
+    @BindingAdapter("setGone")
     fun View.setGone(selected: Boolean) {
         isGone = selected
     }
@@ -40,5 +42,11 @@ object BindingAdapter {
         items?.let {
             (recyclerView.adapter as LikeAdapter).likeList = items
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("selectedEditSet", "editHashTag")
+    fun TextView.setEditIndex(set: LiveData<LinkedHashSet<String>>, edit: String) {
+        this.text = set.value?.indexOf(edit)?.plus(1).toString()
     }
 }

@@ -1,6 +1,7 @@
 package com.release.keyneez.presentation.main
 
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -15,7 +16,6 @@ import com.release.keyneez.util.binding.BindingActivity
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initBnvItemSelectedListener()
     }
 
@@ -37,5 +37,10 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         supportFragmentManager.commit {
             replace<T>(R.id.fcv_main, T::class.java.canonicalName)
         }
+    }
+
+    fun updateHideBnv(state: Boolean) {
+        if (state) binding.bnvMain.visibility = View.GONE
+        else binding.bnvMain.visibility = View.VISIBLE
     }
 }
