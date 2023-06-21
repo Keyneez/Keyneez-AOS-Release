@@ -20,6 +20,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginBottom="14dp">
 
+
         <ImageView
             android:id="@+id/iv_like_background"
             android:layout_width="0dp"
@@ -55,7 +56,6 @@
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:padding="12dp"
-            android:visibility="@{vm. ? @drawable/ic_like_edit : @drawable/sel_search_drawable_bnv_like_icon}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -98,6 +98,30 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_like_checked_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#66111111"
+            android:contentDescription="@string/recycler_contentdescription"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/btn_like_checked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="11dp"
+            android:background="@null"
+            android:src="@drawable/ic_like_checked"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
