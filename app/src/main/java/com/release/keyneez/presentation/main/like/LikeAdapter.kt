@@ -32,7 +32,7 @@ class LikeAdapter(
                 tvLikeDate.text = item.date
                 // TODO : root.setOnSingleClickListener 구현
             }
-            binding.item = item
+            binding.data = item
             with(binding) {
                 // 이게 맞을까..?
                 ivLikeBackground.isSelected = setItemsCheckedBoxSelected(absoluteAdapterPosition)
@@ -53,7 +53,7 @@ class LikeAdapter(
         return LikeViewHolder(
             binding,
             setItemsCheckedBoxSelected,
-            checkBoxOnClick,
+            ItemOnClick,
             setDeletedItemsCount
         )
     }
