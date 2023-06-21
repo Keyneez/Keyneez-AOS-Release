@@ -1,9 +1,9 @@
 package com.release.keyneez.presentation.main.like
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.presentation.main.MainActivity
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
@@ -39,6 +39,14 @@ class LikeFragment :
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
+            viewModel.activityList.observe(
+                viewLifecycleOwner,
+                Observer {
+                    it?.let {
+                        likeAdapter?.submitList(it)
+                    }
+                }
+            )
             BindingToast.initLikeDeleteToast(
                 requireContext(),
                 getString(com.release.keyneez.R.string.like_delete_complete)

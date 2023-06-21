@@ -36,6 +36,10 @@ class LikeAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
         )
     }
 
+    fun replaceItems(items: List<Activity>) {
+        submitList(items)
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is LikeViewHolder) holder.bind(getItem(position))
     }
@@ -45,5 +49,11 @@ class LikeAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
             onItemsTheSame = { old, new -> old.id == new.id },
             onContentsTheSame = { old, new -> old == new }
         )
+    }
+
+    fun removeItem(position: Int) {
+        val newList = likeList.toMutableList() // 기존에 adpater가 가지고 있는 데이터를 가져 와서 변경 가능한 데이터로 바꿈
+        newList.removeAt(position)
+        submitList(newList)
     }
 }

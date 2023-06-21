@@ -55,7 +55,7 @@
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:padding="12dp"
-            android:visibility="@{vm.selectedEdits ? @drawable/ic_like_edit : @drawable/sel_search_drawable_bnv_like_icon}"
+            android:visibility="@{vm. ? @drawable/ic_like_edit : @drawable/sel_search_drawable_bnv_like_icon}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
