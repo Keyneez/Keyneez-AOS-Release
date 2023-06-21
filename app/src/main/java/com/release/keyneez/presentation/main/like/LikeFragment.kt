@@ -1,20 +1,21 @@
 package com.release.keyneez.presentation.main.like
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.presentation.main.MainActivity
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
 import com.release.keyneez.util.binding.BindingFragment
+import com.release.keyneez.util.binding.BindingToast
 import com.release.keyneez.util.extension.setOnSingleClickListener
 
-class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like) {
+class LikeFragment :
+    BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private val viewModel: LikeViewModel by viewModels()
     private var likeAdapter: LikeAdapter? = null
     private val mainActivity = activity as MainActivity?
-    var btnState = false
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,10 +26,6 @@ class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like
         initEditBtnClickListener()
     }
 
-    //  삭제하기 버튼 누르면 토스트 띄우게끔
-//    Toast toast = Toast.makeText(context, getString(R.string.like_toast), Toast.LENGTH_SHORT)
-//    toast.setGravity(Gravity.Top | Gravity.Bottom, 200 , 200)
-//    toast.show();
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter()
         binding.rvLike.adapter = likeAdapter
@@ -41,7 +38,11 @@ class LikeFragment : BindingFragment<FragmentLikeBinding>(R.layout.fragment_like
     }
 
     private fun initEditBtnClickListener() {
-        binding.btnLikeEdit.setOnSingleClickListener {
+        binding.btnEdit.setOnSingleClickListener {
+            BindingToast.initLikeDeleteToast(
+                requireContext(),
+                getString(com.release.keyneez.R.string.like_delete_complete)
+            )?.show()
             mainActivity?.updateHideBnv(false)
         }
     }
