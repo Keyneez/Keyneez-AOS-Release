@@ -161,7 +161,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/sel_like_edit_btn"
-            android:enabled="@{vm.selectedEdits.size() >= 1}"
+            android:enabled="@{vm.setDeletedItemsCount() >= 1}"
             android:visibility="@{vm.isEdit() ? View.VISIBLE : View.GONE}"
             android:gravity="center"
             android:paddingVertical="16dp"

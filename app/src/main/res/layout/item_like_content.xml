@@ -27,6 +27,7 @@
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"
             android:contentDescription="@string/recycler_contentdescription"
+            android:clickable="true"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,13 +50,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/btn_like_liked"
+            android:id="@+id/btn_explore_liked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:padding="12dp"
+            android:visibility=""
+            android:src="@drawable/sel_search_drawable_bnv_like_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
@@ -104,6 +107,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray900_40_fill_15_rect"
+            android:visibility="@{vm.isDeleted ? View.VISIBLE : View.GONE}"
             android:contentDescription="@string/recycler_contentdescription"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -118,6 +122,7 @@
             android:layout_marginTop="11dp"
             android:layout_marginEnd="11dp"
             android:background="@null"
+            android:visibility="@{vm.isDeleted ? View.VISIBLE : View.GONE}"
             android:src="@drawable/ic_like_checked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

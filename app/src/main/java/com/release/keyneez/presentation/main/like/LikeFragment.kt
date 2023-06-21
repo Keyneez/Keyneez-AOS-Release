@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.presentation.main.MainActivity
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
@@ -13,7 +14,7 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
-    private val viewModel: LikeViewModel by viewModels()
+    private val likeViewModel: LikeViewModel by viewModels()
     private var likeAdapter: LikeAdapter? = null
     private val mainActivity = activity as MainActivity?
 
@@ -27,8 +28,24 @@ class LikeFragment :
     }
 
     private fun initLikeAdapter() {
-        likeAdapter = LikeAdapter()
+        likeAdapter = LikeAdapter(
+            setItemsCheckedBoxSelected = likeViewModel::setItemsCheckBoxSelected,
+            ItemOnClick = ::checkBoxOnClick,
+            setDeletedItemsCount = likeViewModel::setDeletedItemsCount
+        )
         binding.rvLike.adapter = likeAdapter
+        val animator = binding.rvLike.itemAnimator
+        if (animator is SimpleItemAnimator) {
+            animator.supportsChangeAnimations = false
+        }
+        likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
+            likeAdapter?.submitList(activityList)
+        }
+    }
+
+    private fun checkBoxOnClick(index: Int, selected: Boolean) {
+        likeViewModel.ItemOnClick(index, selected)
+        likeAdapter?.notifyItemChanged(index)
     }
 
     private fun initLikeEditBtnClickListener() {
@@ -39,7 +56,7 @@ class LikeFragment :
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
-            viewModel.activityList.observe(
+            likeViewModel.activityList.observe(
                 viewLifecycleOwner,
                 Observer {
                     it?.let {
@@ -64,7 +81,7 @@ class LikeFragment :
     }
 
     private fun setupLikeActivityList() {
-        viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
+        likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
             likeAdapter?.submitList(activityList)
         }
     }

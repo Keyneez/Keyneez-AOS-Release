@@ -5,43 +5,55 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.release.keyneez.R
 import com.release.keyneez.domain.model.Activity
-import com.release.keyneez.util.extension.notifyObserver
 
 class LikeViewModel : ViewModel() {
-    private val _activityList = MutableLiveData<List<Activity>>()
+    private val _activityList = MutableLiveData<List<Activity>>(mutableListOf())
     private val _isEdit = MutableLiveData<Boolean>()
-    private val _selectedEdits = MutableLiveData<LinkedHashSet<String>>()
+
+    // 이게 맞나..?
+    val editsList = mutableListOf<Activity>()
     val activityList: LiveData<List<Activity>>
         get() = _activityList
 
     val isEdit: LiveData<Boolean>
         get() = _isEdit
 
-    val selectedEdits: LiveData<LinkedHashSet<String>>
-        get() = _selectedEdits
+    private val deletedItemsCount = MutableLiveData<MutableList<Int>>()
+
+    private val _isDeleted = MutableLiveData<MutableList<Boolean>>()
+    val isDeleted: LiveData<MutableList<Boolean>> = _isDeleted
 
     init {
         getLikeActivityList()
         _isEdit.value = false
-        _selectedEdits.value = LinkedHashSet()
+        // 이 부분을 여기에 넣는 게 맞나..?
+        _isDeleted.value = MutableList(editsList.size) { true }
+        deletedItemsCount.value = MutableList(editsList.size) { 1 }
+    }
+
+    fun setDeletedItemsCount(index: Int): Int {
+        return deletedItemsCount.value!![index]
+    }
+
+    fun setItemsSelectedTrue() {
+        _isDeleted.value = MutableList(_activityList.value!!.size) { true }
+    }
+
+    fun setItemsSelectedFalse() {
+        _isDeleted.value = MutableList(_activityList.value!!.size) { false }
+    }
+
+    fun setItemsCheckBoxSelected(index: Int): Boolean {
+        return _isDeleted.value!![index]
+    }
+
+    fun ItemOnClick(index: Int, selected: Boolean) {
+        _isDeleted.value!![index] = selected
     }
 
     /** 편집화면으로 전환 **/
     fun updateEditView() {
         _isEdit.value = !requireNotNull(_isEdit.value)
-    }
-
-    fun selectEdits(edit: String) {
-        // 이미 선택된 경우 삭제할 요소 제거
-        if (_selectedEdits.value!!.contains(edit)) {
-            _selectedEdits.value!!.remove(edit)
-            _selectedEdits.notifyObserver()
-            return
-        }
-
-        // 삭제할 요소 추가
-        _selectedEdits.value!!.add(edit)
-        _selectedEdits.notifyObserver()
     }
 
     private fun getLikeActivityList() {

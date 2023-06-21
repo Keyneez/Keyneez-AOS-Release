@@ -9,11 +9,20 @@ import com.release.keyneez.databinding.ItemLikeContentBinding
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
-class LikeAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+class LikeAdapter(
+    private val setItemsCheckedBoxSelected: (Int) -> Boolean,
+    private val ItemOnClick: (Int, Boolean) -> Unit,
+    private val setDeletedItemsCount: (Int) -> Int
+) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
 
     lateinit var likeList: List<Activity>
 
-    class LikeViewHolder(private val binding: ItemLikeContentBinding) :
+    class LikeViewHolder(
+        private val binding: ItemLikeContentBinding,
+        private val setItemsCheckedBoxSelected: (Int) -> Boolean,
+        private val ItemOnClick: (Int, Boolean) -> Unit,
+        private val setDeletedItemsCount: (Int) -> Int
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
             with(binding) {
@@ -23,16 +32,29 @@ class LikeAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
                 tvLikeDate.text = item.date
                 // TODO : root.setOnSingleClickListener 구현
             }
+            binding.item = item
+            with(binding) {
+                // 이게 맞을까..?
+                ivLikeBackground.isSelected = setItemsCheckedBoxSelected(absoluteAdapterPosition)
+                ivLikeBackground.setOnClickListener {
+                    ItemOnClick(absoluteAdapterPosition, ivLikeBackground.isSelected)
+                }
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return LikeViewHolder(
+        val binding =
             ItemLikeContentBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
             )
+        return LikeViewHolder(
+            binding,
+            setItemsCheckedBoxSelected,
+            checkBoxOnClick,
+            setDeletedItemsCount
         )
     }
 
