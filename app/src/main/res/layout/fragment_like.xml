@@ -42,13 +42,13 @@
         <TextView
             android:id="@+id/btn_like_edit"
             style="@style/BodyMedium16"
+            isSelected="@{vm.isEdit()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
             android:onClick="@{()->vm.updateEditView()}"
             android:padding="12dp"
-            isSelected="@{vm.isEdit()}"
             android:text="@{vm.isEdit() ? @string/like_cancel : @string/like_edit}"
             android:textColor="@color/gray600"
             app:layout_constraintEnd_toEndOf="@id/layout_like_toolbar"
@@ -63,6 +63,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="11dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
+            android:checked="v"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
@@ -151,27 +152,27 @@
             android:background="@color/gray050"
             android:visibility="@{vm.isEdit() ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/btn_edit"
             style="@style/BodyMedium16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="21dp"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="14dp"
             android:background="@drawable/sel_like_edit_btn"
-            android:enabled="@{vm.setDeletedItemsCount() >= 1}"
-            android:visibility="@{vm.isEdit() ? View.VISIBLE : View.GONE}"
+            android:enabled="@{vm.isDeleted >= 1}"
             android:gravity="center"
             android:paddingVertical="16dp"
             android:text="@string/like_delete_btn"
             android:textColor="@color/gray050"
-            android:layout_marginBottom="14dp"
-            android:layout_marginHorizontal="21dp"
+            android:visibility="@{vm.isEdit() ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

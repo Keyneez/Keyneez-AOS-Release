@@ -29,9 +29,7 @@ class LikeFragment :
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
-            setItemsCheckedBoxSelected = likeViewModel::setItemsCheckBoxSelected,
-            ItemOnClick = ::checkBoxOnClick,
-            setDeletedItemsCount = likeViewModel::setDeletedItemsCount
+            setItemsSelected = likeViewModel::setItemsSelected
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator
@@ -43,9 +41,9 @@ class LikeFragment :
         }
     }
 
-    private fun checkBoxOnClick(index: Int, selected: Boolean) {
-        likeViewModel.ItemOnClick(index, selected)
-        likeAdapter?.notifyItemChanged(index)
+    private fun setItemsSelected(id: Int) {
+        likeViewModel.setItemsSelected(id)
+        likeAdapter?.notifyItemChanged(id)
     }
 
     private fun initLikeEditBtnClickListener() {

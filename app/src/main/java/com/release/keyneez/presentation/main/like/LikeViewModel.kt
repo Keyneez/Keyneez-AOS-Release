@@ -9,46 +9,40 @@ import com.release.keyneez.domain.model.Activity
 class LikeViewModel : ViewModel() {
     private val _activityList = MutableLiveData<List<Activity>>(mutableListOf())
     private val _isEdit = MutableLiveData<Boolean>()
+    private val _selectedIds = MutableLiveData<MutableList<Int>>()
 
-    // 이게 맞나..?
-    val editsList = mutableListOf<Activity>()
+    // 뷰모델에 아이디 리스트를 저장하는 라이브데이터(여기에 id들을 저장)가 있어야 한다.
+    // 삭제하기를 눌렀을 때 요청값으로 이 아이디 리스트를 보내 준다.
+    // 인자로 인덱스를 받아오기
     val activityList: LiveData<List<Activity>>
         get() = _activityList
 
     val isEdit: LiveData<Boolean>
         get() = _isEdit
 
-    private val deletedItemsCount = MutableLiveData<MutableList<Int>>()
-
-    private val _isDeleted = MutableLiveData<MutableList<Boolean>>()
-    val isDeleted: LiveData<MutableList<Boolean>> = _isDeleted
+    val selectedIds: LiveData<MutableList<Int>> = _selectedIds
 
     init {
         getLikeActivityList()
         _isEdit.value = false
-        // 이 부분을 여기에 넣는 게 맞나..?
-        _isDeleted.value = MutableList(editsList.size) { true }
-        deletedItemsCount.value = MutableList(editsList.size) { 1 }
+        // emptylist로 초기화하기!
+        _selectedIds.value = emptyList<Int>().toMutableList()
     }
 
-    fun setDeletedItemsCount(index: Int): Int {
-        return deletedItemsCount.value!![index]
-    }
+    // 아이디 리스트를 이용해 id가 있으면 제거하고 없으면 넣기
+    // 그 후 id 서버에 넘겨주기
+    fun setItemsSelected(id: Int): Int {
+        val selectedIdsList = _selectedIds.value ?: mutableListOf()
 
-    fun setItemsSelectedTrue() {
-        _isDeleted.value = MutableList(_activityList.value!!.size) { true }
-    }
+        if (selectedIdsList.contains(id)) {
+            selectedIdsList.remove(id)
+        } else {
+            selectedIdsList.add(id)
+        }
 
-    fun setItemsSelectedFalse() {
-        _isDeleted.value = MutableList(_activityList.value!!.size) { false }
-    }
-
-    fun setItemsCheckBoxSelected(index: Int): Boolean {
-        return _isDeleted.value!![index]
-    }
-
-    fun ItemOnClick(index: Int, selected: Boolean) {
-        _isDeleted.value!![index] = selected
+        _selectedIds.value = selectedIdsList
+        // 이게 맞나?
+        return id
     }
 
     /** 편집화면으로 전환 **/

@@ -9,5 +9,6 @@ data class Activity(
     val category: String,
     val title: String,
     val date: String,
-    val liked: Boolean
+    val liked: Boolean,
+    var isSelected: Boolean = false
 )

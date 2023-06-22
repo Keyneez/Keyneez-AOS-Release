@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="data"
             type="com.release.keyneez.domain.model.Activity" />
@@ -29,8 +30,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"
-            android:contentDescription="@string/recycler_contentdescription"
             android:clickable="true"
+            android:contentDescription="@string/recycler_contentdescription"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -109,9 +110,9 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray900_40_fill_15_rect"
-            android:visibility="@{vm.isDeleted ? View.VISIBLE : View.GONE}"
             android:contentDescription="@string/recycler_contentdescription"
             android:scaleType="centerCrop"
+            android:visibility="@{vm.ItemOnClick() ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,8 +125,8 @@
             android:layout_marginTop="11dp"
             android:layout_marginEnd="11dp"
             android:background="@null"
-            android:visibility="@{vm.isDeleted ? View.VISIBLE : View.GONE}"
             android:src="@drawable/ic_like_checked"
+            android:visibility="@{vm.ItemOnClick() ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
