@@ -10,15 +10,17 @@ import com.release.keyneez.util.DiffCallback
 import com.release.keyneez.util.extension.setOnSingleClickListener
 
 // 선택한 것 선택 취소한 것 인자로, 뷰홀더 인자에도!
-class LikeAdapter(private val setItemsSelected: (Int) -> Int) :
-    ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+class LikeAdapter(
+    private val setItemsSelected: (Int) -> Int,
+    private val getSelectedIdsCount: (Int) -> Int
+) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     lateinit var likeList: List<Activity>
 
     class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
-        private val setItemsSelected: (Int) -> Int
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+        private val setItemsSelected: (Int) -> Int,
+        private val getSelectedIdsCount: (Int) -> Int
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
             with(binding) {
                 data = item
@@ -33,15 +35,15 @@ class LikeAdapter(private val setItemsSelected: (Int) -> Int) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val binding =
-            ItemLikeContentBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = ItemLikeContentBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return LikeViewHolder(
             binding,
-            setItemsSelected
+            setItemsSelected,
+            getSelectedIdsCount
         )
     }
 
@@ -54,10 +56,11 @@ class LikeAdapter(private val setItemsSelected: (Int) -> Int) :
     }
 
     companion object {
-        private val diffUtil = DiffCallback<Activity>(
-            onItemsTheSame = { old, new -> old.id == new.id },
-            onContentsTheSame = { old, new -> old == new }
-        )
+        private val diffUtil =
+            DiffCallback<Activity>(
+                onItemsTheSame = { old, new -> old.id == new.id },
+                onContentsTheSame = { old, new -> old == new }
+            )
     }
 
     // 기존에 adpater가 가지고 있는 데이터를 가져 와서 변경 가능한 데이터로 바꿈

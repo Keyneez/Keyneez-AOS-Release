@@ -9,6 +9,7 @@ import com.release.keyneez.domain.model.Activity
 class LikeViewModel : ViewModel() {
     private val _activityList = MutableLiveData<List<Activity>>(mutableListOf())
     private val _isEdit = MutableLiveData<Boolean>()
+    private val _isSelected = MutableLiveData<Boolean>()
     private val _selectedIds = MutableLiveData<MutableList<Int>>()
 
     // 뷰모델에 아이디 리스트를 저장하는 라이브데이터(여기에 id들을 저장)가 있어야 한다.
@@ -19,12 +20,15 @@ class LikeViewModel : ViewModel() {
 
     val isEdit: LiveData<Boolean>
         get() = _isEdit
+    val isSelected: LiveData<Boolean>
+        get() = _isSelected
 
     val selectedIds: LiveData<MutableList<Int>> = _selectedIds
 
     init {
         getLikeActivityList()
         _isEdit.value = false
+        _isSelected.value = false
         // emptylist로 초기화하기!
         _selectedIds.value = emptyList<Int>().toMutableList()
     }
@@ -43,6 +47,10 @@ class LikeViewModel : ViewModel() {
         _selectedIds.value = selectedIdsList
         // 이게 맞나?
         return id
+    }
+    fun getSelectedIdsCount(id: Int): Int {
+        val selectedIdsList = _selectedIds.value ?: mutableListOf()
+        return selectedIdsList.size
     }
 
     /** 편집화면으로 전환 **/
