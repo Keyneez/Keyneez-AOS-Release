@@ -24,5 +24,6 @@ object BindingToast {
             view = binding.root
         }
     }
+
     private fun Int.toPx(): Int = (this * Resources.getSystem().displayMetrics.density).toInt()
 }

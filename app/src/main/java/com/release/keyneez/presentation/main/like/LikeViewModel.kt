@@ -48,6 +48,7 @@ class LikeViewModel : ViewModel() {
         // 이게 맞나?
         return id
     }
+
     fun getSelectedIdsCount(id: Int): Int {
         val selectedIdsList = _selectedIds.value ?: mutableListOf()
         return selectedIdsList.size
@@ -55,7 +56,7 @@ class LikeViewModel : ViewModel() {
 
     /** 편집화면으로 전환 **/
     fun updateEditView() {
-        _isEdit.value = !requireNotNull(_isEdit.value)
+        _isEdit.value = _isEdit.value?.not()
     }
 
     private fun getLikeActivityList() {
