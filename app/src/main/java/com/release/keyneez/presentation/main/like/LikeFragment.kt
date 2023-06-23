@@ -14,12 +14,13 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
-    private val likeViewModel: LikeViewModel by viewModels()
+    val likeViewModel by viewModels<LikeViewModel>()
     private var likeAdapter: LikeAdapter? = null
     private val mainActivity = activity as MainActivity?
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vm = likeViewModel
         initLikeAdapter()
         initCategoryBtnClickListener()
         setupLikeActivityList()

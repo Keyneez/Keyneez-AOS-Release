@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="236dp"
         android:layout_marginHorizontal="8dp"
+        android:onClick="@{() -> vm.setItemsSelected(data.id)}"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="14dp">
 
@@ -31,7 +32,6 @@
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"
             android:clickable="true"
-            android:onClick="@{() -> vm.setItemsSelected(data.id)}"
             android:contentDescription="@string/recycler_contentdescription"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
