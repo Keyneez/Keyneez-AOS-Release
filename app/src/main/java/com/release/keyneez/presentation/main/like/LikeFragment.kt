@@ -1,12 +1,14 @@
 package com.release.keyneez.presentation.main.like
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
-import com.release.keyneez.presentation.main.MainActivity
+import com.release.keyneez.presentation.main.MainViewModel
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
 import com.release.keyneez.util.binding.BindingFragment
 import com.release.keyneez.util.binding.BindingToast
@@ -16,7 +18,11 @@ class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     val likeViewModel by viewModels<LikeViewModel>()
     private var likeAdapter: LikeAdapter? = null
-    private val mainActivity = activity as MainActivity?
+    private lateinit var mainViewModel: MainViewModel
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +56,7 @@ class LikeFragment :
 
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
-            mainActivity?.updateHideBnv(true)
+            mainViewModel.hideBottomNavigation()
         }
     }
 
@@ -68,12 +74,11 @@ class LikeFragment :
                 requireContext(),
                 getString(com.release.keyneez.R.string.like_delete_complete)
             )?.show()
-            mainActivity?.updateHideBnv(false)
+            mainViewModel.showBottomNavigation()
         }
     }
 
     private fun initCategoryBtnClickListener() {
-        // ocr result 코드 참고하기
         binding.tvLikeAll.setOnSingleClickListener {}
         binding.tvLikeHobby.setOnSingleClickListener {}
         binding.tvLikeCareer.setOnSingleClickListener {}

@@ -20,8 +20,9 @@
         android:id="@+id/layout_like_rv"
         android:layout_width="match_parent"
         android:layout_height="236dp"
+        isSelected="@{vm.isSelected}"
         android:layout_marginHorizontal="8dp"
-        android:onClick="@{() -> vm.setItemsSelected(data.id)}"
+        android:onClick="@{() -> vm.setItemsSelected(1)}"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="14dp">
 

@@ -2,21 +2,29 @@ package com.release.keyneez.presentation.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.ViewModelProvider
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivityMainBinding
 import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.presentation.main.home.HomeFragment
 import com.release.keyneez.presentation.main.like.LikeFragment
+import com.release.keyneez.presentation.main.like.LikeViewModel
 import com.release.keyneez.presentation.main.setting.SettingFragment
 import com.release.keyneez.util.binding.BindingActivity
 
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+    val likeViewModel by viewModels<LikeViewModel>()
+    private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.vm = likeViewModel
         initBnvItemSelectedListener()
+        updateHideBnv()
     }
 
     private fun initBnvItemSelectedListener() {
@@ -39,8 +47,14 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
         }
     }
 
-    fun updateHideBnv(state: Boolean) {
-        if (state) binding.bnvMain.visibility = View.GONE
-        else binding.bnvMain.visibility = View.VISIBLE
+    fun updateHideBnv() {
+        // Observe the visibility state of the bottom navigation
+        mainViewModel.isBnvVisible.observe(this, { isVisible ->
+            if (isVisible) {
+                binding.bnvMain.visibility = View.VISIBLE
+            } else {
+                binding.bnvMain.visibility = View.GONE
+            }
+        })
     }
 }
