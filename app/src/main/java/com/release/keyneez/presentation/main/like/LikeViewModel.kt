@@ -43,9 +43,7 @@ class LikeViewModel : ViewModel() {
         } else {
             selectedIdsList.add(id)
         }
-
         _selectedIds.value = selectedIdsList
-        // 이게 맞나?
         return id
     }
 
@@ -57,6 +55,9 @@ class LikeViewModel : ViewModel() {
     /** 편집화면으로 전환 **/
     fun updateEditView() {
         _isEdit.value = _isEdit.value?.not()
+    }
+    fun updateSelected() {
+        _isSelected.value = _isSelected.value?.not()
     }
 
     private fun getLikeActivityList() {
@@ -70,7 +71,7 @@ class LikeViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
-                id = 1,
+                id = 2,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
@@ -78,7 +79,7 @@ class LikeViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
-                id = 1,
+                id = 3,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
@@ -86,7 +87,7 @@ class LikeViewModel : ViewModel() {
                 liked = true
             ),
             Activity(
-                id = 1,
+                id = 4,
                 background = R.drawable.img_explore_background,
                 title = "행주산성\n맛집 투어",
                 category = "진로",
