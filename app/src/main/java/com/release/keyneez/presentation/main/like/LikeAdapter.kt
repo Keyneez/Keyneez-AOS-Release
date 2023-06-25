@@ -12,16 +12,14 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 // 선택한 것 선택 취소한 것 인자로, 뷰홀더 인자에도!
 class LikeAdapter(
     private val setItemsSelected: (Int) -> List<Int>,
-    private val getSelectedIdsCount: (Int) -> Int,
-    private val deleteItems: (List<Int>) -> Unit
+    private val getSelectedIdsCount: (Int) -> Int
 ) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     lateinit var likeList: List<Activity>
 
     class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
         private val setItemsSelected: (Int) -> List<Int>,
-        private val getSelectedIdsCount: (Int) -> Int,
-        private val deleteItems: (List<Int>) -> Unit
+        private val getSelectedIdsCount: (Int) -> Int
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
             with(binding) {
@@ -45,8 +43,7 @@ class LikeAdapter(
         return LikeViewHolder(
             binding,
             setItemsSelected,
-            getSelectedIdsCount,
-            deleteItems
+            getSelectedIdsCount
         )
     }
 
