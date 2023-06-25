@@ -37,7 +37,8 @@ class LikeFragment :
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
             setItemsSelected = likeViewModel::setItemsSelected,
-            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
+            getSelectedIdsCount = likeViewModel::getSelectedIdsCount,
+            deleteItems = ::delectedItems
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator

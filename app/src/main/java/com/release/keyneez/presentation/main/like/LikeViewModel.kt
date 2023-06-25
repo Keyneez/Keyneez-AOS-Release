@@ -35,7 +35,7 @@ class LikeViewModel : ViewModel() {
 
     // 아이디 리스트를 이용해 id가 있으면 제거하고 없으면 넣기
     // 그 후 id 서버에 넘겨주기
-    fun setItemsSelected(id: Int): Int {
+    fun setItemsSelected(id: Int): List<Int> {
         val selectedIdsList = _selectedIds.value ?: mutableListOf()
 
         if (selectedIdsList.contains(id)) {
@@ -44,7 +44,8 @@ class LikeViewModel : ViewModel() {
             selectedIdsList.add(id)
         }
         _selectedIds.value = selectedIdsList
-        return id
+        return selectedIdsList.toList()
+        _selectedIds.value?.clear()
     }
 
     fun getSelectedIdsCount(id: Int): Int {

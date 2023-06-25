@@ -11,15 +11,17 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 // 선택한 것 선택 취소한 것 인자로, 뷰홀더 인자에도!
 class LikeAdapter(
-    private val setItemsSelected: (Int) -> Int,
-    private val getSelectedIdsCount: (Int) -> Int
+    private val setItemsSelected: (Int) -> List<Int>,
+    private val getSelectedIdsCount: (Int) -> Int,
+    private val deleteItems: (List<Int>) -> Unit
 ) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     lateinit var likeList: List<Activity>
 
     class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
-        private val setItemsSelected: (Int) -> Int,
-        private val getSelectedIdsCount: (Int) -> Int
+        private val setItemsSelected: (Int) -> List<Int>,
+        private val getSelectedIdsCount: (Int) -> Int,
+        private val deleteItems: (List<Int>) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
             with(binding) {
@@ -43,12 +45,33 @@ class LikeAdapter(
         return LikeViewHolder(
             binding,
             setItemsSelected,
-            getSelectedIdsCount
+            getSelectedIdsCount,
+            deleteItems
         )
     }
 
-    fun replaceItems(items: List<Activity>) {
-        submitList(items)
+//    fun replaceItems(items: List<Activity>) {
+//        submitList(items)
+//    }
+
+    fun deleteItems(selectedIds: List<Int>) {
+        val updatedDataList = likeList.toMutableList()
+        val removedItems = mutableListOf<Activity>()
+        // removedItems는 삭제할 아이템들을 모아두는 곳이다.
+        for (item in updatedDataList) {
+            if (item.id in selectedIds) {
+                removedItems.add(item)
+            }
+        }
+        updatedDataList.removeAll(removedItems)
+
+        likeList = updatedDataList.toList()
+
+        // Notify the adapter about the removed items
+        for (item in removedItems) {
+            val position = likeList.indexOf(item)
+            notifyItemRemoved(position)
+        }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -61,12 +84,5 @@ class LikeAdapter(
                 onItemsTheSame = { old, new -> old.id == new.id },
                 onContentsTheSame = { old, new -> old == new }
             )
-    }
-
-    // 기존에 adpater가 가지고 있는 데이터를 가져 와서 변경 가능한 데이터로 바꿈
-    fun removeItem(position: Int) {
-        val newList = likeList.toMutableList()
-        newList.removeAt(position)
-        submitList(newList)
     }
 }
