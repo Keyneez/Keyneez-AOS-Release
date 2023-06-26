@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="236dp"
         isSelected="@{vm.isSelected}"
+        android:clickable="true"
         android:layout_marginHorizontal="8dp"
         android:onClick="@{() -> vm.setItemsSelected(data.id)}"
         android:layout_marginTop="3dp"

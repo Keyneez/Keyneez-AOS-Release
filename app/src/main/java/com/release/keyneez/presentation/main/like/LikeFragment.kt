@@ -3,9 +3,10 @@ package com.release.keyneez.presentation.main.like
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.LiveData
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.domain.model.Activity
@@ -17,43 +18,55 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
-    private var likeAdapter: LikeAdapter? = null
+    private lateinit var dataList: ArrayList<Activity>
+    private lateinit var likeAdapter: LikeAdapter
     private lateinit var mainViewModel: MainViewModel
-    lateinit var likeList: List<Activity>
-    val likeViewModel: LikeViewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+    private val likeViewModel by viewModels<LikeViewModel>()
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnEdit.isEnabled = false
+        dataList = ArrayList()
+        dataList.clear()
         binding.vm = likeViewModel
+        binding.rvLike.apply {
+            setHasFixedSize(true)
+            val gridLayoutManager = GridLayoutManager(context,3)
+            layoutManager = LinearLayoutManager(context)
+            likeAdapter = LikeAdapter()
+            adapter = likeAdapter
+        }
+        likeAdapter.setOnItemClickListener { response ->
+            binding.btnEdit.isEnabled = likeAdapter.getSelectedExpense() > 0
+        }
+        likeAdapter.submitList(dataList)
         initLikeAdapter()
         initCategoryBtnClickListener()
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
-        updateDeleteItems()
     }
 
-    fun updateDeleteItems() {
-        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
-        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
-            selectedIds?.clear()
-
-            for (item in selectedIds.orEmpty()) {
-                val position = likeList.indexOf(item)
-                binding.rvLike.adapter?.notifyItemRemoved(position)
-                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
-            }
-        }
-    }
+//    fun updateDeleteItems() {
+//        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
+//        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
+//            selectedIds?.clear()
+//
+//            for (item in selectedIds.orEmpty()) {
+//                val position = likeList.indexOf(item)
+//                binding.rvLike.adapter?.notifyItemRemoved(position)
+//                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
+//            }
+//        }
+//    }
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
-            setItemsSelected = likeViewModel::setItemsSelected,
-            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
+//            setItemsSelected = likeViewModel::setItemsSelected,
+//            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator
@@ -104,7 +117,6 @@ class LikeFragment :
 
     override fun onDestroyView() {
         super.onDestroyView()
-        likeAdapter = null
     }
 
     companion object {
