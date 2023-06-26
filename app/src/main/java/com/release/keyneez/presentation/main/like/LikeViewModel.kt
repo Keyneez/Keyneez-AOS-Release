@@ -45,7 +45,6 @@ class LikeViewModel : ViewModel() {
         }
         _selectedIds.value = selectedIdsList
         return selectedIdsList.toList()
-        _selectedIds.value?.clear()
     }
 
     fun getSelectedIdsCount(id: Int): Int {
@@ -57,6 +56,7 @@ class LikeViewModel : ViewModel() {
     fun updateEditView() {
         _isEdit.value = _isEdit.value?.not()
     }
+
     fun updateSelected() {
         _isSelected.value = _isSelected.value?.not()
     }

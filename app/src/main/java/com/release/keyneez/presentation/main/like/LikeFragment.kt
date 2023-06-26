@@ -3,11 +3,12 @@ package com.release.keyneez.presentation.main.like
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
+import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.presentation.main.MainViewModel
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
 import com.release.keyneez.util.binding.BindingFragment
@@ -16,9 +17,10 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
-    val likeViewModel by viewModels<LikeViewModel>()
     private var likeAdapter: LikeAdapter? = null
     private lateinit var mainViewModel: MainViewModel
+    lateinit var likeList: List<Activity>
+    val likeViewModel: LikeViewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -32,6 +34,20 @@ class LikeFragment :
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
+        updateDeleteItems()
+    }
+
+    fun updateDeleteItems() {
+        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
+        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
+            selectedIds?.clear()
+
+            for (item in selectedIds.orEmpty()) {
+                val position = likeList.indexOf(item)
+                binding.rvLike.adapter?.notifyItemRemoved(position)
+                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
+            }
+        }
     }
 
     private fun initLikeAdapter() {
@@ -47,11 +63,6 @@ class LikeFragment :
         likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
             likeAdapter?.submitList(activityList)
         }
-    }
-
-    private fun setItemsSelected(id: Int) {
-        likeViewModel.setItemsSelected(id)
-        likeAdapter?.notifyItemChanged(id)
     }
 
     private fun initLikeEditBtnClickListener() {

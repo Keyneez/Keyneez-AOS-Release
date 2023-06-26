@@ -14,7 +14,6 @@ class LikeAdapter(
     private val setItemsSelected: (Int) -> List<Int>,
     private val getSelectedIdsCount: (Int) -> Int
 ) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
-    lateinit var likeList: List<Activity>
 
     class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
@@ -50,26 +49,6 @@ class LikeAdapter(
 //    fun replaceItems(items: List<Activity>) {
 //        submitList(items)
 //    }
-
-    fun deleteItems(selectedIds: List<Int>) {
-        val updatedDataList = likeList.toMutableList()
-        val removedItems = mutableListOf<Activity>()
-        // removedItems는 삭제할 아이템들을 모아두는 곳이다.
-        for (item in updatedDataList) {
-            if (item.id in selectedIds) {
-                removedItems.add(item)
-            }
-        }
-        updatedDataList.removeAll(removedItems)
-
-        likeList = updatedDataList.toList()
-
-        // Notify the adapter about the removed items
-        for (item in removedItems) {
-            val position = likeList.indexOf(item)
-            notifyItemRemoved(position)
-        }
-    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is LikeViewHolder) holder.bind(getItem(position))
