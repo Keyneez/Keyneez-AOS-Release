@@ -1,14 +1,14 @@
 package com.release.keyneez.presentation.main.like
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
+import com.release.keyneez.databinding.ItemLikeContentBinding
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.presentation.main.MainViewModel
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
@@ -22,34 +22,35 @@ class LikeFragment :
     private lateinit var likeAdapter: LikeAdapter
     private lateinit var mainViewModel: MainViewModel
     private val likeViewModel by viewModels<LikeViewModel>()
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vm = likeViewModel
         binding.btnEdit.isEnabled = false
         dataList = ArrayList()
         dataList.clear()
-        binding.vm = likeViewModel
         binding.rvLike.apply {
+            binding.rvLike.setLayoutManager(GridLayoutManager(requireContext(), 2))
             setHasFixedSize(true)
-            val gridLayoutManager = GridLayoutManager(context,3)
-            layoutManager = LinearLayoutManager(context)
             likeAdapter = LikeAdapter()
             adapter = likeAdapter
         }
         likeAdapter.setOnItemClickListener { response ->
             binding.btnEdit.isEnabled = likeAdapter.getSelectedExpense() > 0
         }
-        likeAdapter.submitList(dataList)
+        binding.btnEdit.setOnClickListener {
+            Toast.makeText(
+                requireContext(),
+                "삭제: ${likeAdapter.getSelectedExpense()}개",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+//        likeAdapter.submitList(dataList)
         initLikeAdapter()
         initCategoryBtnClickListener()
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
     }
-
 //    fun updateDeleteItems() {
 //        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
 //        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
