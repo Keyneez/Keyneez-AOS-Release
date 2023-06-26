@@ -2,13 +2,11 @@ package com.release.keyneez.presentation.main.like
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
-import com.release.keyneez.databinding.ItemLikeContentBinding
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.presentation.main.MainViewModel
 import com.release.keyneez.presentation.main.explore.popular.PopularFragment
@@ -36,13 +34,6 @@ class LikeFragment :
         }
         likeAdapter.setOnItemClickListener { response ->
             binding.btnEdit.isEnabled = likeAdapter.getSelectedExpense() > 0
-        }
-        binding.btnEdit.setOnClickListener {
-            Toast.makeText(
-                requireContext(),
-                "삭제: ${likeAdapter.getSelectedExpense()}개",
-                Toast.LENGTH_SHORT
-            ).show()
         }
 //        likeAdapter.submitList(dataList)
         initLikeAdapter()

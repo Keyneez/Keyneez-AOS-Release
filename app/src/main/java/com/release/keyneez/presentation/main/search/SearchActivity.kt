@@ -1,6 +1,7 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView

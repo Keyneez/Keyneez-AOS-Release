@@ -1,5 +1,6 @@
 package com.release.keyneez.presentation.main.like
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,7 +38,6 @@ class LikeViewModel : ViewModel() {
     // 그 후 id 서버에 넘겨주기
     fun setItemsSelected(id: Int): List<Int> {
         val selectedIdsList = _selectedIds.value ?: mutableListOf()
-
         if (selectedIdsList.contains(id)) {
             selectedIdsList.remove(id)
         } else {
