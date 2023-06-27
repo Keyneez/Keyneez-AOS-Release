@@ -1,10 +1,11 @@
 package com.release.keyneez.presentation.main.like
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.domain.model.Activity
@@ -16,49 +17,50 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
-    private lateinit var dataList: ArrayList<Activity>
-    private lateinit var likeAdapter: LikeAdapter
+    private var likeAdapter: LikeAdapter? = null
     private lateinit var mainViewModel: MainViewModel
-    private val likeViewModel by viewModels<LikeViewModel>()
+    lateinit var likeList: ArrayList<Activity>
+    val likeViewModel: LikeViewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        likeList = ArrayList()
+        likeList.clear()
+        binding.btnEdit.isEnabled = false
+        likeAdapter?.setOnItemClickListener { response ->
+            binding.btnEdit.isEnabled =likeAdapter.getSelectedExpense() > 0
+        }
+    }
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = likeViewModel
-        binding.btnEdit.isEnabled = false
-        dataList = ArrayList()
-        dataList.clear()
-        binding.rvLike.apply {
-            binding.rvLike.setLayoutManager(GridLayoutManager(requireContext(), 2))
-            setHasFixedSize(true)
-            likeAdapter = LikeAdapter()
-            adapter = likeAdapter
-        }
-        likeAdapter.setOnItemClickListener { response ->
-            binding.btnEdit.isEnabled = likeAdapter.getSelectedExpense() > 0
-        }
-//        likeAdapter.submitList(dataList)
         initLikeAdapter()
         initCategoryBtnClickListener()
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
+        updateDeleteItems()
     }
-//    fun updateDeleteItems() {
-//        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
-//        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
-//            selectedIds?.clear()
-//
-//            for (item in selectedIds.orEmpty()) {
-//                val position = likeList.indexOf(item)
-//                binding.rvLike.adapter?.notifyItemRemoved(position)
-//                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
-//            }
-//        }
-//    }
+
+    fun updateDeleteItems() {
+        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
+        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
+            selectedIds?.clear()
+
+            for (item in selectedIds.orEmpty()) {
+                val position = likeList.indexOf(item)
+                binding.rvLike.adapter?.notifyItemRemoved(position)
+                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
+            }
+        }
+    }
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
-//            setItemsSelected = likeViewModel::setItemsSelected,
-//            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
+            setItemsSelected = likeViewModel::setItemsSelected,
+            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator
@@ -109,6 +111,7 @@ class LikeFragment :
 
     override fun onDestroyView() {
         super.onDestroyView()
+        likeAdapter = null
     }
 
     companion object {

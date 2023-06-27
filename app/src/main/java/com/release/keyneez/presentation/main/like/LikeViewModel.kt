@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main.like
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,12 +17,10 @@ class LikeViewModel : ViewModel() {
     // 인자로 인덱스를 받아오기
     val activityList: LiveData<List<Activity>>
         get() = _activityList
-
     val isEdit: LiveData<Boolean>
         get() = _isEdit
     val isSelected: LiveData<Boolean>
         get() = _isSelected
-
     val selectedIds: LiveData<MutableList<Int>> = _selectedIds
 
     init {
