@@ -1,6 +1,8 @@
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -18,7 +20,7 @@ class LikeFragment :
     private var likeAdapter: LikeAdapter? = null
     private lateinit var mainViewModel: MainViewModel
     lateinit var likeList: List<Activity>
-    val likeViewModel: LikeViewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+    private val likeViewModel by viewModels<LikeViewModel>()
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -32,21 +34,35 @@ class LikeFragment :
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
-//        updateDeleteItems()
+        updateDeleteItems()
     }
 
-//    fun updateDeleteItems() {
-//        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
-//        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
-//            selectedIds?.clear()
-//
-//            for (item in selectedIds.orEmpty()) {
-//                val position = likeList.indexOf(item)
-//                binding.rvLike.adapter?.notifyItemRemoved(position)
-//                binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
-//            }
-//        }
-//    }
+    fun updateDeleteItems() {
+        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
+        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
+            val updatedDataList = likeList.toMutableList()
+            val removedItems = mutableListOf<Activity>()
+
+            // 삭제할 아이디들을 가진 아이템을 찾아서 삭제합니다.
+            for (item in updatedDataList) {
+                if (item.id in selectedIds) {
+                    removedItems.add(item)
+                }
+            }
+            updatedDataList.removeAll(removedItems)
+
+            // RecyclerView의 데이터를 업데이트하고 어댑터에 삭제 알림을 보냅니다.
+            likeList = updatedDataList.toList()
+            likeAdapter?.submitList(likeList)
+
+            // 삭제된 아이템들에 대한 알림을 보냅니다.
+            for (item in removedItems) {
+                val position = likeList.indexOf(item)
+                likeAdapter?.notifyItemRemoved(position)
+                likeAdapter?.notifyItemRangeChanged(position, likeList.size)
+            }
+        }
+    }
 
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
