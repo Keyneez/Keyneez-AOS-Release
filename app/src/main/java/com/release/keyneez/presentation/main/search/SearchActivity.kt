@@ -25,26 +25,28 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initSearchBtnClickListener()
         initSearchAdapter()
         initBackBtnClickListener()
         initSearchBtnKeyListener()
     }
 
     private fun initSearchBtnKeyListener() {
-        binding.btnSearch.setOnSingleClickListener {
-            setupSearchActivityList()
-            viewModel.activityList
-        }
-
         binding.etSearchContent.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    viewModel.activityList
                     return true
                 }
                 return false
             }
         })
+    }
+
+    private fun initSearchBtnClickListener() {
+        binding.btnSearch.setOnSingleClickListener {
+            setupSearchActivityList()
+            viewModel.activityList
+        }
     }
 
     private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
