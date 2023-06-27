@@ -1,5 +1,6 @@
 package com.release.keyneez.presentation.main
 
+import LikeFragment
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
@@ -12,7 +13,6 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivityMainBinding
 import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.presentation.main.home.HomeFragment
-import com.release.keyneez.presentation.main.like.LikeFragment
 import com.release.keyneez.presentation.main.like.LikeViewModel
 import com.release.keyneez.presentation.main.setting.SettingFragment
 import com.release.keyneez.util.binding.BindingActivity

@@ -7,13 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.release.keyneez.databinding.ItemExploreContentBinding
 import com.release.keyneez.domain.model.Activity
-import com.release.keyneez.presentation.main.like.LikeFragment
 import com.release.keyneez.util.DiffCallback
 
 class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
-    lateinit var likeList: ArrayList<Activity>
-    private lateinit var likeFragment: LikeFragment
-
     class PopularViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
