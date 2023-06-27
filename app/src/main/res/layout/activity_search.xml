@@ -101,11 +101,13 @@
             android:layout_marginTop="-1dp"
             android:clipToPadding="false"
             android:paddingHorizontal="15dp"
+            android:nestedScrollingEnabled="false"
             android:paddingBottom="113dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/flow_search"
+            app:spanCount="2"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/item_search_content"
             tools:spanCount="2" />

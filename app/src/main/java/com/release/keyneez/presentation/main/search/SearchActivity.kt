@@ -24,7 +24,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private var searchAdapter: SearchAdapter? = null
     private val viewModel: SearchViewModel by viewModels()
 
-    // 뷰모델 관련 기초 코드 작성
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBackBtnClickListener()
@@ -89,10 +88,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun setupSearchActivityList() {
         viewModel.activityList.observe(this) { activityList ->
             searchAdapter?.submitList(activityList)
-//            binding.tvSearchCount.setText(searchAdapter?.data?.size.toString())
-//            if (searchAdapter?.data?.size == 0) {
-//                showToast(getString(R.string.search_no_result))
-//            }
         }
     }
 
