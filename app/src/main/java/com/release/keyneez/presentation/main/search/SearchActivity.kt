@@ -5,7 +5,6 @@ import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.binding.BindingActivity
@@ -26,13 +25,13 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initSearchAdapter()
         initBackBtnClickListener()
         initSearchBtnKeyListener()
     }
 
     private fun initSearchBtnKeyListener() {
         binding.btnSearch.setOnSingleClickListener {
-            initSearchAdapter()
             setupSearchActivityList()
             viewModel.activityList
         }
@@ -82,7 +81,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchAdapter() {
         searchAdapter = SearchAdapter()
         binding.rvSearchResultContent.adapter = searchAdapter
-        binding.rvSearchResultContent.layoutManager = GridLayoutManager(this, 2)
     }
 
     private fun setupSearchActivityList() {
