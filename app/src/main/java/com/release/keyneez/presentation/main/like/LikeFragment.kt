@@ -2,6 +2,7 @@ package com.release.keyneez.presentation.main.like
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -19,19 +20,17 @@ class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private var likeAdapter: LikeAdapter? = null
     private lateinit var mainViewModel: MainViewModel
-    lateinit var likeList: ArrayList<Activity>
     val likeViewModel: LikeViewModel = ViewModelProvider(this).get(LikeViewModel::class.java)
+    lateinit var likeList: ArrayList<Activity>
     override fun onAttach(context: Context) {
         super.onAttach(context)
         likeList = ArrayList()
         likeList.clear()
         binding.btnEdit.isEnabled = false
         likeAdapter?.setOnItemClickListener { response ->
-            binding.btnEdit.isEnabled =likeAdapter.getSelectedExpense() > 0
+//            binding.btnEdit.isEnabled = likeAdapter.getSelectedExpense() > 0
         }
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,7 +49,7 @@ class LikeFragment :
             selectedIds?.clear()
 
             for (item in selectedIds.orEmpty()) {
-                val position = likeList.indexOf(item)
+                val position = likeList.indexOf(item as Activity)
                 binding.rvLike.adapter?.notifyItemRemoved(position)
                 binding.rvLike.adapter?.notifyItemRangeRemoved(position, likeList.size - 1)
             }
@@ -62,6 +61,7 @@ class LikeFragment :
             setItemsSelected = likeViewModel::setItemsSelected,
             getSelectedIdsCount = likeViewModel::getSelectedIdsCount
         )
+        Log.d("1", "어쩌라고")
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator
         if (animator is SimpleItemAnimator) {

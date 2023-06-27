@@ -15,20 +15,8 @@ class LikeAdapter(
     private val getSelectedIdsCount: (Int) -> Int
 ) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
     private var selectedActivity = arrayListOf<Activity>()
-    var item_list: ArrayList<Activity>? = null
-    fun ModelAdapter(arrayList: ArrayList<Activity>) {
-        item_list = arrayList
-    }
 
-    private fun applySelection(binding: ItemLikeContentBinding, expense: Activity) {
-        if (selectedActivity.contains(expense)) {
-            selectedActivity.remove(expense)
-        } else {
-            selectedActivity.add(expense)
-        }
-    }
-
-    class LikeViewHolder(
+    inner class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
         private val setItemsSelected: (Int) -> List<Int>,
         private val getSelectedIdsCount: (Int) -> Int
@@ -47,6 +35,14 @@ class LikeAdapter(
                     // id 만 넘겨주는 함수 호출
                 }
             }
+        }
+    }
+
+    private fun applySelection(binding: ItemLikeContentBinding, expense: Activity) {
+        if (selectedActivity.contains(expense)) {
+            selectedActivity.remove(expense)
+        } else {
+            selectedActivity.add(expense)
         }
     }
 

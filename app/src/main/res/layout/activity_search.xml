@@ -98,7 +98,7 @@
             android:id="@+id/rv_search_result_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="-1dp"
+            android:layout_marginTop="11dp"
             android:clipToPadding="false"
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="15dp"
@@ -108,9 +108,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/flow_search"
-            app:spanCount="2"
             tools:listitem="@layout/item_search_content"
-            tools:spanCount="2" />
+            app:spanCount="2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
