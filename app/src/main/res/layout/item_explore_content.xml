@@ -8,9 +8,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_explore_rv"
         android:layout_width="match_parent"
-        android:layout_height="234dp"
-        android:layout_marginHorizontal="7dp"
-        android:layout_marginVertical="9dp">
+        android:layout_height="236dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="17dp">
 
         <ImageView
             android:id="@+id/iv_explore_background"
@@ -46,7 +46,6 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
             android:background="@null"
-            android:contentDescription=""
             android:padding="12dp"
             android:src="@drawable/sel_search_drawable_bnv_like_icon"
             app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +90,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

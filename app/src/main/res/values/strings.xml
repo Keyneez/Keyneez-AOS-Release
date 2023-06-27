@@ -14,13 +14,18 @@
 
     <!-- search -->
     <string name="search_content">제목, 키워드</string>
+    <string name="search_cancel">취소</string>
     <string name="search_result">검색결과</string>
     <string name="search_count">%s개</string>
-    <string name="search_no_result">검색결과가 없습니다.</string>
     <string name="search_category">기획</string>
     <string name="search_title">행주산성 맛집 투어</string>
     <string name="search_period">%s–%s</string>
     <string name="search_fee">무료 입장</string>
+    <string name="search_no_result">검색결과가 없습니다.</string>
+    <string name="search_contentdescription">검색버튼</string>
+    <string name="search_recycler_contentdescription">리사이클러뷰</string>
+    <string name="search_heart_contentdescription">하트</string>
+    <string name="search_content_contentdescription">콘텐츠</string>
 
     <!-- explore -->
     <string name="explore_title">탐색하기</string>

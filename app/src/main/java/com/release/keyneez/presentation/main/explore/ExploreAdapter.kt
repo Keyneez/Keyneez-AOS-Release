@@ -7,7 +7,7 @@ class ExploreAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
     private val fragmentList = listOf(
         PopularFragment(),
-        RecentFragment(),
+        RecentFragment()
     )
 
     override fun getItemCount() = fragmentList.size

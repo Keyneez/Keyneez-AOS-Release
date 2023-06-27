@@ -16,25 +16,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
-            android:background="@drawable/shape_gray900_fill_9_rect"
+            android:background="@drawable/sel_explore_drawable_bnv_all_icon"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
-            android:textColor="@color/gray050"
+            android:textColor="@drawable/sel_explore_drawable_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_explore_recent_culture"
+            android:id="@+id/tv_explore_recent_hobby"
             style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:background="@drawable/sel_explore_drawable_bnv_hobby_icon"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_hobby"
-            android:textColor="@color/gray400"
+            android:textColor="@drawable/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_all"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,25 +44,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:background="@drawable/sel_explore_drawable_bnv_outside_icon"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
-            android:textColor="@color/gray400"
-            app:layout_constraintStart_toEndOf="@id/tv_explore_recent_culture"
+            android:textColor="@drawable/sel_explore_drawable_text_color"
+            app:layout_constraintStart_toEndOf="@id/tv_explore_recent_hobby"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_explore_popular_career"
+            android:id="@+id/tv_explore_recent_career"
             style="@style/BodyRegular16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
-            android:background="@drawable/shape_gray200_fill_9_rect"
+            android:background="@drawable/sel_explore_drawable_bnv_career_icon"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
-            android:textColor="@color/gray400"
+            android:textColor="@drawable/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_outside"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,13 +76,13 @@
             android:nestedScrollingEnabled="false"
             android:paddingHorizontal="15dp"
             android:paddingBottom="113dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_recent_all"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/item_explore_content"
-            app:spanCount="2" />
+            app:spanCount="2"
+            tools:listitem="@layout/item_explore_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
