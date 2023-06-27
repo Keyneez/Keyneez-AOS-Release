@@ -24,6 +24,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding.vm = viewModel
         super.onCreate(savedInstanceState)
         initSearchBtnClickListener()
         initSearchAdapter()

@@ -11,7 +11,7 @@ data class ResponseGetSearchResultDto(
     @SerialName("img") val img: String?,
     @SerialName("start_at") val start: String?,
     @SerialName("end_at") val end: String?,
-    val Likes: Liked?
+    val Likes: List<Liked>
 ) {
     @Serializable
     data class Liked(
