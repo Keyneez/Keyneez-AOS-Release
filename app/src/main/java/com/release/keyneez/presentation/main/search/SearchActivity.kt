@@ -6,9 +6,14 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
 import com.release.keyneez.R
+import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ActivitySearchBinding
+import com.release.keyneez.util.UiState
 import com.release.keyneez.util.binding.BindingActivity
+import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
+import com.release.keyneez.util.extension.showSnackbar
+import com.release.keyneez.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -20,16 +25,56 @@ import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
-    private var searchAdapter: SearchAdapter? = null
+    private var searchAdapter: SearchAdapter?= null
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding.vm = viewModel
         super.onCreate(savedInstanceState)
+        binding.vm = viewModel
         initSearchBtnClickListener()
         initSearchAdapter()
         initBackBtnClickListener()
         initSearchBtnKeyListener()
+        initHideKeyboard()
+        setupSearchState()
+    }
+
+    private fun setupSearchState() {
+        viewModel.stateMessage.observe(this) {
+            when (it) {
+                is UiState.Success -> setupSearchActivityList()
+                is UiState.Failure -> showSnackbar(
+                    binding.root,
+                    getString(R.string.msg_search_null)
+                )
+
+                is UiState.Error -> showSnackbar(
+                    binding.root,
+                    getString(R.string.msg_server_error)
+                )
+            }
+        }
+    }
+
+    private fun initSearchAdapter() {
+        searchAdapter = SearchAdapter()
+        binding.rvSearchResultContent.adapter = searchAdapter
+    }
+
+    private fun setupSearchActivityList() {
+        viewModel.searchList.observe(this) { searchList ->
+            searchAdapter?.submitList(searchList)
+            binding.tvSearchCount.text = searchList.size.toString()
+            if (searchList.size == 0) {
+                showToast(getString(R.string.search_no_result))
+            }
+        }
+    }
+
+    private fun initHideKeyboard() {
+        binding.layoutSearch.setOnSingleClickListener {
+            hideKeyboard()
+        }
     }
 
     private fun initSearchBtnKeyListener() {
@@ -46,7 +91,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
             setupSearchActivityList()
-            viewModel.activityList
+            viewModel.getSearchPostData()
         }
     }
 
@@ -78,17 +123,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
                 delay(timeMillis)
                 block(it)
             }
-        }
-    }
-
-    private fun initSearchAdapter() {
-        searchAdapter = SearchAdapter()
-        binding.rvSearchResultContent.adapter = searchAdapter
-    }
-
-    private fun setupSearchActivityList() {
-        viewModel.activityList.observe(this) { activityList ->
-            searchAdapter?.submitList(activityList)
         }
     }
 

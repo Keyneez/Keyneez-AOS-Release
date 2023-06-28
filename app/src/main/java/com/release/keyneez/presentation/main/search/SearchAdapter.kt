@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
 import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
-class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+class SearchAdapter : ListAdapter<ResponseGetSearchResultDto, RecyclerView.ViewHolder>(diffUtil) {
+    var data = listOf<ResponseGetSearchResultDto>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SearchViewHolder(
             ItemSearchContentBinding.inflate(
@@ -20,21 +21,19 @@ class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
         )
     }
 
+    override fun getItemCount(): Int = data.size
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is SearchViewHolder) holder.bind(getItem(position))
+        if (holder is SearchViewHolder) holder.setSearch(getItem(position))
     }
 
-    //    override fun getItemCount(): Int = data.size
     class SearchViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Activity) {
-            with(binding) {
-                ivSearchBackground.load(item.background)
-                tvSearchCategory.text = item.category
-                tvSearchContentTitle.text = item.title
-                tvSearchDate.text = item.date
-                // TODO : root.setOnSingleClickListener 구현
-            }
+        fun setSearch(search: Activity) {
+            binding.data = search
+        }
+        // 여기 코드 더 적기
+        binding.root.setOnClickListener {
+            // 디테일뷰와 연결하기
         }
     }
 
