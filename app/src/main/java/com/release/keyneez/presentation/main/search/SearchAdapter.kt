@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main.search
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -9,10 +8,9 @@ import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
 import com.release.keyneez.util.DiffCallback
 
-class SearchAdapter(context: Context) :
+class SearchAdapter :
     ListAdapter<ResponseGetSearchResultDto, RecyclerView.ViewHolder>(diffUtil) {
     var data = listOf<ResponseGetSearchResultDto>()
-    private val inflater by lazy { LayoutInflater.from(context) }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SearchViewHolder(
             ItemSearchContentBinding.inflate(

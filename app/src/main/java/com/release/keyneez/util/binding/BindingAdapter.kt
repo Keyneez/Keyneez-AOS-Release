@@ -38,4 +38,18 @@ object BindingAdapter {
     fun TextView.setEditIndex(set: LiveData<LinkedHashSet<String>>, edit: String) {
         this.text = set.value?.indexOf(edit)?.plus(1).toString()
     }
+
+    @JvmStatic
+    @BindingAdapter("putStartDate", "putEndDate")
+    fun TextView.setDuration(start: String?, end: String?) {
+        if (start == null || end == null) {
+            this.text = "2023 -"
+            return
+        }
+
+        val tempStart = "${end.substring(4, 6)}.${end.substring(6, 8)}"
+        val tempEnd = "${end.substring(4, 6)}.${end.substring(6, 8)}"
+
+        this.text = "$tempStart - $tempEnd"
+    }
 }

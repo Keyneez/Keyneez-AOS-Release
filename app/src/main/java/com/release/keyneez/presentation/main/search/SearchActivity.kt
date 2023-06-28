@@ -6,7 +6,6 @@ import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
 import com.release.keyneez.R
-import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ActivitySearchBinding
 import com.release.keyneez.util.UiState
 import com.release.keyneez.util.binding.BindingActivity
@@ -25,7 +24,7 @@ import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
-    private var searchAdapter: SearchAdapter?= null
+    private var searchAdapter: SearchAdapter? = null
     private val viewModel: SearchViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
