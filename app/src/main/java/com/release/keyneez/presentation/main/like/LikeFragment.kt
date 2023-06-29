@@ -112,6 +112,7 @@ class LikeFragment :
 
     private fun setupLikeActivityList() {
         likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
+            likeList = activityList
             likeAdapter?.submitList(activityList)
         }
     }
