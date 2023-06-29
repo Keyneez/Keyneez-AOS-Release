@@ -17,14 +17,14 @@
 
             <TextView
                 android:id="@+id/tv_like_toast"
+                style="@style/HeadingMedium20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/like_delete_complete"
                 android:textColor="@color/gray050"
-                style="@style/HeadingMedium20"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

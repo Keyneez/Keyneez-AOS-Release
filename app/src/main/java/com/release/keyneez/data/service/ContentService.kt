@@ -10,8 +10,10 @@ import retrofit2.http.Query
 interface ContentService {
     @GET("contents/liked")
     suspend fun getLike(): BaseResponse<List<ResponseGetLikeDto>>
+
     @GET("contents/")
     suspend fun getContent(): BaseResponse<List<ResponseGetContentDto>>
+
     @GET("contents/search")
     suspend fun getSearch(
         @Query("keyword") keyword: String

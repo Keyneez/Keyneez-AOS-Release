@@ -30,6 +30,7 @@ class SearchViewModel @Inject constructor(
         get() = _saveState
 
     val key = MutableLiveData("")
+
     init {
         getSearchPostData()
     }
