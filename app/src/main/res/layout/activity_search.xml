@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="com.release.keyneez.presentation.main.search.SearchViewModel" />
@@ -24,8 +25,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="36dp"
             android:background="@null"
-            android:onClick="@{()->vm.getSearchPostData()}"
             android:contentDescription="@string/search_contentdescription"
+            android:onClick="@{()->vm.getSearchPostData()}"
             android:padding="12dp"
             android:src="@drawable/ic_search"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,11 +41,11 @@
             android:layout_marginTop="37dp"
             android:background="@null"
             android:hint="@string/search_content"
-            android:text="@={vm.key}"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:maxLines="1"
             android:paddingVertical="11dp"
+            android:text="@={vm.key}"
             android:textColor="@color/gray900"
             android:textColorHint="@color/gray400"
             app:layout_constraintEnd_toStartOf="@id/btn_search_cancel"
@@ -117,8 +118,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/flow_search"
-            tools:listitem="@layout/item_search_content"
-            app:spanCount="2" />
+            app:spanCount="2"
+            tools:listitem="@layout/item_search_content" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

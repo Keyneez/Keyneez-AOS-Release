@@ -8,6 +8,8 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.LiveData
+import coil.load
+import com.release.keyneez.R
 
 object BindingAdapter {
     @JvmStatic
@@ -26,6 +28,12 @@ object BindingAdapter {
     @BindingAdapter("setGone")
     fun View.setGone(selected: Boolean) {
         isGone = selected
+    }
+
+    @JvmStatic
+    @BindingAdapter("setImage")
+    fun ImageView.setImage(url: String?) {
+        this.load(url)
     }
 
     @JvmStatic
@@ -55,14 +63,17 @@ object BindingAdapter {
     }
 
     @JvmStatic
-    @BindingAdapter("category")
-    fun ImageView.card(string: String?) {
+    @BindingAdapter("setCategory")
+    fun TextView.setCategory(string: String?) {
         when (string) {
-            "문화" -> this.setImageResource(R.drawable.ic_home_card_mint)
-            "진로" -> this.setImageResource(R.drawable.ic_home_card_green)
-            "봉사" -> this.setImageResource(R.drawable.ic_home_card_purple)
-            "여행" -> this.setImageResource(R.drawable.ic_home_card_pink)
-            "경제" -> this.setImageResource(R.drawable.ic_home_card_red)
+            "취미" ->
+                this.background =
+                    this.context.getDrawable(R.drawable.shape_mint500_fill_49_rect)
+
+            "진로" -> this.background = this.context.getDrawable(R.drawable.shape_red500_fill_49_rect)
+            "활동" ->
+                this.background =
+                    this.context.getDrawable(R.drawable.shape_purple500_fill_49_rect)
         }
     }
 }
