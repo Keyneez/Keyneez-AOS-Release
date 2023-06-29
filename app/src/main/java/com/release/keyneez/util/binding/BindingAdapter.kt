@@ -1,6 +1,7 @@
 package com.release.keyneez.util.binding
 
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
@@ -51,5 +52,17 @@ object BindingAdapter {
         val tempEnd = "${end.substring(4, 6)}.${end.substring(6, 8)}"
 
         this.text = "$tempStart - $tempEnd"
+    }
+
+    @JvmStatic
+    @BindingAdapter("category")
+    fun ImageView.card(string: String?) {
+        when (string) {
+            "문화" -> this.setImageResource(R.drawable.ic_home_card_mint)
+            "진로" -> this.setImageResource(R.drawable.ic_home_card_green)
+            "봉사" -> this.setImageResource(R.drawable.ic_home_card_purple)
+            "여행" -> this.setImageResource(R.drawable.ic_home_card_pink)
+            "경제" -> this.setImageResource(R.drawable.ic_home_card_red)
+        }
     }
 }
