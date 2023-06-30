@@ -96,7 +96,11 @@
             style="@style/BodySemibold14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="@{vm.searchList == null ? View.GONE : View.VISIBLE}"
+            android:layout_marginTop="34dp"
             android:text="@string/search_result_end"
+            app:layout_constraintStart_toEndOf="@id/flow_search"
+            app:layout_constraintTop_toBottomOf="@id/view_search_baseline"
             android:textColor="@color/gray900" />
 
         <androidx.constraintlayout.helper.widget.Flow
@@ -110,17 +114,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/view_search_baseline" />
-
-        <androidx.constraintlayout.helper.widget.Flow
-            android:id="@+id/flow_search2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="34dp"
-            android:visibility="@{vm.searchList == null ? View.GONE : View.VISIBLE}"
-            app:constraint_referenced_ids="tv_search_count,tv_search_end"
-            app:layout_constraintStart_toEndOf="@id/flow_search"
-            app:layout_constraintTop_toBottomOf="@id/view_search_baseline" />
-
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_result_content"
