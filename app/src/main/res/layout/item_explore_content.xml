@@ -3,7 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="data"
+            type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_explore_rv"
@@ -31,10 +36,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="17dp"
+            setCategory="@{data.category}"
             android:background="@drawable/shape_purple500_fill_49_rect"
+            android:text="@{data.category}"
             android:paddingHorizontal="8dp"
             android:paddingVertical="3dp"
-            android:text="@string/explore_activity"
+            tools:text="@string/explore_activity"
             android:textColor="@color/gray050"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,8 +66,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="11dp"
+            android:text="@{data.title}"
             android:layout_marginEnd="15dp"
-            android:text="@string/explore_content_title"
+            tools:text="@string/explore_content_title"
             android:textColor="@color/gray800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +81,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="4dp"
-            android:text="@string/explore_date"
+            putEndDate="@{data.end}"
+            putStartDate="@{data.start}"
+            tools:text="@string/explore_date"
             android:textColor="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,9 +94,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
+            setImage="@{data.img}"
             android:layout_marginBottom="18dp"
             android:contentDescription="@string/content_contentdescription"
-            android:src="@drawable/img_explore_background"
+            tools:src="@drawable/img_explore_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

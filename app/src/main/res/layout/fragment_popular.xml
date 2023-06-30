@@ -3,7 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data></data>
+    <data>
+
+        <variable
+            name="vm"
+            type="com.release.keyneez.presentation.main.explore.popular.PopularViewModel" />
+
+        <variable
+            name="data"
+            type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_home_popular"
