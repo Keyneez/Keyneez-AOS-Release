@@ -12,7 +12,7 @@ interface ContentService {
     suspend fun getLike(): BaseResponse<List<ResponseGetLikeDto>>
 
     @GET("contents/")
-    suspend fun getContent(): BaseResponse<List<ResponseGetContentDto>>
+    suspend fun getContent(@Query("filter") filter: String): BaseResponse<List<ResponseGetContentDto>>
 
     @GET("contents/search")
     suspend fun getSearch(

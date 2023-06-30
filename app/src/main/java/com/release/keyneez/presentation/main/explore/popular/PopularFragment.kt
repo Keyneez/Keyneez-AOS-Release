@@ -7,13 +7,16 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 import com.release.keyneez.util.extension.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PopularFragment : BindingFragment<FragmentPopularBinding>(R.layout.fragment_popular) {
     private val viewModel: PopularViewModel by viewModels()
     private var popularAdapter: PopularAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vm = viewModel
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnClickListener()
@@ -33,8 +36,8 @@ class PopularFragment : BindingFragment<FragmentPopularBinding>(R.layout.fragmen
     }
 
     private fun setupPopularActivityList() {
-        viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
-            popularAdapter?.submitList(activityList)
+        viewModel.popularList.observe(viewLifecycleOwner) { popularList ->
+            popularAdapter?.submitList(popularList)
         }
     }
 

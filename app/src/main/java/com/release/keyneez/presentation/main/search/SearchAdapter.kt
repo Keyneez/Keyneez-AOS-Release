@@ -30,8 +30,8 @@ class SearchAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun setSearch(search: ResponseGetSearchResultDto) {
             binding.data = search
+            // 여기 디테일뷰와 연결하는 코드 작성하기
         }
-        // 여기 디테일뷰와 연결하는 코드 작성하기
     }
 
     companion object {

@@ -10,8 +10,8 @@ import javax.inject.Inject
 class ContentDataSource @Inject constructor(
     private val contentService: ContentService
 ) {
-    suspend fun getContent(): BaseResponse<List<ResponseGetContentDto>> =
-        contentService.getContent()
+    suspend fun getContent(filter: String): BaseResponse<List<ResponseGetContentDto>> =
+        contentService.getContent(filter)
 
     suspend fun getLike(): BaseResponse<List<ResponseGetLikeDto>> = contentService.getLike()
     suspend fun getSearch(keyword: String): BaseResponse<List<ResponseGetSearchResultDto>> =

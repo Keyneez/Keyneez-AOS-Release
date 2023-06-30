@@ -16,7 +16,9 @@ import com.release.keyneez.presentation.main.home.HomeFragment
 import com.release.keyneez.presentation.main.like.LikeViewModel
 import com.release.keyneez.presentation.main.setting.SettingFragment
 import com.release.keyneez.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     val likeViewModel by viewModels<LikeViewModel>()
     private lateinit var mainViewModel: MainViewModel
