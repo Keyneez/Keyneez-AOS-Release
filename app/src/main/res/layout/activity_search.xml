@@ -97,8 +97,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="@{vm.searchList == null ? View.GONE : View.VISIBLE}"
-            android:layout_marginTop="34dp"
             android:text="@string/search_result_end"
+            android:layout_marginTop="34dp"
             app:layout_constraintStart_toEndOf="@id/flow_search"
             app:layout_constraintTop_toBottomOf="@id/view_search_baseline"
             android:textColor="@color/gray900" />
