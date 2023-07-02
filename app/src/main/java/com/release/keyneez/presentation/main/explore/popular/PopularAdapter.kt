@@ -36,7 +36,7 @@ class PopularAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolde
 
     companion object {
         private val diffUtil = DiffCallback<ResponseGetContentDto>(
-            onItemsTheSame = { old, new -> old.contentPk == new.contentPk },
+            onItemsTheSame = { old, new -> old.content == new.content },
             onContentsTheSame = { old, new -> old == new }
         )
     }

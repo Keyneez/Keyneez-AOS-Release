@@ -43,7 +43,6 @@ class LikeFragment :
             val updatedDataList = likeList.toMutableList()
             val removedItems = mutableListOf<Activity>()
 
-            // 삭제할 아이디들을 가진 아이템을 찾아서 삭제합니다.
             for (item in updatedDataList) {
                 if (item.id in selectedIds) {
                     removedItems.add(item)
@@ -51,11 +50,9 @@ class LikeFragment :
             }
             updatedDataList.removeAll(removedItems)
 
-            // RecyclerView의 데이터를 업데이트하고 어댑터에 삭제 알림을 보냅니다.
             likeList = updatedDataList.toList()
             likeAdapter?.submitList(likeList)
 
-            // 삭제된 아이템들에 대한 알림을 보냅니다.
             for (item in removedItems) {
                 val position = likeList.indexOf(item)
                 likeAdapter?.notifyItemRemoved(position)
