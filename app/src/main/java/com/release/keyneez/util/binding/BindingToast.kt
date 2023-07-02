@@ -19,7 +19,7 @@ object BindingToast {
         binding.tvLikeToast.text = message
 
         return Toast(context).apply {
-            setGravity(Gravity.TOP or Gravity.START, 400, 550)
+            setGravity(Gravity.TOP or Gravity.START, 400, 900)
             duration = Toast.LENGTH_SHORT
             view = binding.root
         }

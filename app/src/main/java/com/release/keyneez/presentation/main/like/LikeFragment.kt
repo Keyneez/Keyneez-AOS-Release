@@ -85,6 +85,7 @@ class LikeFragment :
                 Observer {
                     it?.let {
                         likeAdapter?.submitList(it)
+                        updateDeleteItems()
                     }
                 }
             )
