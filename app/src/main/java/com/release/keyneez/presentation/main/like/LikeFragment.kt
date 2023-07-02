@@ -37,26 +37,23 @@ class LikeFragment :
     }
 
     fun updateDeleteItems() {
+        // 리스트에서 아이템을 삭제할 때 원본 리스트를 직접 수정하는 것은 권장하지 않기에 임의의 리스트를 만듦
         val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
         selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
             val updatedDataList = likeList.toMutableList()
-            val removedItems = mutableListOf<Activity>()
 
-            for (item in updatedDataList) {
-                if (item.id in selectedIds) {
-                    removedItems.add(item)
+            for (selectedId in selectedIds) {
+                val itemToRemove = updatedDataList.find { it.id == selectedId }
+                itemToRemove?.let {
+                    val position = updatedDataList.indexOf(it)
+                    updatedDataList.remove(it)
+                    likeAdapter?.notifyItemRemoved(position)
+                    likeAdapter?.notifyItemRangeChanged(position, updatedDataList.size)
                 }
             }
-            updatedDataList.removeAll(removedItems)
 
             likeList = updatedDataList.toList()
             likeAdapter?.submitList(likeList)
-
-            for (item in removedItems) {
-                val position = likeList.indexOf(item)
-                likeAdapter?.notifyItemRemoved(position)
-                likeAdapter?.notifyItemRangeChanged(position, likeList.size)
-            }
         }
     }
 
