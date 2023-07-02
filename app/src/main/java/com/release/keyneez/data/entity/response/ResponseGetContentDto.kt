@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 data class ResponseGetContentDto(
-    @SerialName("content_pk") val contentPk: Int,
+    @SerialName("content_pk") val content: Int,
     @SerialName("title") val title: String,
     @SerialName("category") val category: String,
     @SerialName("img") val img: String?,
@@ -14,7 +14,7 @@ data class ResponseGetContentDto(
 ) {
     @Serializable
     data class Liked(
-        @SerialName("liked_pk") val likedPk: Int,
+        @SerialName("liked_pk") val liked: Int,
         @SerialName("user") val user: Int,
         @SerialName("content") val content: Int
     )

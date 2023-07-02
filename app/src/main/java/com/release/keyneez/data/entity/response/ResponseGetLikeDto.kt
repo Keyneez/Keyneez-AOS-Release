@@ -3,7 +3,7 @@ package com.release.keyneez.data.entity.response
 import kotlinx.serialization.SerialName
 
 data class ResponseGetLikeDto(
-    @SerialName("content_pk") val contentPk: Int,
+    @SerialName("content_pk") val content: Int,
     @SerialName("title") val title: String,
     @SerialName("category") val category: String,
     @SerialName("img") val img: String?,
