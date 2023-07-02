@@ -30,7 +30,6 @@ class LikeFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.vm = likeViewModel
         initLikeAdapter()
-        initCategoryBtnClickListener()
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
@@ -98,13 +97,6 @@ class LikeFragment :
             )?.show()
             mainViewModel.showBottomNavigation()
         }
-    }
-
-    private fun initCategoryBtnClickListener() {
-        binding.tvLikeAll.setOnSingleClickListener {}
-        binding.tvLikeHobby.setOnSingleClickListener {}
-        binding.tvLikeCareer.setOnSingleClickListener {}
-        binding.tvLikeOutside.setOnSingleClickListener {}
     }
 
     private fun setupLikeActivityList() {

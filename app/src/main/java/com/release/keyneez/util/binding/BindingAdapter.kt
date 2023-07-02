@@ -7,7 +7,6 @@ import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
-import androidx.lifecycle.LiveData
 import coil.load
 import com.release.keyneez.R
 
@@ -40,12 +39,6 @@ object BindingAdapter {
     @BindingAdapter("isSelected")
     fun View.isSelected(selected: Boolean) {
         this.isSelected = selected
-    }
-
-    @JvmStatic
-    @BindingAdapter("selectedEditSet", "editHashTag")
-    fun TextView.setEditIndex(set: LiveData<LinkedHashSet<String>>, edit: String) {
-        this.text = set.value?.indexOf(edit)?.plus(1).toString()
     }
 
     @JvmStatic
