@@ -146,6 +146,7 @@
             tools:listitem="@layout/item_like_content" />
 
         <ImageView
+            android:id="@+id/iv_edit_background"
             android:layout_width="match_parent"
             android:layout_height="78dp"
             android:background="@color/gray050"

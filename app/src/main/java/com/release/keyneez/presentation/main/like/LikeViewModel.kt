@@ -23,7 +23,6 @@ class LikeViewModel : ViewModel() {
         getLikeActivityList()
         _isEdit.value = false
         _isSelected.value = false
-        // emptylist로 초기화하기!
         _selectedIds.value = emptyList<Int>().toMutableList()
     }
 

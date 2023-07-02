@@ -3,7 +3,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
@@ -37,11 +36,9 @@ class LikeFragment :
     }
 
     fun updateDeleteItems() {
-        // 리스트에서 아이템을 삭제할 때 원본 리스트를 직접 수정하는 것은 권장하지 않기에 임의의 리스트를 만듦
         val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
         selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
             val updatedDataList = likeList.toMutableList()
-
             for (selectedId in selectedIds) {
                 val itemToRemove = updatedDataList.find { it.id == selectedId }
                 itemToRemove?.let {
@@ -75,25 +72,20 @@ class LikeFragment :
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
             mainViewModel.hideBottomNavigation()
+            updateDeleteItems()
         }
     }
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
-            likeViewModel.activityList.observe(
-                viewLifecycleOwner,
-                Observer {
-                    it?.let {
-                        likeAdapter?.submitList(it)
-                        updateDeleteItems()
-                    }
-                }
-            )
+            updateDeleteItems()
             BindingToast.initLikeDeleteToast(
                 requireContext(),
                 getString(com.release.keyneez.R.string.like_delete_complete)
             )?.show()
             mainViewModel.showBottomNavigation()
+            binding.btnEdit.visibility = View.GONE
+            binding.ivEditBackground.visibility = View.GONE
         }
     }
 

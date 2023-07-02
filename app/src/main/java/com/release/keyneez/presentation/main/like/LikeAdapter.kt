@@ -23,11 +23,6 @@ class LikeAdapter(
         fun bind(item: Activity) {
             with(binding) {
                 data = item
-                binding.root.setOnClickListener {
-                    applySelection(binding, item)
-                    onItemClickListener?.let { it(item) }
-                }
-                // 이게 맞을까..?
                 ivLikeBackground.setOnSingleClickListener {
                     // isSelcted 여부를 반대로
                     item.isSelected = !item.isSelected
@@ -35,14 +30,6 @@ class LikeAdapter(
                     setItemsSelected(item.id)
                 }
             }
-        }
-    }
-
-    private fun applySelection(binding: ItemLikeContentBinding, expense: Activity) {
-        if (selectedActivity.contains(expense)) {
-            selectedActivity.remove(expense)
-        } else {
-            selectedActivity.add(expense)
         }
     }
 
@@ -66,11 +53,6 @@ class LikeAdapter(
     }
 
     private var onItemClickListener: ((Activity) -> Unit)? = null
-
-    fun setOnItemClickListener(listener: (Activity) -> Unit) {
-        onItemClickListener = listener
-    }
-
     companion object {
         private val diffUtil =
             DiffCallback<Activity>(
