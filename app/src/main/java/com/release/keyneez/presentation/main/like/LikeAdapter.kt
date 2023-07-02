@@ -32,6 +32,7 @@ class LikeAdapter(
                     // isSelcted 여부를 반대로
                     item.isSelected = !item.isSelected
                     // id 만 넘겨주는 함수 호출
+                    setItemsSelected(item.id)
                 }
             }
         }
