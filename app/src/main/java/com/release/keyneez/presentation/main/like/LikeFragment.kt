@@ -86,6 +86,7 @@ class LikeFragment :
             mainViewModel.showBottomNavigation()
             binding.btnEdit.visibility = View.GONE
             binding.ivEditBackground.visibility = View.GONE
+            likeViewModel.updateEditView()
         }
     }
 
