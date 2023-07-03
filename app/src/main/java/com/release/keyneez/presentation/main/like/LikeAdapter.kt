@@ -1,6 +1,7 @@
 package com.release.keyneez.presentation.main.like
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,8 @@ class LikeAdapter(
                     item.isSelected = !item.isSelected
                     // id 만 넘겨주는 함수 호출
                     setItemsSelected(item.id)
+                    ivLikeCheckedBackground.visibility = if (item.isSelected) View.VISIBLE else View.GONE
+                    btnLikeChecked.visibility = if (item.isSelected) View.VISIBLE else View.GONE
                 }
             }
         }
@@ -53,6 +56,7 @@ class LikeAdapter(
     }
 
     private var onItemClickListener: ((Activity) -> Unit)? = null
+
     companion object {
         private val diffUtil =
             DiffCallback<Activity>(

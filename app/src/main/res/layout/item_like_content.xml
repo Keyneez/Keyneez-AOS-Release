@@ -25,7 +25,6 @@
 
         <ImageView
             android:id="@+id/iv_like_background"
-            isSelected="@{data.isSelected}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"

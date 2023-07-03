@@ -32,7 +32,6 @@ class LikeFragment :
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
-        updateDeleteItems()
     }
 
     fun updateDeleteItems() {
@@ -72,7 +71,6 @@ class LikeFragment :
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
             mainViewModel.hideBottomNavigation()
-            updateDeleteItems()
         }
     }
 
