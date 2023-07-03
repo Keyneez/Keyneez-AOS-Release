@@ -49,6 +49,31 @@ class LikeViewModel : ViewModel() {
     fun updateSelected() {
         _isSelected.value = _isSelected.value?.not()
     }
+    fun deleteSelectedItems() {
+        if (_isEdit.value == true) {
+            val selectedIdsList = _selectedIds.value ?: return
+            val updatedList = _activityList.value?.toMutableList() ?: mutableListOf()
+            val positionsToRemove = mutableListOf<Int>()
+            val selectedIdsSet = selectedIdsList.toSet()
+
+            for (selectedId in selectedIdsList) {
+                val itemToRemove = updatedList.find { it.id == selectedId }
+                itemToRemove?.let {
+                    val position = updatedList.indexOf(it)
+                    positionsToRemove.add(position)
+                    updatedList.remove(it)
+                }
+            }
+            for (i in updatedList.size - 1 downTo 0) {
+                val activity = updatedList[i]
+                if (selectedIdsSet.contains(activity.id)) {
+                    updatedList.removeAt(i)
+                }
+            }
+
+            _activityList.value = updatedList.toList()
+        }
+    }
 
     private fun getLikeActivityList() {
         val mainList = listOf(

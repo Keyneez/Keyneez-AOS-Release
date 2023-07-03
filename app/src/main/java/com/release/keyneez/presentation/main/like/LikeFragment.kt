@@ -2,7 +2,9 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
@@ -34,25 +36,6 @@ class LikeFragment :
         initEditBtnClickListener()
     }
 
-    fun updateDeleteItems() {
-        val selectedIdsList: LiveData<MutableList<Int>> = likeViewModel.selectedIds
-        selectedIdsList.observe(viewLifecycleOwner) { selectedIds ->
-            val updatedDataList = likeList.toMutableList()
-            for (selectedId in selectedIds) {
-                val itemToRemove = updatedDataList.find { it.id == selectedId }
-                itemToRemove?.let {
-                    val position = updatedDataList.indexOf(it)
-                    updatedDataList.remove(it)
-                    likeAdapter?.notifyItemRemoved(position)
-                    likeAdapter?.notifyItemRangeChanged(position, updatedDataList.size)
-                }
-            }
-
-            likeList = updatedDataList.toList()
-            likeAdapter?.submitList(likeList)
-        }
-    }
-
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
             setItemsSelected = likeViewModel::setItemsSelected,
@@ -76,7 +59,7 @@ class LikeFragment :
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
-            updateDeleteItems()
+            likeViewModel.deleteSelectedItems()
             BindingToast.initLikeDeleteToast(
                 requireContext(),
                 getString(com.release.keyneez.R.string.like_delete_complete)
@@ -103,5 +86,17 @@ class LikeFragment :
     companion object {
         @JvmStatic
         fun newInstance() = LikeFragment()
+    }
+
+    fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
+        observe(
+            lifecycleOwner,
+            object : Observer<T> {
+                override fun onChanged(data: T) {
+                    observer.onChanged(data)
+                    removeObserver(this)
+                }
+            }
+        )
     }
 }
