@@ -2,9 +2,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
@@ -86,17 +83,5 @@ class LikeFragment :
     companion object {
         @JvmStatic
         fun newInstance() = LikeFragment()
-    }
-
-    fun <T> LiveData<T>.observeOnce(lifecycleOwner: LifecycleOwner, observer: Observer<T>) {
-        observe(
-            lifecycleOwner,
-            object : Observer<T> {
-                override fun onChanged(data: T) {
-                    observer.onChanged(data)
-                    removeObserver(this)
-                }
-            }
-        )
     }
 }

@@ -25,9 +25,7 @@ class LikeAdapter(
             with(binding) {
                 data = item
                 ivLikeBackground.setOnSingleClickListener {
-                    // isSelcted 여부를 반대로
                     item.isSelected = !item.isSelected
-                    // id 만 넘겨주는 함수 호출
                     setItemsSelected(item.id)
                     binding.ivLikeCheckedBackground.visibility =
                         if (item.isSelected) View.VISIBLE else View.GONE

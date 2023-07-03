@@ -49,6 +49,7 @@ class LikeViewModel : ViewModel() {
     fun updateSelected() {
         _isSelected.value = _isSelected.value?.not()
     }
+
     fun deleteSelectedItems() {
         if (_isEdit.value == true) {
             val selectedIdsList = _selectedIds.value ?: return
