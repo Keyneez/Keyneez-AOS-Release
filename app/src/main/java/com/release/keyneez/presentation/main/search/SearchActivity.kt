@@ -61,12 +61,11 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun setupSearchActivityList() {
-        viewModel.searchList.observe(this) { searchList ->
-            searchAdapter?.submitList(searchList)
-            binding.tvSearchCount.text = searchList.size.toString()
-            if (searchList.size == 0) {
-                showToast(getString(R.string.search_no_result))
-            }
+        val searchList = viewModel.searchList.value ?: emptyList()
+        searchAdapter?.submitList(searchList)
+        binding.tvSearchCount.text = searchList.size.toString()
+        if (searchList.size == 0) {
+            showToast(getString(R.string.search_no_result))
         }
     }
 
