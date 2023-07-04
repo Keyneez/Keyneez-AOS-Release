@@ -34,7 +34,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
                 R.id.menu_main_explore -> navigateTo<ExploreFragment>()
                 R.id.menu_main_like -> {
                     navigateTo<LikeFragment>()
-                    val visibility = if (mainViewModel.isBnvVisible.value == true) {
+                    val visibility = if (mainViewModel.isBnvVisible.value == false) {
                         View.VISIBLE
                     } else {
                         View.GONE

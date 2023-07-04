@@ -64,9 +64,6 @@ class LikeFragment :
             binding.ivEditBackground.visibility = View.GONE
             likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
-//            mainViewModel.isBnvVisible.observe(viewLifecycleOwner) {
-//                mainViewModel.updateBnvView()
-//            }
         }
     }
 
