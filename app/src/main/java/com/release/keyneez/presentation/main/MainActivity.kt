@@ -2,7 +2,6 @@ package com.release.keyneez.presentation.main
 
 import LikeFragment
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
@@ -32,16 +31,7 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
             when (menu.itemId) {
                 R.id.menu_main_home -> navigateTo<HomeFragment>()
                 R.id.menu_main_explore -> navigateTo<ExploreFragment>()
-                R.id.menu_main_like -> {
-                    navigateTo<LikeFragment>()
-                    val visibility = if (mainViewModel.isBnvVisible.value == false) {
-                        View.VISIBLE
-                    } else {
-                        View.GONE
-                    }
-                    binding.bnvMain.visibility = visibility
-                }
-
+                R.id.menu_main_like -> navigateTo<LikeFragment>()
                 R.id.menu_main_setting -> navigateTo<SettingFragment>()
             }
             true

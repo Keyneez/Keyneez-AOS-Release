@@ -1,5 +1,6 @@
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -49,12 +50,15 @@ class LikeFragment :
 
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
+            Log.d("1", "제발편집버튼")
+            likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
         }
     }
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
+            Log.d("1", "제발삭제버튼")
             likeViewModel.deleteSelectedItems()
             BindingToast.initLikeDeleteToast(
                 requireContext(),
