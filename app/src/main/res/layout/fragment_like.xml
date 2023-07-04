@@ -160,7 +160,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="21dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:layout_marginBottom="14dp"
             android:background="@drawable/sel_like_edit_btn"
             android:enabled="@{vm.selectedIds.size() >= 1}"

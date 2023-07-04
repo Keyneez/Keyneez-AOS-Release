@@ -35,7 +35,7 @@
             android:background="@drawable/shape_white_fill_rect_topshadow"
             android:paddingHorizontal="18dp"
             android:paddingBottom="13dp"
-            android:visibility="@{vm.isBnvVisible ? View.VISIBLE : View.GONE}"
+            android:visibility="@{vm.isBnvVisible() ? View.GONE : View.VISIBLE}"
             app:itemActiveIndicatorStyle="@style/Widget.Keyneez.BottomNavigationView.ActiveIndicator"
             app:itemIconTint="@drawable/sel_main_color_bnv_menu"
             app:itemTextAppearanceActive="@style/CaptionBold10"
