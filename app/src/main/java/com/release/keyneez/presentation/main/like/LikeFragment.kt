@@ -2,7 +2,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.domain.model.Activity
@@ -16,12 +15,11 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private var likeAdapter: LikeAdapter? = null
-    private lateinit var mainViewModel: MainViewModel
+    private val mainViewModel by viewModels<MainViewModel>()
     lateinit var likeList: List<Activity>
     private val likeViewModel by viewModels<LikeViewModel>()
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,7 +48,7 @@ class LikeFragment :
 
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
-            mainViewModel.hideBottomNavigation()
+            mainViewModel.updateBnvView()
         }
     }
 
@@ -61,7 +59,6 @@ class LikeFragment :
                 requireContext(),
                 getString(com.release.keyneez.R.string.like_delete_complete)
             )?.show()
-            mainViewModel.showBottomNavigation()
             binding.btnEdit.visibility = View.GONE
             binding.ivEditBackground.visibility = View.GONE
             likeViewModel.updateEditView()

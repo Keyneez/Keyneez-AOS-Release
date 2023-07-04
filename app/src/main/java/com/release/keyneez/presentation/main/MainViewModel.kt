@@ -12,20 +12,9 @@ class MainViewModel @Inject constructor() : ViewModel() {
 
     init {
         _isBnvVisible.value = false
-        showBottomNavigation()
-        hideBottomNavigation()
-        updateaBnvView()
     }
 
-    fun updateaBnvView() {
+    fun updateBnvView() {
         _isBnvVisible.value = _isBnvVisible.value?.not()
-    }
-
-    fun showBottomNavigation() {
-        _isBnvVisible.value = true
-    }
-
-    fun hideBottomNavigation() {
-        _isBnvVisible.value = false
     }
 }

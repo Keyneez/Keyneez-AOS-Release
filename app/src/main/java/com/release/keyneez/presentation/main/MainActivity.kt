@@ -2,12 +2,10 @@ package com.release.keyneez.presentation.main
 
 import LikeFragment
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivityMainBinding
@@ -22,24 +20,25 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
     val likeViewModel by viewModels<LikeViewModel>()
     private lateinit var mainViewModel: MainViewModel
+    private var isBottomNavigationVisible = true
 
+    //    private lateinit var likeFragmentBinding: FragmentLikeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         binding.vm = mainViewModel
-
-        mainViewModel.isBnvVisible.observe(
-            this,
-            Observer { isVisible ->
-                if (isVisible) {
-                    // 바텀네비게이션을 표시
-                    binding.bnvMain.visibility = View.VISIBLE
-                } else {
-                    // 바텀네비게이션을 숨김
-                    binding.bnvMain.visibility = View.GONE
-                }
-            }
-        )
+//        likeFragmentBinding = FragmentLikeBinding.inflate(layoutInflater)
+//        likeFragmentBinding.btnLikeEdit.setOnClickListener {
+//            mainViewModel.updateaBnvView()
+//            val isBnvVisible = mainViewModel.isBnvVisible
+//            if (isBnvVisible) {
+//                // 바텀네비게이션을 표시
+//                binding.bnvMain.visibility = View.VISIBLE
+//            } else {
+//                // 바텀네비게이션을 숨김
+//                binding.bnvMain.visibility = View.GONE
+//            }
+//        }
         initBnvItemSelectedListener()
     }
 
