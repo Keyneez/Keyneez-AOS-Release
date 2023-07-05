@@ -37,7 +37,6 @@ class LikeFragment :
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
             setItemsSelected = likeViewModel::setItemsSelected,
-            getSelectedIdsCount = likeViewModel::getSelectedIdsCount,
             isEdit = likeViewModel.isEdit
         )
         binding.rvLike.adapter = likeAdapter
@@ -59,7 +58,6 @@ class LikeFragment :
 
     private fun initEditBtnClickListener() {
         binding.btnEdit.setOnSingleClickListener {
-            Log.d("1", "제발삭제버튼")
             likeViewModel.deleteSelectedItems()
             BindingToast.initLikeDeleteToast(
                 requireContext(),
@@ -76,6 +74,14 @@ class LikeFragment :
         likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
             likeList = activityList
             likeAdapter?.submitList(activityList)
+            if (likeViewModel.isEdit.value == false) {
+                Log.d("1", "false일 때")
+                binding.tvLikeNum.setText(likeList.size.toString())
+            } else {
+                Log.d("1", "true일 때")
+                binding.tvLikeNum.setText(likeViewModel.getSelectedIdsCount().toString())
+            }
+            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty()
         }
     }
 

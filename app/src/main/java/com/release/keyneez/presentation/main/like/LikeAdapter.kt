@@ -13,15 +13,12 @@ import com.release.keyneez.util.extension.setOnSingleClickListener
 
 class LikeAdapter(
     private val setItemsSelected: (Int) -> List<Int>,
-    private val getSelectedIdsCount: (Int) -> Int,
     private val isEdit: LiveData<Boolean>
 ) : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
-    private var selectedActivity = arrayListOf<Activity>()
 
     inner class LikeViewHolder(
         private val binding: ItemLikeContentBinding,
         private val setItemsSelected: (Int) -> List<Int>,
-        private val getSelectedIdsCount: (Int) -> Int,
         private val isEdit: LiveData<Boolean>
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Activity) {
@@ -50,7 +47,6 @@ class LikeAdapter(
         return LikeViewHolder(
             binding,
             setItemsSelected,
-            getSelectedIdsCount,
             isEdit
         )
     }

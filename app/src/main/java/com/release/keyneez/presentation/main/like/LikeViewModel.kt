@@ -11,6 +11,9 @@ class LikeViewModel : ViewModel() {
     private val _isEdit = MutableLiveData<Boolean>()
     private val _isSelected = MutableLiveData<Boolean>()
     private val _selectedIds = MutableLiveData<MutableList<Int>>()
+    private val _selectedCount = MutableLiveData<Int>()
+    val selectedCount: LiveData<Int>
+        get() = _selectedCount
     val activityList: LiveData<List<Activity>>
         get() = _activityList
     val isEdit: LiveData<Boolean>
@@ -21,6 +24,7 @@ class LikeViewModel : ViewModel() {
 
     init {
         getLikeActivityList()
+        getSelectedIdsCount()
         _isEdit.value = false
         _isSelected.value = false
         _selectedIds.value = emptyList<Int>().toMutableList()
@@ -34,16 +38,18 @@ class LikeViewModel : ViewModel() {
             selectedIdsList.add(id)
         }
         _selectedIds.value = selectedIdsList
+        getSelectedIdsCount()
         return selectedIdsList.toList()
-    }
-
-    fun getSelectedIdsCount(id: Int): Int {
-        val selectedIdsList = _selectedIds.value ?: mutableListOf()
-        return selectedIdsList.size
     }
 
     fun updateEditView() {
         _isEdit.value = _isEdit.value?.not()
+    }
+
+    fun getSelectedIdsCount() {
+        val selectedIdsList = _selectedIds.value ?: mutableListOf()
+        val selectedCount = selectedIdsList.size
+        _selectedCount.value = selectedCount
     }
 
     fun updateSelected() {
