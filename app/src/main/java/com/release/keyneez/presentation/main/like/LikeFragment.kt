@@ -20,6 +20,7 @@ class LikeFragment :
     lateinit var likeList: List<Activity>
     private val likeViewModel by viewModels<LikeViewModel>()
     private val mainViewModel by activityViewModels<MainViewModel>()
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
@@ -36,7 +37,8 @@ class LikeFragment :
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
             setItemsSelected = likeViewModel::setItemsSelected,
-            getSelectedIdsCount = likeViewModel::getSelectedIdsCount
+            getSelectedIdsCount = likeViewModel::getSelectedIdsCount,
+            isEdit = likeViewModel.isEdit
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator
@@ -50,7 +52,6 @@ class LikeFragment :
 
     private fun initLikeEditBtnClickListener() {
         binding.btnLikeEdit.setOnSingleClickListener {
-            Log.d("1", "제발편집버튼")
             likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
         }
