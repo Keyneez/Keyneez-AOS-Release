@@ -46,10 +46,11 @@ class LikeViewModel : ViewModel() {
         _isEdit.value = _isEdit.value?.not()
     }
 
-    fun getSelectedIdsCount() {
+    fun getSelectedIdsCount(): Int {
         val selectedIdsList = _selectedIds.value ?: mutableListOf()
         val selectedCount = selectedIdsList.size
         _selectedCount.value = selectedCount
+        return selectedIdsList.size
     }
 
     fun updateSelected() {
