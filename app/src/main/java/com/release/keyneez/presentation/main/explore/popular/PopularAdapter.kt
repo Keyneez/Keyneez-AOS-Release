@@ -4,25 +4,22 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import com.release.keyneez.data.entity.response.ResponseGetContentDto
 import com.release.keyneez.databinding.ItemExploreContentBinding
-import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
-class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+class PopularAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolder>(diffUtil) {
+    var data = listOf<ResponseGetContentDto>()
+
     class PopularViewHolder(private val binding: ItemExploreContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Activity) {
-            with(binding) {
-                ivExploreBackground.load(item.background)
-                tvExploreCategory.text = item.category
-                tvExploreContentTitle.text = item.title
-                tvExploreDate.text = item.date
-                // TODO : root.setOnSingleClickListener 구현
-            }
+        fun setPopularContent(popular: ResponseGetContentDto) {
+            binding.data = popular
+            // 여기도 누르면 상세뷰로 가는 코드짜기
         }
     }
 
+    override fun getItemCount(): Int = data.size
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PopularViewHolder(
             ItemExploreContentBinding.inflate(
@@ -34,12 +31,12 @@ class PopularAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) 
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is PopularViewHolder) holder.bind(getItem(position))
+        if (holder is PopularViewHolder) holder.setPopularContent(getItem(position))
     }
 
     companion object {
-        private val diffUtil = DiffCallback<Activity>(
-            onItemsTheSame = { old, new -> old.id == new.id },
+        private val diffUtil = DiffCallback<ResponseGetContentDto>(
+            onItemsTheSame = { old, new -> old.content == new.content },
             onContentsTheSame = { old, new -> old == new }
         )
     }

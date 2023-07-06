@@ -16,7 +16,8 @@
     <string name="search_content">제목, 키워드</string>
     <string name="search_cancel">취소</string>
     <string name="search_result">검색결과</string>
-    <string name="search_count">%s개</string>
+    <string name="search_count">%s</string>
+    <string name="search_result_end">개</string>
     <string name="search_category">기획</string>
     <string name="search_title">행주산성 맛집 투어</string>
     <string name="search_period">%s–%s</string>
@@ -37,11 +38,25 @@
     <string name="explore_career">진로</string>
     <string name="explore_content_title">행주산성\n맛집 투어</string>
     <string name="explore_date">%s-%s</string>
-    <string name="explore_toolbar_contentdescription">툴바</string>
+    <string name="toolbar_contentdescription">툴바</string>
     <string name="explore_search_contentdescription">검색버튼</string>
-    <string name="explore_recycler_contentdescription">리사이클러뷰</string>
-    <string name="explore_heart_contentdescription">하트</string>
-    <string name="explore_content_contentdescription">콘텐츠</string>
+    <string name="recycler_contentdescription">리사이클러뷰</string>
+    <string name="heart_contentdescription">하트</string>
+    <string name="content_contentdescription">콘텐츠</string>
+
+    <!-- like -->
+    <string name="like_title">좋아요</string>
+    <string name="like_num">총 %s개</string>
+    <string name="like_edit">편집</string>
+    <string name="like_cancel">취소</string>
+    <string name="like_select">%s개 선택</string>
+    <string name="like_delete_title">삭제할 활동 선택</string>
+    <string name="like_delete_btn">삭제하기</string>
+    <string name="like_delete_complete">삭제 완료</string>
+
+    <!-- uiState -->
+    <string name="msg_search_null">검색결과가 없습니다.</string>
+    <string name="msg_server_error">네트워크 연결에 실패했습니다.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

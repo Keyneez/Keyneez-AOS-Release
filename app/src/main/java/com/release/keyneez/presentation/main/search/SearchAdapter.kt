@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.databinding.ItemSearchContentBinding
-import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.DiffCallback
 
-class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
+class SearchAdapter :
+    ListAdapter<ResponseGetSearchResultDto, RecyclerView.ViewHolder>(diffUtil) {
+    var data = listOf<ResponseGetSearchResultDto>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return SearchViewHolder(
             ItemSearchContentBinding.inflate(
@@ -20,27 +21,22 @@ class SearchAdapter : ListAdapter<Activity, RecyclerView.ViewHolder>(diffUtil) {
         )
     }
 
+    override fun getItemCount(): Int = data.size
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is SearchViewHolder) holder.bind(getItem(position))
+        if (holder is SearchViewHolder) holder.setSearch(getItem(position))
     }
 
-    //    override fun getItemCount(): Int = data.size
     class SearchViewHolder(private val binding: ItemSearchContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Activity) {
-            with(binding) {
-                ivSearchBackground.load(item.background)
-                tvSearchCategory.text = item.category
-                tvSearchContentTitle.text = item.title
-                tvSearchDate.text = item.date
-                // TODO : root.setOnSingleClickListener 구현
-            }
+        fun setSearch(search: ResponseGetSearchResultDto) {
+            binding.data = search
+            // 여기 디테일뷰와 연결하는 코드 작성하기
         }
     }
 
     companion object {
-        private val diffUtil = DiffCallback<Activity>(
-            onItemsTheSame = { old, new -> old.id == new.id },
+        private val diffUtil = DiffCallback<ResponseGetSearchResultDto>(
+            onItemsTheSame = { old, new -> old.content == new.content },
             onContentsTheSame = { old, new -> old == new }
         )
     }
