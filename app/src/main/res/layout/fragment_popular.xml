@@ -12,6 +12,8 @@
         <variable
             name="data"
             type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,6 +29,7 @@
             android:layout_marginStart="22dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
+            android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
             android:textColor="@drawable/sel_explore_drawable_text_color"
@@ -42,6 +45,7 @@
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
+            android:onClick="@{()->vm.getPopularData()}"
             android:text="@string/explore_hobby"
             android:textColor="@drawable/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_all"
@@ -55,6 +59,7 @@
             android:layout_marginStart="9dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
+            android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
             android:textColor="@drawable/sel_explore_drawable_text_color"
@@ -69,6 +74,7 @@
             android:layout_marginStart="9dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
+            android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
             android:textColor="@drawable/sel_explore_drawable_text_color"

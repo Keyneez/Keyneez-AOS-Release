@@ -32,10 +32,10 @@ class PopularViewModel @Inject constructor(
     val filter = MutableLiveData("")
 
     init {
-        getPopularList()
+        getPopularData()
     }
 
-    private fun getPopularList() {
+    fun getPopularData() {
         viewModelScope.launch {
             contentRepository.getContent(filter.value.toString())
                 .onSuccess { response ->
