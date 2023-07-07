@@ -19,7 +19,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_home_popular"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/tv_explore_popular_all"
@@ -31,8 +32,9 @@
             android:paddingHorizontal="16dp"
             android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
+            android:clickable="true"
             android:text="@string/explore_entire"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,9 +47,10 @@
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
+            android:clickable="true"
             android:onClick="@{()->vm.getPopularData()}"
             android:text="@string/explore_hobby"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_all"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,10 +62,11 @@
             android:layout_marginStart="9dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
+            android:clickable="true"
             android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_hobby"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -72,12 +76,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="9dp"
+            android:clickable="true"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_popular_outside"
             app:layout_constraintTop_toTopOf="parent" />
 

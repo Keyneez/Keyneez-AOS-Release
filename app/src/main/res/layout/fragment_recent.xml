@@ -29,7 +29,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +43,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_hobby"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_all"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_hobby"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +71,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_outside"
             app:layout_constraintTop_toTopOf="parent" />
 
