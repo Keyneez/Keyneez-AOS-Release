@@ -7,13 +7,16 @@ import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentRecentBinding
 import com.release.keyneez.util.binding.BindingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_recent) {
     private val viewModel: RecentViewModel by viewModels()
     private var recentAdapter: RecentAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.vm = viewModel
         initRecentAdapter()
         setupRecentActivityList()
         initCategoryBtnListener()
@@ -40,6 +43,9 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         binding.tvExploreRecentOutside.isSelected = false
 
         selectedButton.isSelected = true
+        val filterValue = selectedButton.text.toString()
+        viewModel.setFilterValue(filterValue)
+        viewModel.getRecentData()
     }
 
     private fun initRecentAdapter() {
@@ -48,8 +54,8 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
     }
 
     private fun setupRecentActivityList() {
-        viewModel.activityList.observe(viewLifecycleOwner) { activityList ->
-            recentAdapter?.submitList(activityList)
+        viewModel.recentList.observe(viewLifecycleOwner) { recentList ->
+            recentAdapter?.submitList(recentList)
         }
     }
 
