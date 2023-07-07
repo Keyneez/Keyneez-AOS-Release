@@ -2,6 +2,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
@@ -32,6 +33,31 @@ class LikeFragment :
         setupLikeActivityList()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
+        initCategoryBtnListener()
+    }
+
+    private fun initCategoryBtnListener() {
+        binding.tvLikeAll.setOnClickListener {
+            selectOnlyOneButton(binding.tvLikeAll)
+        }
+        binding.tvLikeCareer.setOnClickListener {
+            selectOnlyOneButton(binding.tvLikeCareer)
+        }
+        binding.tvLikeHobby.setOnClickListener {
+            selectOnlyOneButton(binding.tvLikeHobby)
+        }
+        binding.tvLikeOutside.setOnClickListener {
+            selectOnlyOneButton(binding.tvLikeOutside)
+        }
+    }
+
+    private fun selectOnlyOneButton(selectedButton: TextView) {
+        binding.tvLikeAll.isSelected = false
+        binding.tvLikeCareer.isSelected = false
+        binding.tvLikeHobby.isSelected = false
+        binding.tvLikeOutside.isSelected = false
+
+        selectedButton.isSelected = true
     }
 
     private fun initLikeAdapter() {
