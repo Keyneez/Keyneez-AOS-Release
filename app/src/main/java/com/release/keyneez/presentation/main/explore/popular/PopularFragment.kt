@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
-import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,11 +16,32 @@ class PopularFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
-        binding.tvExplorePopularAll.setOnClickListener {
-            binding.tvExplorePopularAll.isSelected = !binding.tvExplorePopularAll.isSelected
-        }
         initPopularAdapter()
         setupPopularActivityList()
+        initCategoryBtnListener()
+    }
+
+    private fun initCategoryBtnListener() {
+        binding.tvExplorePopularAll.setOnClickListener {
+            selectOnlyOneButton(binding.tvExplorePopularAll)
+        }
+        binding.tvExplorePopularCareer.setOnClickListener {
+            selectOnlyOneButton(binding.tvExplorePopularCareer)
+        }
+        binding.tvExplorePopularHobby.setOnClickListener {
+            selectOnlyOneButton(binding.tvExplorePopularHobby)
+        }
+        binding.tvExplorePopularOutside.setOnClickListener {
+            selectOnlyOneButton(binding.tvExplorePopularOutside)
+        }
+    }
+    private fun selectOnlyOneButton(selectedButton: TextView) {
+        binding.tvExplorePopularAll.isSelected = false
+        binding.tvExplorePopularCareer.isSelected = false
+        binding.tvExplorePopularHobby.isSelected = false
+        binding.tvExplorePopularOutside.isSelected = false
+
+        selectedButton.isSelected = true
     }
 
     private fun initPopularAdapter() {
