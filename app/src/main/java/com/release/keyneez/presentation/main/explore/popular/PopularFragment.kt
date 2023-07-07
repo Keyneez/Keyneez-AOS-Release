@@ -35,6 +35,7 @@ class PopularFragment :
             selectOnlyOneButton(binding.tvExplorePopularOutside)
         }
     }
+
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExplorePopularAll.isSelected = false
         binding.tvExplorePopularCareer.isSelected = false
@@ -42,6 +43,9 @@ class PopularFragment :
         binding.tvExplorePopularOutside.isSelected = false
 
         selectedButton.isSelected = true
+        val filterValue = selectedButton.text.toString()
+        viewModel.setFilterValue(filterValue)
+        viewModel.getPopularData()
     }
 
     private fun initPopularAdapter() {

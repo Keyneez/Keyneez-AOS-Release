@@ -35,6 +35,10 @@ class PopularViewModel @Inject constructor(
         getPopularData()
     }
 
+    fun setFilterValue(value: String) {
+        filter.value = value
+    }
+
     fun getPopularData() {
         viewModelScope.launch {
             contentRepository.getContent(filter.value.toString())
