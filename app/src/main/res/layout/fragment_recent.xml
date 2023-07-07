@@ -12,12 +12,15 @@
         <variable
             name="data"
             type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_home_recent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/tv_explore_recent_all"
@@ -27,6 +30,7 @@
             android:layout_marginStart="22dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
+            android:clickable="true"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
             android:textColor="@color/sel_explore_drawable_text_color"
@@ -42,6 +46,7 @@
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
+            android:clickable="true"
             android:text="@string/explore_hobby"
             android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_all"
@@ -56,6 +61,7 @@
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
+            android:clickable="true"
             android:text="@string/explore_activity"
             android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_hobby"
@@ -70,6 +76,7 @@
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
+            android:clickable="true"
             android:text="@string/explore_career"
             android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_outside"
