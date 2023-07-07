@@ -7,6 +7,7 @@ plugins {
     id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
 }
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())

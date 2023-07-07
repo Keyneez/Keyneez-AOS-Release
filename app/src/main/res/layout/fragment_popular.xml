@@ -30,7 +30,6 @@
             android:layout_marginStart="22dp"
             android:background="@drawable/sel_explore_drawable_bnv_category"
             android:paddingHorizontal="16dp"
-            android:onClick="@{()->vm.getPopularData()}"
             android:paddingVertical="6dp"
             android:clickable="true"
             android:text="@string/explore_entire"
