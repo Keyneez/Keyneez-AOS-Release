@@ -2,6 +2,7 @@ package com.release.keyneez.presentation.main.explore.recent
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.FragmentRecentBinding
@@ -15,6 +16,30 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         super.onViewCreated(view, savedInstanceState)
         initRecentAdapter()
         setupRecentActivityList()
+        initCategoryBtnListener()
+    }
+    private fun initCategoryBtnListener() {
+        binding.tvExploreRecentAll.setOnClickListener {
+            selectOnlyOneButton(binding.tvExploreRecentAll)
+        }
+        binding.tvExploreRecentCareer.setOnClickListener {
+            selectOnlyOneButton(binding.tvExploreRecentCareer)
+        }
+        binding.tvExploreRecentHobby.setOnClickListener {
+            selectOnlyOneButton(binding.tvExploreRecentHobby)
+        }
+        binding.tvExploreRecentOutside.setOnClickListener {
+            selectOnlyOneButton(binding.tvExploreRecentOutside)
+        }
+    }
+
+    private fun selectOnlyOneButton(selectedButton: TextView) {
+        binding.tvExploreRecentAll.isSelected = false
+        binding.tvExploreRecentCareer.isSelected = false
+        binding.tvExploreRecentHobby.isSelected = false
+        binding.tvExploreRecentOutside.isSelected = false
+
+        selectedButton.isSelected = true
     }
 
     private fun initRecentAdapter() {
