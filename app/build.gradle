@@ -31,9 +31,7 @@ android {
         manifestPlaceholders = [
                 kakaoApiKey: kakaoApiKey
         ]
-
     }
-
 
     buildTypes {
         release {
