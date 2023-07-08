@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.main.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.release.keyneez.presentation.main.MainViewModel" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,6 +35,7 @@
             android:background="@drawable/shape_white_fill_rect_topshadow"
             android:paddingHorizontal="18dp"
             android:paddingBottom="13dp"
+            android:visibility="@{vm.isBnvVisible() ? View.GONE : View.VISIBLE}"
             app:itemActiveIndicatorStyle="@style/Widget.Keyneez.BottomNavigationView.ActiveIndicator"
             app:itemIconTint="@drawable/sel_main_color_bnv_menu"
             app:itemTextAppearanceActive="@style/CaptionBold10"
@@ -41,5 +46,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/menu_main" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

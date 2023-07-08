@@ -1,21 +1,26 @@
 package com.release.keyneez.presentation.main
 
+import LikeFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.lifecycle.ViewModelProvider
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivityMainBinding
 import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.presentation.main.home.HomeFragment
-import com.release.keyneez.presentation.main.like.LikeFragment
 import com.release.keyneez.presentation.main.setting.SettingFragment
 import com.release.keyneez.util.binding.BindingActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main) {
+    private lateinit var mainViewModel: MainViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.vm = mainViewModel
         initBnvItemSelectedListener()
     }
 
