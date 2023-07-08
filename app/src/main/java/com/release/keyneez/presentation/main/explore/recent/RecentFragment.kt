@@ -21,6 +21,7 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         setupRecentActivityList()
         initCategoryBtnListener()
     }
+
     private fun initCategoryBtnListener() {
         binding.tvExploreRecentAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExploreRecentAll)
@@ -44,8 +45,13 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        viewModel.setFilterValue(filterValue)
-        viewModel.getRecentData()
+        if (filterValue != binding.tvExploreRecentAll.text.toString()) {
+            viewModel.setFilterValue(filterValue)
+            viewModel.getRecentData()
+        } else {
+            viewModel.setFilterValue("")
+            viewModel.getRecentData()
+        }
     }
 
     private fun initRecentAdapter() {

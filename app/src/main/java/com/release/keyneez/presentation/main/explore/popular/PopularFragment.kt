@@ -44,8 +44,13 @@ class PopularFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        viewModel.setFilterValue(filterValue)
-        viewModel.getPopularData()
+        if (filterValue != binding.tvExplorePopularAll.text.toString()) {
+            viewModel.setFilterValue(filterValue)
+            viewModel.getPopularData()
+        } else {
+            viewModel.setFilterValue("")
+            viewModel.getPopularData()
+        }
     }
 
     private fun initPopularAdapter() {

@@ -4,10 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.release.keyneez.R
 import com.release.keyneez.data.entity.response.ResponseGetContentDto
 import com.release.keyneez.data.repository.ContentRepository
-import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
