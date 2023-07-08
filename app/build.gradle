@@ -9,6 +9,8 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
+def kakaoApiKey = properties.getProperty('kakao_api_key')
+
 android {
     namespace 'com.release.keyneez'
     compileSdk 33
@@ -23,6 +25,12 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASE_URL", properties['base_url']
+        buildConfigField "String", "KAKAO_NATIVE_KEY", kakaoApiKey
+
+        manifestPlaceholders = [
+                kakaoApiKey: kakaoApiKey
+        ]
+
     }
 
 
