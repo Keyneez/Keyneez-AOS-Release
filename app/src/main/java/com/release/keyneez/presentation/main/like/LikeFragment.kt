@@ -63,7 +63,8 @@ class LikeFragment :
     private fun initLikeAdapter() {
         likeAdapter = LikeAdapter(
             setItemsSelected = likeViewModel::setItemsSelected,
-            isEdit = likeViewModel.isEdit
+            isEdit = likeViewModel.isEdit,
+            clearSelectedItems = likeViewModel::clearSelectedItems
         )
         binding.rvLike.adapter = likeAdapter
         val animator = binding.rvLike.itemAnimator

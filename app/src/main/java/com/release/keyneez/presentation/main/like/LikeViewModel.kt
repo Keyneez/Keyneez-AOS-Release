@@ -1,5 +1,6 @@
 package com.release.keyneez.presentation.main.like
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,6 +41,14 @@ class LikeViewModel : ViewModel() {
         _selectedIds.value = selectedIdsList
         getSelectedIdsCount()
         return selectedIdsList.toList()
+    }
+
+    fun clearSelectedItems() {
+        Log.d("1", "제발")
+        if (_isEdit.value == false) {
+            _selectedIds.value?.clear()
+            getSelectedIdsCount()
+        }
     }
 
     fun updateEditView() {
