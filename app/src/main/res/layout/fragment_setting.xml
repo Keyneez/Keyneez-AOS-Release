@@ -1,16 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.main.setting.SettingFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_setting"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/gray050">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="setting fragment" />
+            android:id="@+id/tv_setting_title"
+            style="@style/HeadingSemibold24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="56dp"
+            android:text="@string/setting_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_setting_nickname"
+            style="@style/SubtitleSemibold18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="49dp"
+            android:lineHeight="26sp"
+            tools:text="민지너는최고"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_title" />
+
+        <View
+            android:id="@+id/view_setting_divider1"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginTop="31dp"
+            android:background="@color/gray100"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_nickname" />
+
+        <TextView
+            android:id="@+id/tv_setting_login_info"
+            style="@style/BodyMedium16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="18dp"
+            android:text="@string/setting_login_info"
+            android:textColor="@color/gray500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_setting_divider1"
+            app:drawableEndCompat="@drawable/ic_setting_kakao" />
+
+        <TextView
+            android:id="@+id/tv_setting_auto_login"
+            style="@style/BodyMedium16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="25dp"
+            android:paddingVertical="18dp"
+            android:text="자동 로그인 사용"
+            android:textColor="@color/gray500"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_setting_login_info" />
+
+        <Switch
+            android:id="@+id/switch_setting_auto_login"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_setting_auto_login"
+            android:layout_marginEnd="25dp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_setting_auto_login"
+            android:layout_height="wrap_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

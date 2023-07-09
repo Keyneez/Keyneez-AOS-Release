@@ -54,11 +54,14 @@
     <string name="like_delete_btn">삭제하기</string>
     <string name="like_delete_complete">삭제 완료</string>
 
-    <!-- uiState -->
+    <!-- setting -->
+    <string name="setting_title">설정</string>
+
+    <!-- ui state -->
     <string name="msg_search_null">검색결과가 없습니다.</string>
     <string name="msg_server_error">네트워크 연결에 실패했습니다.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="setting_login_info">로그인 정보</string>
 </resources>
