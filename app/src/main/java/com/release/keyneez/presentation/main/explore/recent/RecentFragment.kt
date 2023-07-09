@@ -1,6 +1,7 @@
 package com.release.keyneez.presentation.main.explore.recent
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -35,6 +36,7 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         binding.tvExploreRecentOutside.setOnClickListener {
             selectOnlyOneButton(binding.tvExploreRecentOutside)
         }
+        selectOnlyOneButton(binding.tvExploreRecentAll)
     }
 
     private fun selectOnlyOneButton(selectedButton: TextView) {

@@ -22,6 +22,7 @@ class PopularFragment :
     }
 
     private fun initCategoryBtnListener() {
+        selectOnlyOneButton(binding.tvExplorePopularAll)
         binding.tvExplorePopularAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExplorePopularAll)
         }
