@@ -1,16 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.main.setting.SettingFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_setting"
+    <ScrollView
+        android:id="@+id/sv_setting"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_setting"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="setting fragment" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/gray050">
+
+            <TextView
+                android:id="@+id/tv_setting_title"
+                style="@style/HeadingSemibold24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="56dp"
+                android:text="@string/setting_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_setting_nickname"
+                style="@style/SubtitleSemibold18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="49dp"
+                android:lineHeight="26sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_title"
+                tools:text="민지너는최고" />
+
+            <View
+                android:id="@+id/view_setting_divider1"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:layout_marginTop="31dp"
+                android:background="@color/gray100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_nickname" />
+
+            <TextView
+                android:id="@+id/tv_setting_login_info"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_login_info"
+                android:textColor="@color/gray500"
+                app:drawableEndCompat="@drawable/ic_setting_kakao"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_setting_divider1" />
+
+            <TextView
+                android:id="@+id/tv_setting_auto_login"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_auto_login"
+                android:textColor="@color/gray500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_login_info" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switch_setting_auto_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_setting_auto_login"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_setting_auto_login" />
+
+            <View
+                android:id="@+id/view_setting_divider2"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:background="@color/gray100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_auto_login" />
+
+            <TextView
+                android:id="@+id/tv_setting_push_alarm"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_push_alarm"
+                android:textColor="@color/gray500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_setting_divider2" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/switch_setting_push_alarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="25dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_setting_push_alarm"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_setting_push_alarm" />
+
+            <View
+                android:id="@+id/view_setting_divider3"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:background="@color/gray100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_push_alarm" />
+
+            <TextView
+                android:id="@+id/tv_setting_version_info"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_version_info"
+                android:textColor="@color/gray500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_setting_divider3" />
+
+            <TextView
+                android:id="@+id/btn_setting_terms_of_service"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_terms_of_service"
+                android:textColor="@color/gray500"
+                app:drawableEndCompat="@drawable/ic_setting_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_setting_version_info" />
+
+            <TextView
+                android:id="@+id/btn_setting_privacy_policy"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_privacy_policy"
+                android:textColor="@color/gray500"
+                app:drawableEndCompat="@drawable/ic_setting_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_setting_terms_of_service" />
+
+            <TextView
+                android:id="@+id/btn_setting_opensource_license"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_opensource_license"
+                android:textColor="@color/gray500"
+                app:drawableEndCompat="@drawable/ic_setting_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_setting_privacy_policy" />
+
+            <View
+                android:id="@+id/view_setting_divider4"
+                android:layout_width="0dp"
+                android:layout_height="14dp"
+                android:background="@color/gray100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_setting_opensource_license" />
+
+            <TextView
+                android:id="@+id/btn_setting_logout"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_logout"
+                android:textColor="@color/red500"
+                app:drawableEndCompat="@drawable/ic_setting_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_setting_divider4" />
+
+            <TextView
+                android:id="@+id/btn_setting_leave"
+                style="@style/BodyMedium16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="18dp"
+                android:text="@string/setting_leave"
+                android:textColor="@color/gray400"
+                app:drawableEndCompat="@drawable/ic_setting_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btn_setting_logout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
