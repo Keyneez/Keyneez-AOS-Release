@@ -14,7 +14,9 @@ import com.release.keyneez.presentation.main.like.LikeViewModel
 import com.release.keyneez.util.binding.BindingFragment
 import com.release.keyneez.util.binding.BindingToast
 import com.release.keyneez.util.extension.setOnSingleClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private var likeAdapter: LikeAdapter? = null
@@ -37,6 +39,7 @@ class LikeFragment :
     }
 
     private fun initCategoryBtnListener() {
+        selectOnlyOneButton(binding.tvLikeAll)
         binding.tvLikeAll.setOnClickListener {
             selectOnlyOneButton(binding.tvLikeAll)
         }
@@ -58,6 +61,14 @@ class LikeFragment :
         binding.tvLikeOutside.isSelected = false
 
         selectedButton.isSelected = true
+        val filterValue = selectedButton.text.toString()
+        if (filterValue != binding.tvLikeAll.text.toString()) {
+            likeViewModel.setFilterValue(filterValue)
+            likeViewModel.getPopularData()
+        } else {
+            likeViewModel.setFilterValue("")
+            likeViewModel.getPopularData()
+        }
     }
 
     private fun initLikeAdapter() {

@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.release.keyneez.R
 import com.release.keyneez.domain.model.Activity
+import dagger.hilt.android.lifecycle.HiltViewModel
 
+@HiltViewModel
 class LikeViewModel : ViewModel() {
     private val _activityList = MutableLiveData<List<Activity>>(mutableListOf())
     private val _isEdit = MutableLiveData<Boolean>()
@@ -22,12 +24,18 @@ class LikeViewModel : ViewModel() {
         get() = _isSelected
     val selectedIds: LiveData<MutableList<Int>> = _selectedIds
 
+    val filter = MutableLiveData("")
+
     init {
         getLikeActivityList()
         getSelectedIdsCount()
         _isEdit.value = false
         _isSelected.value = false
         _selectedIds.value = emptyList<Int>().toMutableList()
+    }
+
+    fun setFilterValue(value: String) {
+        filter.value = value
     }
 
     fun setItemsSelected(id: Int): List<Int> {
