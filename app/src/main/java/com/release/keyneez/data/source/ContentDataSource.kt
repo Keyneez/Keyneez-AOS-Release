@@ -13,7 +13,7 @@ class ContentDataSource @Inject constructor(
     suspend fun getContent(filter: String): BaseResponse<List<ResponseGetContentDto>> =
         contentService.getContent(filter)
 
-    suspend fun getLike(): BaseResponse<List<ResponseGetLikeDto>> = contentService.getLike()
+    suspend fun getLike(filter: String): BaseResponse<List<ResponseGetLikeDto>> = contentService.getLike(filter)
     suspend fun getSearch(keyword: String): BaseResponse<List<ResponseGetSearchResultDto>> =
         contentService.getSearch(keyword)
 }

@@ -14,8 +14,8 @@ class ContentRepositoryImpl @Inject constructor(
     override suspend fun getContent(filter: String): Result<BaseResponse<List<ResponseGetContentDto>>> =
         kotlin.runCatching { contentDataSource.getContent(filter) }
 
-    override suspend fun getLike(): Result<BaseResponse<List<ResponseGetLikeDto>>> =
-        kotlin.runCatching { contentDataSource.getLike() }
+    override suspend fun getLike(filter: String): Result<BaseResponse<List<ResponseGetLikeDto>>> =
+        kotlin.runCatching { contentDataSource.getLike(filter) }
 
     override suspend fun getSearch(keyword: String): Result<BaseResponse<List<ResponseGetSearchResultDto>>> =
         kotlin.runCatching { contentDataSource.getSearch(keyword) }

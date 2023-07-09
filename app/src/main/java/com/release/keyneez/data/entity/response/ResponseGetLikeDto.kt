@@ -10,5 +10,6 @@ data class ResponseGetLikeDto(
     @SerialName("category") val category: String,
     @SerialName("img") val img: String?,
     @SerialName("start_at") val start: String?,
-    @SerialName("end_at") val end: String?
+    @SerialName("end_at") val end: String?,
+    var isSelected: Boolean = false
 )

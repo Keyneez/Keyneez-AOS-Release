@@ -1,3 +1,5 @@
+package com.release.keyneez.presentation.main.like
+
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -6,11 +8,9 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
+import com.release.keyneez.data.entity.response.ResponseGetLikeDto
 import com.release.keyneez.databinding.FragmentLikeBinding
-import com.release.keyneez.domain.model.Activity
 import com.release.keyneez.presentation.main.MainViewModel
-import com.release.keyneez.presentation.main.like.LikeAdapter
-import com.release.keyneez.presentation.main.like.LikeViewModel
 import com.release.keyneez.util.binding.BindingFragment
 import com.release.keyneez.util.binding.BindingToast
 import com.release.keyneez.util.extension.setOnSingleClickListener
@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private var likeAdapter: LikeAdapter? = null
-    lateinit var likeList: List<Activity>
+    lateinit var likeList: List<ResponseGetLikeDto>
     private val likeViewModel by viewModels<LikeViewModel>()
     private val mainViewModel by activityViewModels<MainViewModel>()
 
@@ -32,7 +32,7 @@ class LikeFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.vm = likeViewModel
         initLikeAdapter()
-        setupLikeActivityList()
+        setupLikeData()
         initLikeEditBtnClickListener()
         initEditBtnClickListener()
         initCategoryBtnListener()
@@ -64,10 +64,10 @@ class LikeFragment :
         val filterValue = selectedButton.text.toString()
         if (filterValue != binding.tvLikeAll.text.toString()) {
             likeViewModel.setFilterValue(filterValue)
-            likeViewModel.getPopularData()
+            likeViewModel.getLikeData()
         } else {
             likeViewModel.setFilterValue("")
-            likeViewModel.getPopularData()
+            likeViewModel.getLikeData()
         }
     }
 
@@ -81,9 +81,6 @@ class LikeFragment :
         val animator = binding.rvLike.itemAnimator
         if (animator is SimpleItemAnimator) {
             animator.supportsChangeAnimations = false
-        }
-        likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
-            likeAdapter?.submitList(activityList)
         }
     }
 
@@ -108,8 +105,8 @@ class LikeFragment :
         }
     }
 
-    private fun setupLikeActivityList() {
-        likeViewModel.activityList.observe(viewLifecycleOwner) { activityList ->
+    private fun setupLikeData() {
+        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
             likeList = activityList
             likeAdapter?.submitList(activityList)
             if (likeViewModel.isEdit.value == false) {

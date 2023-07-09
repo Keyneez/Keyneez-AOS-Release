@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ContentService {
     @GET("contents/liked")
-    suspend fun getLike(): BaseResponse<List<ResponseGetLikeDto>>
+    suspend fun getLike(@Query("filter") filter: String): BaseResponse<List<ResponseGetLikeDto>>
 
     @GET("contents/")
     suspend fun getContent(@Query("filter") filter: String): BaseResponse<List<ResponseGetContentDto>>

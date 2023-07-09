@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.release.keyneez.domain.model.Activity" />
+            type="com.release.keyneez.data.entity.response.ResponseGetLikeDto" />
 
         <import type="android.view.View" />
     </data>
@@ -39,6 +39,7 @@
         <TextView
             android:id="@+id/tv_like_category"
             style="@style/CaptionMedium12"
+            setCategory="@{data.category}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -46,10 +47,11 @@
             android:background="@drawable/shape_purple500_fill_49_rect"
             android:paddingHorizontal="8dp"
             android:paddingVertical="3dp"
-            android:text="@string/explore_activity"
+            android:text="@{data.category}"
             android:textColor="@color/gray050"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/explore_activity" />
 
         <ImageButton
             android:id="@+id/btn_explore_liked"
@@ -72,36 +74,40 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="11dp"
             android:layout_marginEnd="15dp"
-            android:text="@string/explore_content_title"
+            android:text="@{data.title}"
             android:textColor="@color/gray800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_like_category" />
+            app:layout_constraintTop_toBottomOf="@id/tv_like_category"
+            tools:text="@string/explore_content_title" />
 
         <TextView
             android:id="@+id/tv_like_date"
             style="@style/CaptionMedium10"
+            putEndDate="@{data.end}"
+            putStartDate="@{data.start}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginTop="4dp"
-            android:text="@string/explore_date"
             android:textColor="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_like_content_title" />
+            app:layout_constraintTop_toBottomOf="@id/tv_like_content_title"
+            tools:text="@string/explore_date" />
 
         <ImageView
             android:id="@+id/iv_like_content"
+            setImage="@{data.img}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
             android:layout_marginBottom="18dp"
             android:contentDescription="@string/content_contentdescription"
-            android:src="@drawable/img_explore_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:src="@drawable/img_explore_background" />
 
         <ImageView
             android:id="@+id/iv_like_checked_background"

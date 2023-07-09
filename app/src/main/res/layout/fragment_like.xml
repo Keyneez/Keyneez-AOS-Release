@@ -9,6 +9,9 @@
             name="vm"
             type="com.release.keyneez.presentation.main.like.LikeViewModel" />
 
+        <variable
+            name="data"
+            type="com.release.keyneez.data.entity.response.ResponseGetLikeDto" />
         <import type="android.view.View" />
     </data>
 
