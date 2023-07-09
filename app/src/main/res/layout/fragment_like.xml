@@ -9,9 +9,6 @@
             name="vm"
             type="com.release.keyneez.presentation.main.like.LikeViewModel" />
 
-        <variable
-            name="data"
-            type="com.release.keyneez.data.entity.response.ResponseGetLikeDto" />
         <import type="android.view.View" />
     </data>
 
@@ -50,6 +47,7 @@
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
             android:padding="12dp"
+            android:clickable="true"
             android:text="@{vm.isEdit ? @string/like_cancel : @string/like_edit}"
             android:textColor="@color/gray600"
             app:layout_constraintEnd_toEndOf="@id/layout_like_toolbar"

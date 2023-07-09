@@ -33,9 +33,9 @@ class LikeFragment :
         binding.vm = likeViewModel
         initLikeAdapter()
         setupLikeData()
-        initLikeEditBtnClickListener()
         initEditBtnClickListener()
         initCategoryBtnListener()
+        initLikeEditBtnClickListener()
     }
 
     private fun initCategoryBtnListener() {
