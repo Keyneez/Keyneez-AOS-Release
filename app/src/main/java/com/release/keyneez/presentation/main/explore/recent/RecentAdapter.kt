@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.entity.response.ResponseGetContentDto
-import com.release.keyneez.databinding.ItemExploreContentBinding
+import com.release.keyneez.databinding.ItemRecentContentBinding
 import com.release.keyneez.util.DiffCallback
 
 class RecentAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolder>(diffUtil) {
     var data = listOf<ResponseGetContentDto>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return RecentViewHolder(
-            ItemExploreContentBinding.inflate(
+            ItemRecentContentBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -24,7 +24,7 @@ class RecentAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolder
         if (holder is RecentViewHolder) holder.setRecentContent(getItem(position))
     }
 
-    class RecentViewHolder(private val binding: ItemExploreContentBinding) :
+    class RecentViewHolder(private val binding: ItemRecentContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setRecentContent(recent: ResponseGetContentDto) {
             binding.data = recent

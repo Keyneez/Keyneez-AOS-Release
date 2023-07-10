@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.entity.response.ResponseGetContentDto
-import com.release.keyneez.databinding.ItemExploreContentBinding
+import com.release.keyneez.databinding.ItemPopularContentBinding
 import com.release.keyneez.util.DiffCallback
 
 class PopularAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolder>(diffUtil) {
     var data = listOf<ResponseGetContentDto>()
 
-    class PopularViewHolder(private val binding: ItemExploreContentBinding) :
+    class PopularViewHolder(private val binding: ItemPopularContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setPopularContent(popular: ResponseGetContentDto) {
             binding.data = popular
@@ -22,7 +22,7 @@ class PopularAdapter : ListAdapter<ResponseGetContentDto, RecyclerView.ViewHolde
     override fun getItemCount(): Int = data.size
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return PopularViewHolder(
-            ItemExploreContentBinding.inflate(
+            ItemPopularContentBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

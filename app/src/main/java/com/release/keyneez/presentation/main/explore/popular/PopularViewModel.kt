@@ -62,6 +62,23 @@ class PopularViewModel @Inject constructor(
         }
     }
 
+    fun postSave(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postLike(pk).onSuccess { response ->
+
+                Timber.d("POST SAVE STATE SUCCESS")
+                Timber.d("response : $response")
+
+                _saveState.value = true
+                _stateMessage.value = UiState.Success
+            }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
+        }
+    }
+
     companion object {
         const val POPULAR_DATA_NULL_CODE = 100
         private const val successTag = "GET_POPULAR_CONTENT_SUCCESS"

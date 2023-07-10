@@ -98,6 +98,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_recent_all"
             app:spanCount="2"
-            tools:listitem="@layout/item_explore_content" />
+            tools:listitem="@layout/item_recent_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

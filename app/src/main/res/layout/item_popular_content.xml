@@ -9,18 +9,22 @@
             name="data"
             type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
 
+        <variable
+            name="vm"
+            type="com.release.keyneez.presentation.main.explore.popular.PopularViewModel" />
+
         <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_explore_rv"
+        android:id="@+id/layout_popular_rv"
         android:layout_width="match_parent"
         android:layout_height="236dp"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="17dp">
 
         <ImageView
-            android:id="@+id/iv_explore_background"
+            android:id="@+id/iv_popular_background"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_gray050_fill_15_rect"
@@ -32,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_explore_category"
+            android:id="@+id/tv_popular_category"
             style="@style/CaptionMedium12"
             setCategory="@{data.category}"
             android:layout_width="0dp"
@@ -49,20 +53,22 @@
             tools:text="@string/explore_activity" />
 
         <ImageButton
-            android:id="@+id/btn_explore_liked"
+            android:id="@+id/btn_popular_liked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:padding="12dp"
+            isSelected="@{vm.saveState}"
+            android:onClick="@{()->vm.postSave(data.content)}"
             android:src="@drawable/sel_search_drawable_bnv_like_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
-            android:id="@+id/tv_explore_content_title"
+            android:id="@+id/tv_popular_content_title"
             style="@style/BodyBold16"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,11 +79,11 @@
             android:textColor="@color/gray800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_category"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_category"
             tools:text="@string/explore_content_title" />
 
         <TextView
-            android:id="@+id/tv_explore_date"
+            android:id="@+id/tv_popular_date"
             style="@style/CaptionMedium10"
             putEndDate="@{data.end}"
             putStartDate="@{data.start}"
@@ -88,11 +94,11 @@
             android:textColor="@color/gray400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_explore_content_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_popular_content_title"
             tools:text="@string/explore_date" />
 
         <ImageView
-            android:id="@+id/iv_explore_content"
+            android:id="@+id/iv_popular_content"
             setImage="@{data.img}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

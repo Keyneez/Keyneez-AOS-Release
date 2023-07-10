@@ -97,6 +97,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_popular_all"
             app:spanCount="2"
-            tools:listitem="@layout/item_explore_content" />
+            tools:listitem="@layout/item_popular_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
