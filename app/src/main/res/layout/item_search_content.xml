@@ -9,6 +9,10 @@
             name="data"
             type="com.release.keyneez.data.entity.response.ResponseGetSearchResultDto" />
 
+        <variable
+            name="vm"
+            type="com.release.keyneez.presentation.main.search.SearchViewModel" />
+
         <import type="android.view.View" />
     </data>
 
@@ -54,6 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            isSelected="@{vm.saveState}"
+            android:onClick="@{()->vm.postSave(data.content)}"
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:contentDescription="@string/search_heart_contentdescription"
