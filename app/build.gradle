@@ -9,9 +9,6 @@ plugins {
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
 android {
     namespace 'com.release.keyneez'
     compileSdk 33
@@ -25,9 +22,17 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
         buildConfigField "String", "BASE_URL", properties['base_url']
-    }
+        buildConfigField "String", "KAKAO_NATIVE_KEY", "\"${properties.getProperty("kakao_api_key")}\""
+        buildConfigField "String", "kakao_oauth_host", "\"${properties.getProperty("kakao_oauth_host")}\""
 
+        defaultConfig {
+            manifestPlaceholders = ["kakao_oauth_host": "\"${properties.getProperty("kakao_oauth_host")}\""]
+        }
+
+    }
 
     buildTypes {
         release {
@@ -54,7 +59,6 @@ android {
 dependencies {
     // hilt
     implementation "com.google.dagger:hilt-android:2.46"
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     kapt "com.google.dagger:hilt-compiler:2.46"
 
     // ktx
@@ -94,7 +98,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'
 
     // kakao login
-    implementation "com.kakao.sdk:v2-user:2.8.6"
+    implementation "com.kakao.sdk:v2-user:2.13.0"
 
     // shared preference
     implementation 'androidx.security:security-crypto-ktx:1.1.0-alpha06'
@@ -116,8 +120,8 @@ dependencies {
     // material
     implementation 'com.google.android.material:material:1.9.0'
 
-    // constraint layout
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    // dot indicator
+    implementation "com.tbuonomo:dotsindicator:4.3"
 
     // test
     testImplementation 'junit:junit:4.13.2'

@@ -6,6 +6,10 @@
     <string name="unknown_error_msg">알 수 없는 오류가 발생했습니다.</string>
     <string name="view_type_error_msg">Unknown View Type : %d</string>
 
+    <!-- onboarding -->
+    <string name="onboarding_first">청소년에게 필요한\n활동과 혜택 정보를 한눈에!</string>
+    <string name="onboarding_second">다양한 세상을\n키니즈와 함께 둘러볼까요?</string>
+
     <!-- main -->
     <string name="main_menu_home">홈</string>
     <string name="main_menu_explore">탐색</string>
@@ -60,5 +64,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

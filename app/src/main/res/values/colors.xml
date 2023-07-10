@@ -41,6 +41,9 @@
     <color name="gray100">#F7F7F7</color>
     <color name="gray050">#FFFFFF</color>
 
+    <color name="yellow500">#F9E24C</color>
+    <color name="brown500">#3B1F1E</color>
+
     <!-- Transparent color -->
     <color name="gray900_80">#CC000000</color>
     <color name="gray900_20">#33000000</color>
