@@ -85,7 +85,8 @@ class LikeFragment :
     }
 
     private fun initLikeEditBtnClickListener() {
-        binding.btnLikeEdit.setOnSingleClickListener {
+        binding.btnLikeEdit.setOnClickListener {
+            Log.d("1", "제발..")
             likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
         }
