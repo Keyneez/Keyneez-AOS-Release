@@ -7,11 +7,6 @@ plugins {
     id "org.jlleitschuh.gradle.ktlint" version "10.3.0"
 }
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-def kakaoApiKey = properties.getProperty('kakao_api_key')
-
 android {
     namespace 'com.release.keyneez'
     compileSdk 33
@@ -25,12 +20,16 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
         buildConfigField "String", "BASE_URL", properties['base_url']
-        buildConfigField "String", "KAKAO_NATIVE_KEY", kakaoApiKey
+        buildConfigField "String", "KAKAO_NATIVE_KEY", "\"${properties.getProperty("kakao_api_key")}\""
+        buildConfigField "String", "kakao_oauth_host", "\"${properties.getProperty("kakao_oauth_host")}\""
 
-        manifestPlaceholders = [
-                kakaoApiKey: kakaoApiKey
-        ]
+        defaultConfig {
+            manifestPlaceholders = ["kakao_oauth_host": "\"${properties.getProperty("kakao_oauth_host")}\""]
+        }
+
     }
 
     buildTypes {
