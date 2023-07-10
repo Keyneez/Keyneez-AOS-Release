@@ -12,6 +12,7 @@ class OnSecondFragment : BindingFragment<FragmentOnSecondBinding>(R.layout.fragm
     }
 
     companion object {
+        @JvmStatic
         fun newInstance() = OnSecondFragment()
     }
 }
