@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/SubtitleSemibold18"
-            android:text="다양한 세상을\n키니즈와 함께 둘러볼까요?"
+            android:text="@string/onboarding_second"
             android:gravity="center"
             android:textColor="@color/gray900"
             android:layout_marginTop="36dp"
