@@ -2,6 +2,7 @@ package com.release.keyneez.data.entity.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+
 @Serializable
 data class ResponseGetContentDto(
     @SerialName("content_pk") val content: Int,
