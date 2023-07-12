@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main.like
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -75,7 +74,6 @@ class LikeViewModel @Inject constructor(
     }
 
     fun updateEditView() {
-        Log.d("1", "갑자기 왜 안되는 거야 대체..")
         _isEdit.value = _isEdit.value?.not()
     }
 
