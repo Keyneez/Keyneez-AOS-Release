@@ -32,6 +32,7 @@ class RecentViewModel @Inject constructor(
     val filter = MutableLiveData("")
 
     init {
+        _saveState.value = true
         getRecentData()
     }
 
@@ -68,7 +69,7 @@ class RecentViewModel @Inject constructor(
                 Timber.d("POST SAVE STATE SUCCESS")
                 Timber.d("response : $response")
 
-                _saveState.value = true
+                _saveState.value = false
                 _stateMessage.value = UiState.Success
             }
                 .onFailure {

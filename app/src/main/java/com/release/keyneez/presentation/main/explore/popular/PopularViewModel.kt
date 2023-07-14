@@ -32,7 +32,7 @@ class PopularViewModel @Inject constructor(
     val filter = MutableLiveData("")
 
     init {
-        _saveState.value == true
+        _saveState.value = true
         getPopularData()
     }
 
