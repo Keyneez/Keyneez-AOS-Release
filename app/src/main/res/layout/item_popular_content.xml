@@ -62,7 +62,7 @@
             android:padding="12dp"
             isSelected="@{vm.saveState}"
             android:onClick="@{()->vm.postSave(data.content)}"
-            android:src="@{data.Likes.isEmpty() ? @drawable/ic_heart_empty : @drawable/ic_heart_fill}"
+            android:src="@{data.Likes.isEmpty() || vm.saveState ? @drawable/ic_heart_empty : @drawable/ic_heart_fill}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />

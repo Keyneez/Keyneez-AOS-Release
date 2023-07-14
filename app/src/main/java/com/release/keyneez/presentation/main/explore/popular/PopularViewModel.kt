@@ -32,6 +32,7 @@ class PopularViewModel @Inject constructor(
     val filter = MutableLiveData("")
 
     init {
+        _saveState.value == true
         getPopularData()
     }
 
@@ -69,7 +70,7 @@ class PopularViewModel @Inject constructor(
                 Timber.d("POST SAVE STATE SUCCESS")
                 Timber.d("response : $response")
 
-                _saveState.value = true
+                _saveState.value = false
                 _stateMessage.value = UiState.Success
             }
                 .onFailure {
