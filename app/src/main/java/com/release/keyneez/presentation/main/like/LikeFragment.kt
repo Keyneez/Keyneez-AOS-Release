@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
+import com.release.keyneez.R
 import com.release.keyneez.data.entity.response.ResponseGetLikeDto
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.presentation.main.MainViewModel
@@ -113,13 +114,15 @@ class LikeFragment :
             likeList = activityList
             likeAdapter?.submitList(activityList)
             likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
-                if (isEdit) {
+                val countText = if (isEdit) {
                     Log.d("1", "true일 때")
-                    binding.tvLikeNum.setText(likeViewModel.getSelectedIdsCount().toString())
+                    val selectedCount = likeViewModel.getSelectedIdsCount().toString()
+                    getString(R.string.like_select, selectedCount)
                 } else {
                     Log.d("1", "false일 때")
-                    binding.tvLikeNum.setText(likeList.size.toString())
+                    getString(R.string.like_num, likeList.size)
                 }
+                binding.tvLikeNum.text = countText
             }
 //            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
         }
