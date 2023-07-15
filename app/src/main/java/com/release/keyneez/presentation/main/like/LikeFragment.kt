@@ -38,6 +38,13 @@ class LikeFragment :
         initLikeEditBtnClickListener()
     }
 
+    private fun initLikeEditBtnClickListener() {
+        binding.btnLikeEdit.setOnSingleClickListener {
+            likeViewModel.updateEditView()
+            mainViewModel.updateBnvView()
+        }
+    }
+
     private fun initCategoryBtnListener() {
         selectOnlyOneButton(binding.tvLikeAll)
         binding.tvLikeAll.setOnClickListener {
@@ -82,16 +89,8 @@ class LikeFragment :
         if (animator is SimpleItemAnimator) {
             animator.supportsChangeAnimations = false
         }
-        likeViewModel.likeList.observe(viewLifecycleOwner) { likeList ->
-            likeAdapter?.submitList(likeList)
-        }
-    }
-
-    private fun initLikeEditBtnClickListener() {
-        binding.btnLikeEdit.setOnClickListener {
-            Log.d("1", "제발..")
-            likeViewModel.updateEditView()
-            mainViewModel.updateBnvView()
+        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
+            likeAdapter?.submitList(activityList)
         }
     }
 
@@ -120,7 +119,7 @@ class LikeFragment :
                 Log.d("1", "true일 때")
                 binding.tvLikeNum.setText(likeViewModel.getSelectedIdsCount().toString())
             }
-            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty()
+//            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
         }
     }
 
