@@ -112,12 +112,14 @@ class LikeFragment :
         likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
             likeList = activityList
             likeAdapter?.submitList(activityList)
-            if (likeViewModel.isEdit.value == false) {
-                Log.d("1", "false일 때")
-                binding.tvLikeNum.setText(likeList.size.toString())
-            } else {
-                Log.d("1", "true일 때")
-                binding.tvLikeNum.setText(likeViewModel.getSelectedIdsCount().toString())
+            likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
+                if (isEdit) {
+                    Log.d("1", "true일 때")
+                    binding.tvLikeNum.setText(likeViewModel.getSelectedIdsCount().toString())
+                } else {
+                    Log.d("1", "false일 때")
+                    binding.tvLikeNum.setText(likeList.size.toString())
+                }
             }
 //            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
         }
