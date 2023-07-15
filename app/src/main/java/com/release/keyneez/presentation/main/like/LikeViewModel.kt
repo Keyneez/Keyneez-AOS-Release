@@ -78,10 +78,6 @@ class LikeViewModel @Inject constructor(
     }
 
     fun getSelectedIdsCount(): Int {
-        _selectedIds.observeForever { selectedIdsList ->
-            val selectedCount = selectedIdsList?.size ?: 0
-            _selectedCount.value = selectedCount
-        }
         val selectedIdsList = _selectedIds.value ?: mutableListOf()
         val selectedCount = selectedIdsList.size
         _selectedCount.value = selectedCount
