@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,7 +15,6 @@ class MainViewModel @Inject constructor() : ViewModel() {
     }
 
     fun updateBnvView() {
-        Log.d("1", "hollo")
         _isBnvVisible.value = _isBnvVisible.value?.not()
     }
 }
