@@ -93,9 +93,6 @@ class LikeFragment :
         if (animator is SimpleItemAnimator) {
             animator.supportsChangeAnimations = false
         }
-        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
-            likeAdapter?.submitList(activityList)
-        }
     }
 
     private fun initEditBtnClickListener() {
