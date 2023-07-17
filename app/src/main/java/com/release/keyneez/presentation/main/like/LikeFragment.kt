@@ -123,6 +123,7 @@ class LikeFragment :
                     binding.tvLikeNum.text = getString(R.string.like_select, selectedCount)
                     Log.d("1", "true일 때")
                 } else {
+                    // 서버 통신 때문에 제대로 출력 안되는 확률도 있기에 서버통신 되고 다시 살펴 보기
                     binding.tvLikeNum.text = getString(R.string.like_num, likeList.size)
                     Log.d("1", "false일 때")
                 }
