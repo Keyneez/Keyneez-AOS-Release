@@ -113,13 +113,10 @@ class LikeFragment :
     }
 
     private fun setupLikeData() {
-        if (isInitialLoad) {
-            likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
-                likeList = activityList
-                likeAdapter?.submitList(activityList)
-                isInitialLoad = false
-            }
-        } else {
+        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
+            isInitialLoad = false
+            likeList = activityList
+            likeAdapter?.submitList(activityList)
             likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
                 if (isEdit) {
                     val selectedCount = likeViewModel.getSelectedIdsCount().toString()
