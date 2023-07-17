@@ -44,7 +44,7 @@ class LikeFragment :
             likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
             if (likeViewModel.isEdit.value == false) {
-                likeViewModel.getLikeData()
+                initCategoryBtnListener()
             }
         }
     }
@@ -109,7 +109,7 @@ class LikeFragment :
             binding.ivEditBackground.visibility = View.GONE
             likeViewModel.updateEditView()
             mainViewModel.updateBnvView()
-            likeViewModel.getLikeData()
+            initCategoryBtnListener()
         }
     }
 
