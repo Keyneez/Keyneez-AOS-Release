@@ -12,7 +12,6 @@ import com.release.keyneez.util.binding.BindingActivity
 import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
 import com.release.keyneez.util.extension.showSnackbar
-import com.release.keyneez.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -64,9 +63,9 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         val searchList = viewModel.searchList.value
         searchAdapter?.submitList(searchList)
         binding.tvSearchCount.text = searchList?.size.toString()
-        if (searchList?.size == 0) {
-            showToast(getString(R.string.search_no_result))
-        }
+//        if (searchList?.size == 0) {
+//            showToast(getString(R.string.search_no_result))
+//        }
     }
 
     private fun initHideKeyboard() {
