@@ -24,7 +24,7 @@ class LikeFragment :
     lateinit var likeList: List<ResponseGetLikeDto>
     private val likeViewModel by viewModels<LikeViewModel>()
     private val mainViewModel by activityViewModels<MainViewModel>()
-
+    private var isInitialLoad = true
     override fun onAttach(context: Context) {
         super.onAttach(context)
     }
@@ -73,12 +73,14 @@ class LikeFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (filterValue != binding.tvLikeAll.text.toString()) {
-            likeViewModel.setFilterValue(filterValue)
-            likeViewModel.getLikeData()
-        } else {
-            likeViewModel.setFilterValue("")
-            likeViewModel.getLikeData()
+        if (isInitialLoad == false) {
+            if (filterValue != binding.tvLikeAll.text.toString()) {
+                likeViewModel.setFilterValue(filterValue)
+                likeViewModel.getLikeData()
+            } else {
+                likeViewModel.setFilterValue("")
+                likeViewModel.getLikeData()
+            }
         }
     }
 
@@ -111,9 +113,13 @@ class LikeFragment :
     }
 
     private fun setupLikeData() {
-        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
-            likeList = activityList
-            likeAdapter?.submitList(activityList)
+        if (isInitialLoad) {
+            likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
+                likeList = activityList
+                likeAdapter?.submitList(activityList)
+                isInitialLoad = false
+            }
+        } else {
             likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
                 if (isEdit) {
                     val selectedCount = likeViewModel.getSelectedIdsCount().toString()
@@ -124,8 +130,8 @@ class LikeFragment :
                     Log.d("1", "false일 때")
                 }
             }
-//            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
         }
+//            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
     }
 
     override fun onDestroyView() {
