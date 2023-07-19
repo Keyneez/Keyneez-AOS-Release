@@ -37,7 +37,6 @@ class SearchViewModel @Inject constructor(
     init {
         _saveState.value = true
         _isFlowVisible.value = false
-        getSearchPostData()
     }
 
     fun updateCount() {
