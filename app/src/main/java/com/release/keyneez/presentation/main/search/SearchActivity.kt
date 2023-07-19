@@ -15,19 +15,11 @@ import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
 import com.release.keyneez.util.extension.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
     private var searchAdapter: SearchAdapter? = null
     private val viewModel: SearchViewModel by viewModels()
-    private var isInitialLoad = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -65,7 +57,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun setupSearchActivityList() {
         viewModel.searchList.observe(this) {
-            isInitialLoad = false
             val searchList = viewModel.searchList.value
             searchAdapter?.submitList(searchList)
             binding.tvSearchCount.text = searchList?.size.toString()
@@ -91,42 +82,41 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
-            setupSearchActivityList()
             Log.d("1", "제바루ㅜ")
             viewModel.updateCount()
         }
     }
 
-    private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
-        emit(1)
-        emit(2)
-        delay(500L)
-        emit(3)
-        emit(4)
-        delay(200L)
-        emit(5)
-        delay(700L)
-        emit(6)
-    }.debounce(300L)
-
-    fun main() = runBlocking<Unit> {
-        debounce().collect { }
-    }
-
-    fun <T> debounce(
-        timeMillis: Long = 300L,
-        coroutineScope: CoroutineScope,
-        block: (T) -> Unit
-    ): (T) -> Unit {
-        var debounceJob: Job? = null
-        return {
-            debounceJob?.cancel()
-            debounceJob = coroutineScope.launch {
-                delay(timeMillis)
-                block(it)
-            }
-        }
-    }
+//    private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
+//        emit(1)
+//        emit(2)
+//        delay(500L)
+//        emit(3)
+//        emit(4)
+//        delay(200L)
+//        emit(5)
+//        delay(700L)
+//        emit(6)
+//    }.debounce(300L)
+//
+//    fun main() = runBlocking<Unit> {
+//        debounce().collect { }
+//    }
+//
+//    fun <T> debounce(
+//        timeMillis: Long = 300L,
+//        coroutineScope: CoroutineScope,
+//        block: (T) -> Unit
+//    ): (T) -> Unit {
+//        var debounceJob: Job? = null
+//        return {
+//            debounceJob?.cancel()
+//            debounceJob = coroutineScope.launch {
+//                delay(timeMillis)
+//                block(it)
+//            }
+//        }
+//    }
 
     private fun initBackBtnClickListener() {
         binding.btnSearchCancel.setOnSingleClickListener {

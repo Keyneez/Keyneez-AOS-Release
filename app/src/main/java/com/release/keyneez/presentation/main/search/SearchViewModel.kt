@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main.search
 
-import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,7 +17,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _searchList = MutableLiveData<List<ResponseGetSearchResultDto>>()
+    private val _searchList = MutableLiveData<List<ResponseGetSearchResultDto>>(mutableListOf())
     val searchList: LiveData<List<ResponseGetSearchResultDto>>
         get() = _searchList
 
