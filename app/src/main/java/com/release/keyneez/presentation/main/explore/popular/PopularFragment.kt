@@ -78,7 +78,6 @@ class PopularFragment :
 
     private fun setupPopularActivityList() {
         viewModel.popularList.observe(viewLifecycleOwner) { popularList ->
-            Log.d("1", "핵심")
             isInitialLoad = false
             list = popularList
             popularAdapter?.submitList(popularList)

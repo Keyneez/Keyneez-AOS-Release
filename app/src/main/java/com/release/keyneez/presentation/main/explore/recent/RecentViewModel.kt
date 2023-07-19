@@ -17,7 +17,7 @@ import javax.inject.Inject
 class RecentViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _recentList = MutableLiveData<List<ResponseGetContentDto>>()
+    private val _recentList = MutableLiveData<List<ResponseGetContentDto>>(mutableListOf())
     val recentList: LiveData<List<ResponseGetContentDto>>
         get() = _recentList
 
@@ -62,6 +62,7 @@ class RecentViewModel @Inject constructor(
                 }
         }
     }
+
     fun postSave(pk: Int) {
         viewModelScope.launch {
             contentRepository.postLike(pk).onSuccess { response ->
