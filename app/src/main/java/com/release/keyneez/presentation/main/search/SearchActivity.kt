@@ -1,7 +1,6 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -82,41 +81,10 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
-            Log.d("1", "제바루ㅜ")
             viewModel.updateCount()
+            viewModel.getSearchPostData()
         }
     }
-
-//    private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
-//        emit(1)
-//        emit(2)
-//        delay(500L)
-//        emit(3)
-//        emit(4)
-//        delay(200L)
-//        emit(5)
-//        delay(700L)
-//        emit(6)
-//    }.debounce(300L)
-//
-//    fun main() = runBlocking<Unit> {
-//        debounce().collect { }
-//    }
-//
-//    fun <T> debounce(
-//        timeMillis: Long = 300L,
-//        coroutineScope: CoroutineScope,
-//        block: (T) -> Unit
-//    ): (T) -> Unit {
-//        var debounceJob: Job? = null
-//        return {
-//            debounceJob?.cancel()
-//            debounceJob = coroutineScope.launch {
-//                delay(timeMillis)
-//                block(it)
-//            }
-//        }
-//    }
 
     private fun initBackBtnClickListener() {
         binding.btnSearchCancel.setOnSingleClickListener {
