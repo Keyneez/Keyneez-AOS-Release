@@ -13,6 +13,7 @@ class PopularFragment :
     BindingFragment<FragmentPopularBinding>(com.release.keyneez.R.layout.fragment_popular) {
     private val viewModel: PopularViewModel by viewModels()
     private var popularAdapter: PopularAdapter? = null
+    private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vm = viewModel
@@ -45,12 +46,14 @@ class PopularFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (filterValue != binding.tvExplorePopularAll.text.toString()) {
-            viewModel.setFilterValue(filterValue)
-            viewModel.getPopularData()
-        } else {
-            viewModel.setFilterValue("")
-            viewModel.getPopularData()
+        if (isInitialLoad == false) {
+            if (filterValue != binding.tvExplorePopularAll.text.toString()) {
+                viewModel.setFilterValue(filterValue)
+                viewModel.getPopularData()
+            } else {
+                viewModel.setFilterValue("")
+                viewModel.getPopularData()
+            }
         }
     }
 
@@ -61,6 +64,7 @@ class PopularFragment :
 
     private fun setupPopularActivityList() {
         viewModel.popularList.observe(viewLifecycleOwner) { popularList ->
+            isInitialLoad = false
             popularAdapter?.submitList(popularList)
         }
     }

@@ -27,7 +27,7 @@ import kotlinx.coroutines.runBlocking
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
     private var searchAdapter: SearchAdapter? = null
     private val viewModel: SearchViewModel by viewModels()
-
+    private var isInitialLoad = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -65,6 +65,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun setupSearchActivityList() {
         viewModel.searchList.observe(this) {
+            isInitialLoad = false
             val searchList = viewModel.searchList.value
             searchAdapter?.submitList(searchList)
             binding.tvSearchCount.text = searchList?.size.toString()
