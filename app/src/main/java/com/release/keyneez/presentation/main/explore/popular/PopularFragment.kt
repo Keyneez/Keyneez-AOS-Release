@@ -1,9 +1,13 @@
 package com.release.keyneez.presentation.main.explore.popular
 
+import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.SimpleItemAnimator
+import com.release.keyneez.data.entity.response.ResponseGetContentDto
 import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -12,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PopularFragment :
     BindingFragment<FragmentPopularBinding>(com.release.keyneez.R.layout.fragment_popular) {
     private val viewModel: PopularViewModel by viewModels()
+    lateinit var list: List<ResponseGetContentDto>
     private var popularAdapter: PopularAdapter? = null
     private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,6 +25,10 @@ class PopularFragment :
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
     }
 
     private fun initCategoryBtnListener() {
@@ -47,6 +56,7 @@ class PopularFragment :
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
         if (isInitialLoad == false) {
+            Log.d("1", "서버통신")
             if (filterValue != binding.tvExplorePopularAll.text.toString()) {
                 viewModel.setFilterValue(filterValue)
                 viewModel.getPopularData()
@@ -60,11 +70,17 @@ class PopularFragment :
     private fun initPopularAdapter() {
         popularAdapter = PopularAdapter()
         binding.rvExplorePopular.adapter = popularAdapter
+        val animator = binding.rvExplorePopular.itemAnimator
+        if (animator is SimpleItemAnimator) {
+            animator.supportsChangeAnimations = false
+        }
     }
 
     private fun setupPopularActivityList() {
         viewModel.popularList.observe(viewLifecycleOwner) { popularList ->
+            Log.d("1", "핵심")
             isInitialLoad = false
+            list = popularList
             popularAdapter?.submitList(popularList)
         }
     }

@@ -17,7 +17,7 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _popularList = MutableLiveData<List<ResponseGetContentDto>>()
+    private val _popularList = MutableLiveData<List<ResponseGetContentDto>>(mutableListOf())
     val popularList: LiveData<List<ResponseGetContentDto>>
         get() = _popularList
 
