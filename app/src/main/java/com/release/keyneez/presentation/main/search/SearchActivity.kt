@@ -1,7 +1,9 @@
 package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -29,6 +31,8 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
+        binding.flowSearch.visibility = View.GONE
+        binding.tvSearchEnd.visibility = View.GONE
         initSearchBtnClickListener()
         initSearchAdapter()
         initBackBtnClickListener()
@@ -60,9 +64,11 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun setupSearchActivityList() {
-        val searchList = viewModel.searchList.value
-        searchAdapter?.submitList(searchList)
-        binding.tvSearchCount.text = searchList?.size.toString()
+        viewModel.searchList.observe(this) {
+            val searchList = viewModel.searchList.value
+            searchAdapter?.submitList(searchList)
+            binding.tvSearchCount.text = searchList?.size.toString()
+        }
     }
 
     private fun initHideKeyboard() {
@@ -85,7 +91,8 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
             setupSearchActivityList()
-            viewModel.getSearchPostData()
+            Log.d("1", "제바루ㅜ")
+            viewModel.updateCount()
         }
     }
 

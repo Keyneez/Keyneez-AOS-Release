@@ -1,5 +1,6 @@
 package com.release.keyneez.presentation.main.search
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,9 @@ class SearchViewModel @Inject constructor(
     private val _stateMessage = MutableLiveData<UiState>()
     val stateMessage: LiveData<UiState>
         get() = _stateMessage
+    private val _isFlowVisible = MutableLiveData<Boolean>()
+    val isFlowVisible: LiveData<Boolean>
+        get() = _isFlowVisible
 
     private val _saveState = MutableLiveData<Boolean>()
     val saveState: LiveData<Boolean>
@@ -33,7 +37,12 @@ class SearchViewModel @Inject constructor(
 
     init {
         _saveState.value = true
+        _isFlowVisible.value = false
         getSearchPostData()
+    }
+
+    fun updateCount() {
+        _isFlowVisible.value = true
     }
 
     fun getSearchPostData() {
