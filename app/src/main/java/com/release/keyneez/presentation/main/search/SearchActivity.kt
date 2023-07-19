@@ -2,7 +2,6 @@ package com.release.keyneez.presentation.main.search
 
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -22,8 +21,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
-        binding.flowSearch.visibility = View.GONE
-        binding.tvSearchEnd.visibility = View.GONE
         initSearchBtnClickListener()
         initSearchAdapter()
         initBackBtnClickListener()
