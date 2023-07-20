@@ -25,7 +25,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         initSearchAdapter()
         initBackBtnClickListener()
         initSearchBtnKeyListener()
-        initHideKeyboard()
         setupSearchState()
     }
 
@@ -59,12 +58,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         }
     }
 
-    private fun initHideKeyboard() {
-        binding.layoutSearch.setOnSingleClickListener {
-            hideKeyboard()
-        }
-    }
-
     private fun initSearchBtnKeyListener() {
         binding.etSearchContent.setOnEditorActionListener(object : TextView.OnEditorActionListener {
             override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
@@ -80,6 +73,7 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         binding.btnSearch.setOnSingleClickListener {
             viewModel.updateCount()
             viewModel.getSearchPostData()
+            hideKeyboard()
         }
     }
 
