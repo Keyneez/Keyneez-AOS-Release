@@ -2,7 +2,6 @@ package com.release.keyneez.presentation.main.explore.popular
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -63,7 +62,6 @@ class PopularFragment :
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
         if (isInitialLoad == false) {
-            Log.d("1", "서버통신")
             if (filterValue != binding.tvExplorePopularAll.text.toString()) {
                 viewModel.setFilterValue(filterValue)
                 viewModel.getPopularData()
