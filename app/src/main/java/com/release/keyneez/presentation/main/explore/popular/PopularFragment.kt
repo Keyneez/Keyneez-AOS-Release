@@ -31,6 +31,13 @@ class PopularFragment :
         super.onAttach(context)
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (!isInitialLoad) {
+            initCategoryBtnListener()
+        }
+    }
+
     private fun initCategoryBtnListener() {
         selectOnlyOneButton(binding.tvExplorePopularAll)
         binding.tvExplorePopularAll.setOnClickListener {
