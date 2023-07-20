@@ -33,7 +33,6 @@ class RecentViewModel @Inject constructor(
 
     init {
         _saveState.value = true
-        getRecentData()
     }
 
     fun setFilterValue(value: String) {

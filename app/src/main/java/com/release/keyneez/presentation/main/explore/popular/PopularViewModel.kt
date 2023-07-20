@@ -33,7 +33,6 @@ class PopularViewModel @Inject constructor(
 
     init {
         _saveState.value = true
-        getPopularData()
     }
 
     fun setFilterValue(value: String) {
