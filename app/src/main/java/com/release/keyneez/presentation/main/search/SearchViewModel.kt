@@ -24,6 +24,7 @@ class SearchViewModel @Inject constructor(
     private val _stateMessage = MutableLiveData<UiState>()
     val stateMessage: LiveData<UiState>
         get() = _stateMessage
+
     private val _isFlowVisible = MutableLiveData<Boolean>()
     val isFlowVisible: LiveData<Boolean>
         get() = _isFlowVisible
@@ -35,12 +36,27 @@ class SearchViewModel @Inject constructor(
     val key = MutableLiveData("")
 
     init {
-        _saveState.value = true
         _isFlowVisible.value = false
     }
 
     fun updateCount() {
         _isFlowVisible.value = true
+    }
+
+    fun updateSaveState(list: List<ResponseGetSearchResultDto.Liked>) {
+        if (list.isEmpty()) {
+            _saveState.value = false
+        } else {
+            _saveState.value = true
+        }
+    }
+
+    fun onSaveBtnClick(data: ResponseGetSearchResultDto, saveState: Boolean) {
+        if (saveState) {
+            postUnLike(data.content)
+        } else {
+            postSave(data.content)
+        }
     }
 
     fun getSearchPostData() {
@@ -79,9 +95,25 @@ class SearchViewModel @Inject constructor(
                 Timber.d("POST SAVE STATE SUCCESS")
                 Timber.d("response : $response")
 
-                _saveState.value = false
+                _saveState.value = true
                 _stateMessage.value = UiState.Success
             }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
+        }
+    }
+
+    fun postUnLike(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postUnlike(pk)
+                .onSuccess { response ->
+                    Timber.tag("POST UNLIKE STATE SUCCES뷰S")
+                    Timber.d("response : $response")
+                    _saveState.value = false
+                    _stateMessage.value = UiState.Success
+                }
                 .onFailure {
                     Timber.d("throwable : $it")
                     _stateMessage.value = UiState.Error

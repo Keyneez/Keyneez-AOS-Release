@@ -51,10 +51,10 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun setupSearchActivityList() {
-        viewModel.searchList.observe(this) {
-            val searchList = viewModel.searchList.value
+        viewModel.searchList.observe(this) { searchList ->
             searchAdapter?.submitList(searchList)
             binding.tvSearchCount.text = searchList?.size.toString()
+            viewModel.updateSaveState(searchList.flatMap { it.Likes })
         }
     }
 
