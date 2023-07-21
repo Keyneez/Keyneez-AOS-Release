@@ -86,6 +86,7 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
             isInitialLoad = false
             list = recentList
             recentAdapter?.submitList(recentList)
+            viewModel.updateSaveState(recentList.flatMap { it.Likes })
         }
     }
 
