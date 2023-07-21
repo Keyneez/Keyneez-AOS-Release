@@ -31,12 +31,24 @@ class PopularViewModel @Inject constructor(
 
     val filter = MutableLiveData("")
 
-    init {
-        _saveState.value = true
-    }
-
     fun setFilterValue(value: String) {
         filter.value = value
+    }
+
+    fun updateSaveState(list: List<ResponseGetContentDto.Liked>) {
+        if (list.isEmpty()) {
+            _saveState.value = false
+        } else {
+            _saveState.value = true
+        }
+    }
+
+    fun onSaveBtnClick(data: ResponseGetContentDto, saveState: Boolean) {
+        if (saveState) {
+            postUnLike(data.content)
+        } else {
+            postSave(data.content)
+        }
     }
 
     fun getPopularData() {
@@ -69,9 +81,25 @@ class PopularViewModel @Inject constructor(
                 Timber.d("POST SAVE STATE SUCCESS")
                 Timber.d("response : $response")
 
-                _saveState.value = false
+                _saveState.value = true
                 _stateMessage.value = UiState.Success
             }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
+        }
+    }
+
+    fun postUnLike(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postUnlike(pk)
+                .onSuccess { response ->
+                    Timber.tag("POST UNLIKE STATE SUCCESS")
+                    Timber.d("response : $response")
+                    _saveState.value = false
+                    _stateMessage.value = UiState.Success
+                }
                 .onFailure {
                     Timber.d("throwable : $it")
                     _stateMessage.value = UiState.Error

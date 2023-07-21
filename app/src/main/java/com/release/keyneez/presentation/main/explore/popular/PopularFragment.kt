@@ -86,6 +86,7 @@ class PopularFragment :
             isInitialLoad = false
             list = popularList
             popularAdapter?.submitList(popularList)
+            viewModel.updateSaveState(popularList.flatMap { it.Likes })
         }
     }
 

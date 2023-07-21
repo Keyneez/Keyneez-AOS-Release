@@ -60,9 +60,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
             android:background="@null"
-            android:onClick="@{()->vm.postSave(data.content)}"
+            android:onClick="@{()->vm.onSaveBtnClick(data, vm.saveState)}"
             android:padding="12dp"
-            android:src="@{data.Likes.isEmpty() || vm.saveState ? @drawable/ic_heart_empty : @drawable/ic_heart_fill}"
+            android:src="@{vm.saveState ? @drawable/ic_heart_fill : @drawable/ic_heart_empty}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
