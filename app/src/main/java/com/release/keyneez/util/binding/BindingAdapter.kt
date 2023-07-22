@@ -44,7 +44,7 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("putStartDate", "putEndDate")
     fun TextView.setDuration(start: String?, end: String?) {
-        if (start?.substring(0, 4) == "9999") {
+        if (start?.substring(0, 4) == "9999" && end?.substring(0, 4) == "9999") {
             this.text = "상시"
         } else {
             val tempStart =
