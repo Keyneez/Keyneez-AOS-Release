@@ -20,7 +20,6 @@ class PopularFragment :
     private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.vm = viewModel
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()

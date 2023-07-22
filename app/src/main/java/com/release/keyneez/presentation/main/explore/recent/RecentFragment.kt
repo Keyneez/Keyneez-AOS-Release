@@ -20,7 +20,6 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
     private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.vm = viewModel
         initRecentAdapter()
         setupRecentActivityList()
         initCategoryBtnListener()
