@@ -71,9 +71,12 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
-            viewModel.updateCount()
-            viewModel.getSearchPostData()
-            hideKeyboard()
+            val searchKeyword = binding.etSearchContent.text.toString().trim()
+            if (searchKeyword.isNotEmpty()) {
+                viewModel.updateCount()
+                viewModel.getSearchPostData()
+                hideKeyboard()
+            }
         }
     }
 
