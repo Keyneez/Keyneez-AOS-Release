@@ -53,7 +53,7 @@ class RecentViewModel @Inject constructor(
 
     fun getRecentData() {
         viewModelScope.launch {
-            contentRepository.getContent(filter.value.toString())
+            contentRepository.getRecent(filter.value.toString())
                 .onSuccess { response ->
                     Timber.tag(successTag).d("response : $response")
 

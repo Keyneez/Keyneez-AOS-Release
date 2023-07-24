@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.release.keyneez.data.entity.response.ResponseGetPopularDto
-import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.repository.ContentRepository
 import com.release.keyneez.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -44,7 +43,7 @@ class PopularViewModel @Inject constructor(
         }
     }
 
-    fun onSaveBtnClick(data: ResponseGetRecentDto, saveState: Boolean) {
+    fun onSaveBtnClick(data: ResponseGetPopularDto, saveState: Boolean) {
         if (saveState) {
             postUnLike(data.content)
         } else {
