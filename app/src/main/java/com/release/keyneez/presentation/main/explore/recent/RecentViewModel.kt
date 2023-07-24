@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
+import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.repository.ContentRepository
 import com.release.keyneez.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +17,8 @@ import javax.inject.Inject
 class RecentViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _recentList = MutableLiveData<List<ResponseGetContentDto>>(mutableListOf())
-    val recentList: LiveData<List<ResponseGetContentDto>>
+    private val _recentList = MutableLiveData<List<ResponseGetRecentDto>>(mutableListOf())
+    val recentList: LiveData<List<ResponseGetRecentDto>>
         get() = _recentList
 
     private val _stateMessage = MutableLiveData<UiState>()
@@ -35,7 +35,7 @@ class RecentViewModel @Inject constructor(
         filter.value = value
     }
 
-    fun updateSaveState(list: List<ResponseGetContentDto.Liked>) {
+    fun updateSaveState(list: List<ResponseGetRecentDto.Liked>) {
         if (list.isEmpty()) {
             _saveState.value = false
         } else {
@@ -43,7 +43,7 @@ class RecentViewModel @Inject constructor(
         }
     }
 
-    fun onSaveBtnClick(data: ResponseGetContentDto, saveState: Boolean) {
+    fun onSaveBtnClick(data: ResponseGetRecentDto, saveState: Boolean) {
         if (saveState) {
             postUnLike(data.content)
         } else {

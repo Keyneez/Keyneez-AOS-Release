@@ -1,7 +1,8 @@
 package com.release.keyneez.data.service
 
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
 import com.release.keyneez.data.entity.response.ResponseGetLikeDto
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
+import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.data.entity.response.ResponsePostLikeDto
 import com.release.keyneez.data.entity.response.wrapper.BaseResponse
@@ -15,7 +16,10 @@ interface ContentService {
     suspend fun getLike(@Query("filter") filter: String): BaseResponse<List<ResponseGetLikeDto>>
 
     @GET("contents/")
-    suspend fun getContent(@Query("filter") filter: String): BaseResponse<List<ResponseGetContentDto>>
+    suspend fun getRecent(@Query("filter") filter: String): BaseResponse<List<ResponseGetRecentDto>>
+
+    @GET("contents/")
+    suspend fun getPopular(@Query("filter") filter: String): BaseResponse<List<ResponseGetPopularDto>>
 
     @GET("contents/search")
     suspend fun getSearch(

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.R
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
+import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.databinding.FragmentRecentBinding
 import com.release.keyneez.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_recent) {
     private val viewModel: RecentViewModel by viewModels()
     private var recentAdapter: RecentAdapter? = null
-    lateinit var list: List<ResponseGetContentDto>
+    lateinit var list: List<ResponseGetRecentDto>
     private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

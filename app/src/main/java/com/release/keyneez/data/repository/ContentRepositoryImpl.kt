@@ -1,7 +1,8 @@
 package com.release.keyneez.data.repository
 
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
 import com.release.keyneez.data.entity.response.ResponseGetLikeDto
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
+import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
 import com.release.keyneez.data.entity.response.ResponsePostLikeDto
 import com.release.keyneez.data.entity.response.wrapper.BaseResponse
@@ -12,8 +13,11 @@ class ContentRepositoryImpl @Inject constructor(
     private val contentDataSource: ContentDataSource
 ) : ContentRepository {
 
-    override suspend fun getContent(filter: String): Result<BaseResponse<List<ResponseGetContentDto>>> =
-        kotlin.runCatching { contentDataSource.getContent(filter) }
+    override suspend fun getRecent(filter: String): Result<BaseResponse<List<ResponseGetRecentDto>>> =
+        kotlin.runCatching { contentDataSource.getRecent(filter) }
+
+    override suspend fun getPopular(filter: String): Result<BaseResponse<List<ResponseGetPopularDto>>> =
+        kotlin.runCatching { contentDataSource.getPopular(filter) }
 
     override suspend fun getLike(filter: String): Result<BaseResponse<List<ResponseGetLikeDto>>> =
         kotlin.runCatching { contentDataSource.getLike(filter) }

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
+import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.repository.ContentRepository
 import com.release.keyneez.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,8 +17,8 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _popularList = MutableLiveData<List<ResponseGetContentDto>>(mutableListOf())
-    val popularList: LiveData<List<ResponseGetContentDto>>
+    private val _popularList = MutableLiveData<List<ResponseGetRecentDto>>(mutableListOf())
+    val popularList: LiveData<List<ResponseGetRecentDto>>
         get() = _popularList
 
     private val _stateMessage = MutableLiveData<UiState>()
@@ -35,7 +35,7 @@ class PopularViewModel @Inject constructor(
         filter.value = value
     }
 
-    fun updateSaveState(list: List<ResponseGetContentDto.Liked>) {
+    fun updateSaveState(list: List<ResponseGetRecentDto.Liked>) {
         if (list.isEmpty()) {
             _saveState.value = false
         } else {
@@ -43,7 +43,7 @@ class PopularViewModel @Inject constructor(
         }
     }
 
-    fun onSaveBtnClick(data: ResponseGetContentDto, saveState: Boolean) {
+    fun onSaveBtnClick(data: ResponseGetRecentDto, saveState: Boolean) {
         if (saveState) {
             postUnLike(data.content)
         } else {
