@@ -4,16 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.release.keyneez.data.entity.response.ResponseGetRecentDto
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
 import com.release.keyneez.databinding.ItemPopularContentBinding
 import com.release.keyneez.util.DiffCallback
 
-class PopularAdapter : ListAdapter<ResponseGetRecentDto, RecyclerView.ViewHolder>(diffUtil) {
-    var data = listOf<ResponseGetRecentDto>()
+class PopularAdapter : ListAdapter<ResponseGetPopularDto, RecyclerView.ViewHolder>(diffUtil) {
+    var data = listOf<ResponseGetPopularDto>()
 
     class PopularViewHolder(private val binding: ItemPopularContentBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun setPopularContent(popular: ResponseGetRecentDto) {
+        fun setPopularContent(popular: ResponseGetPopularDto) {
             binding.data = popular
             // 여기도 누르면 상세뷰로 가는 코드짜기
         }
@@ -35,7 +35,7 @@ class PopularAdapter : ListAdapter<ResponseGetRecentDto, RecyclerView.ViewHolder
     }
 
     companion object {
-        private val diffUtil = DiffCallback<ResponseGetRecentDto>(
+        private val diffUtil = DiffCallback<ResponseGetPopularDto>(
             onItemsTheSame = { old, new -> old.content == new.content },
             onContentsTheSame = { old, new -> old == new }
         )

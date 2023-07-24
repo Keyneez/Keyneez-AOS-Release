@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.release.keyneez.data.entity.response.ResponseGetRecentDto
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
 import com.release.keyneez.databinding.FragmentPopularBinding
 import com.release.keyneez.util.binding.BindingFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class PopularFragment :
     BindingFragment<FragmentPopularBinding>(com.release.keyneez.R.layout.fragment_popular) {
     private val viewModel: PopularViewModel by viewModels()
-    lateinit var list: List<ResponseGetRecentDto>
+    lateinit var list: List<ResponseGetPopularDto>
     private var popularAdapter: PopularAdapter? = null
     private var isInitialLoad = true
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

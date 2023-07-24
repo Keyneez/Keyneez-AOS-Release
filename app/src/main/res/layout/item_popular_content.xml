@@ -7,7 +7,7 @@
 
         <variable
             name="data"
-            type="com.release.keyneez.data.entity.response.ResponseGetRecentDto" />
+            type="com.release.keyneez.data.entity.response.ResponseGetPopularDto" />
 
         <variable
             name="vm"

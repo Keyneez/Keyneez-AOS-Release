@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
 import com.release.keyneez.data.entity.response.ResponseGetRecentDto
 import com.release.keyneez.data.repository.ContentRepository
 import com.release.keyneez.util.UiState
@@ -17,8 +18,8 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _popularList = MutableLiveData<List<ResponseGetRecentDto>>(mutableListOf())
-    val popularList: LiveData<List<ResponseGetRecentDto>>
+    private val _popularList = MutableLiveData<List<ResponseGetPopularDto>>(mutableListOf())
+    val popularList: LiveData<List<ResponseGetPopularDto>>
         get() = _popularList
 
     private val _stateMessage = MutableLiveData<UiState>()
@@ -35,7 +36,7 @@ class PopularViewModel @Inject constructor(
         filter.value = value
     }
 
-    fun updateSaveState(list: List<ResponseGetRecentDto.Liked>) {
+    fun updateSaveState(list: List<ResponseGetPopularDto.Liked>) {
         if (list.isEmpty()) {
             _saveState.value = false
         } else {
@@ -53,7 +54,7 @@ class PopularViewModel @Inject constructor(
 
     fun getPopularData() {
         viewModelScope.launch {
-            contentRepository.getContent(filter.value.toString())
+            contentRepository.getPopular(filter.value.toString())
                 .onSuccess { response ->
                     Timber.tag(successTag).d("response : $response")
 
