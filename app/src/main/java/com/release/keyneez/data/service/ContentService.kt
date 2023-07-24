@@ -18,7 +18,7 @@ interface ContentService {
     @GET("contents/")
     suspend fun getRecent(@Query("filter") filter: String): BaseResponse<List<ResponseGetRecentDto>>
 
-    @GET("contents/")
+    @GET("contents/popularity")
     suspend fun getPopular(@Query("filter") filter: String): BaseResponse<List<ResponseGetPopularDto>>
 
     @GET("contents/search")
