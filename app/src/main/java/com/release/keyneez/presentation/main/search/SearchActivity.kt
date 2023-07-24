@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
@@ -72,6 +73,9 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
             val searchKeyword = binding.etSearchContent.text.toString().trim()
+            if(searchKeyword.isEmpty()){
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+            }
             if (searchKeyword.isNotEmpty()) {
                 viewModel.updateCount()
                 viewModel.getSearchPostData()

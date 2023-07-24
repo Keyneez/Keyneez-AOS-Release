@@ -31,6 +31,7 @@
     <string name="search_recycler_contentdescription">리사이클러뷰</string>
     <string name="search_heart_contentdescription">하트</string>
     <string name="search_content_contentdescription">콘텐츠</string>
+    <string name="search_toast">검색어를 입력해 주세요.</string>
 
     <!-- explore -->
     <string name="explore_title">탐색하기</string>
