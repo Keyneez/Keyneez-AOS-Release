@@ -73,8 +73,8 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
             val searchKeyword = binding.etSearchContent.text.toString().trim()
-            if(searchKeyword.isEmpty()){
-                Toast.makeText(this, "", Toast.LENGTH_SHORT).show()
+            if (searchKeyword.isEmpty()) {
+                Toast.makeText(this, R.string.search_toast, Toast.LENGTH_SHORT).show()
             }
             if (searchKeyword.isNotEmpty()) {
                 viewModel.updateCount()
