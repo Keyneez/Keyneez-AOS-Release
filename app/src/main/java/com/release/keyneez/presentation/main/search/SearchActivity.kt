@@ -12,7 +12,6 @@ import com.release.keyneez.util.UiState
 import com.release.keyneez.util.binding.BindingActivity
 import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
-import com.release.keyneez.util.extension.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,15 +32,14 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         viewModel.stateMessage.observe(this) {
             when (it) {
                 is UiState.Success -> setupSearchActivityList()
-                is UiState.Failure -> showSnackbar(
-                    binding.root,
-                    getString(R.string.msg_search_null)
-                )
+                is UiState.Failure ->
+                    Toast.makeText(this, R.string.msg_search_null, Toast.LENGTH_SHORT).show()
 
-                is UiState.Error -> showSnackbar(
-                    binding.root,
-                    getString(R.string.msg_server_error)
-                )
+                is UiState.Error -> Toast.makeText(
+                    this,
+                    R.string.msg_server_error,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
