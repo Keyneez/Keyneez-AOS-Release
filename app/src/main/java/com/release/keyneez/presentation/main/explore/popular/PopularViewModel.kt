@@ -35,14 +35,6 @@ class PopularViewModel @Inject constructor(
         filter.value = value
     }
 
-    fun onSaveBtnClick(data: ResponseGetPopularDto, saveState: Boolean) {
-        if (saveState) {
-            postUnLike(data.content)
-        } else {
-            postSave(data.content)
-        }
-    }
-
     fun getPopularData() {
         viewModelScope.launch {
             contentRepository.getPopular(filter.value.toString())
@@ -68,6 +60,7 @@ class PopularViewModel @Inject constructor(
 
     fun clickLike(index: Int, isSelected: Boolean) {
         if (isSelected) {
+            postUnLike(index)
             postUnLike(index)
             return
         }

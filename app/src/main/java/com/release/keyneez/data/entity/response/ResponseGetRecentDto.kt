@@ -20,7 +20,7 @@ data class ResponseGetRecentDto(
     @SerialName("end_at") val end: String?,
     @SerialName("created_at") val created: String?,
     @SerialName("updated_at") val updated: String?,
-    val Likes: List<Liked>
+    var Likes: List<Liked>
 ) {
     @Serializable
     data class Liked(

@@ -23,6 +23,7 @@ class PopularFragment :
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()
+        // isInitialLoad가 false이든 아니든 기본적으로 호출
         initFirstBtnListener()
     }
 
@@ -33,7 +34,7 @@ class PopularFragment :
     override fun onResume() {
         super.onResume()
         if (!isInitialLoad) {
-            initFirstBtnListener()
+            initCategoryBtnListener()
         }
     }
 

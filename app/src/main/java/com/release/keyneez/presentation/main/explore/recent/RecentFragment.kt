@@ -23,6 +23,7 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         initRecentAdapter()
         setupRecentActivityList()
         initCategoryBtnListener()
+        initFirstBtnListener()
     }
 
     override fun onAttach(context: Context) {
@@ -32,12 +33,11 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
     override fun onResume() {
         super.onResume()
         if (!isInitialLoad) {
-            initCategoryBtnListener()
+            initFirstBtnListener()
         }
     }
 
     private fun initCategoryBtnListener() {
-        selectOnlyOneButton(binding.tvExploreRecentAll)
         binding.tvExploreRecentAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExploreRecentAll)
         }
@@ -52,6 +52,10 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         }
     }
 
+    private fun initFirstBtnListener() {
+        selectOnlyOneButton(binding.tvExploreRecentAll)
+    }
+
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExploreRecentAll.isSelected = false
         binding.tvExploreRecentCareer.isSelected = false
@@ -60,17 +64,24 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (filterValue != binding.tvExploreRecentAll.text.toString()) {
-            viewModel.setFilterValue(filterValue)
-            viewModel.getRecentData()
-        } else {
+        if (isInitialLoad) {
             viewModel.setFilterValue("")
             viewModel.getRecentData()
+        } else {
+            if (filterValue != binding.tvExploreRecentAll.text.toString()) {
+                viewModel.setFilterValue(filterValue)
+                viewModel.getRecentData()
+            } else {
+                viewModel.setFilterValue("")
+                viewModel.getRecentData()
+            }
         }
     }
 
     private fun initRecentAdapter() {
-        recentAdapter = RecentAdapter()
+        recentAdapter = RecentAdapter(
+            clickLike = viewModel::clickLike
+        )
         binding.rvExploreRecent.adapter = recentAdapter
         val animator = binding.rvExploreRecent.itemAnimator
         if (animator is SimpleItemAnimator) {
@@ -83,7 +94,6 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
             isInitialLoad = false
             list = recentList
             recentAdapter?.submitList(recentList)
-            viewModel.updateSaveState(recentList.flatMap { it.Likes })
         }
     }
 
