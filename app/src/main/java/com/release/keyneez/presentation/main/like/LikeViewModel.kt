@@ -42,7 +42,6 @@ class LikeViewModel @Inject constructor(
     val filter = MutableLiveData("")
 
     init {
-        getLikeData()
         getSelectedIdsCount()
         _isEdit.value = false
         _isSelected.value = false
