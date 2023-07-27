@@ -17,7 +17,7 @@ import javax.inject.Inject
 class LikeViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _likeList = MutableLiveData<List<ResponseGetLikeDto>>(mutableListOf())
+    private val _likeList = MutableLiveData<List<ResponseGetLikeDto>>()
     private val _isEdit = MutableLiveData<Boolean>()
     private val _isSelected = MutableLiveData<Boolean>()
     private val _selectedIds = MutableLiveData<MutableList<Int>>()

@@ -10,8 +10,8 @@
             type="com.release.keyneez.data.entity.response.ResponseGetSearchResultDto" />
 
         <variable
-            name="vm"
-            type="com.release.keyneez.presentation.main.search.SearchViewModel" />
+            name="index"
+            type="Integer" />
 
         <import type="android.view.View" />
     </data>
@@ -55,16 +55,14 @@
 
         <ImageButton
             android:id="@+id/btn_search_liked"
-            isSelected="@{vm.saveState}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="3dp"
             android:background="@null"
             android:contentDescription="@string/search_heart_contentdescription"
-            android:onClick="@{()->vm.onSaveBtnClick(data, vm.saveState)}"
             android:padding="12dp"
-            android:src="@{vm.saveState ? @drawable/ic_heart_fill : @drawable/ic_heart_empty}"
+            android:src="@{!data.likes.isEmpty() ? @drawable/ic_heart_fill : @drawable/ic_heart_empty}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />

@@ -45,7 +45,9 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     }
 
     private fun initSearchAdapter() {
-        searchAdapter = SearchAdapter()
+        searchAdapter = SearchAdapter(
+            clickLike = viewModel::clickLike
+        )
         binding.rvSearchResultContent.adapter = searchAdapter
     }
 
@@ -53,7 +55,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         viewModel.searchList.observe(this) { searchList ->
             searchAdapter?.submitList(searchList)
             binding.tvSearchCount.text = searchList?.size.toString()
-            viewModel.updateSaveState(searchList.flatMap { it.Likes })
         }
     }
 

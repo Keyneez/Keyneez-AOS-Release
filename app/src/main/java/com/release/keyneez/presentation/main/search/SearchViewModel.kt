@@ -17,7 +17,7 @@ import javax.inject.Inject
 class SearchViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _searchList = MutableLiveData<List<ResponseGetSearchResultDto>>(mutableListOf())
+    private val _searchList = MutableLiveData<List<ResponseGetSearchResultDto>>()
     val searchList: LiveData<List<ResponseGetSearchResultDto>>
         get() = _searchList
 
@@ -29,8 +29,8 @@ class SearchViewModel @Inject constructor(
     val isFlowVisible: LiveData<Boolean>
         get() = _isFlowVisible
 
-    private val _saveState = MutableLiveData<Boolean>()
-    val saveState: LiveData<Boolean>
+    private val _saveState = MutableLiveData<List<Boolean>>()
+    val saveState: LiveData<List<Boolean>>
         get() = _saveState
 
     val key = MutableLiveData("")
@@ -43,20 +43,14 @@ class SearchViewModel @Inject constructor(
         _isFlowVisible.value = true
     }
 
-    fun updateSaveState(list: List<ResponseGetSearchResultDto.Liked>) {
-        if (list.isEmpty()) {
-            _saveState.value = false
-        } else {
-            _saveState.value = true
+    fun clickLike(index: Int, isSelected: Boolean) {
+        if (isSelected) {
+            postUnLike(index)
+            postUnLike(index)
+            return
         }
-    }
 
-    fun onSaveBtnClick(data: ResponseGetSearchResultDto, saveState: Boolean) {
-        if (saveState) {
-            postUnLike(data.content)
-        } else {
-            postSave(data.content)
-        }
+        postSave(index)
     }
 
     fun getSearchPostData() {
@@ -95,7 +89,6 @@ class SearchViewModel @Inject constructor(
                 Timber.d("POST SAVE STATE SUCCESS")
                 Timber.d("response : $response")
 
-                _saveState.value = true
                 _stateMessage.value = UiState.Success
             }
                 .onFailure {
@@ -111,7 +104,6 @@ class SearchViewModel @Inject constructor(
                 .onSuccess { response ->
                     Timber.tag("POST UNLIKE STATE SUCCES뷰S")
                     Timber.d("response : $response")
-                    _saveState.value = false
                     _stateMessage.value = UiState.Success
                 }
                 .onFailure {
