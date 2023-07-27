@@ -60,14 +60,12 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (isInitialLoad == false) {
-            if (filterValue != binding.tvExploreRecentAll.text.toString()) {
-                viewModel.setFilterValue(filterValue)
-                viewModel.getRecentData()
-            } else {
-                viewModel.setFilterValue("")
-                viewModel.getRecentData()
-            }
+        if (filterValue != binding.tvExploreRecentAll.text.toString()) {
+            viewModel.setFilterValue(filterValue)
+            viewModel.getRecentData()
+        } else {
+            viewModel.setFilterValue("")
+            viewModel.getRecentData()
         }
     }
 

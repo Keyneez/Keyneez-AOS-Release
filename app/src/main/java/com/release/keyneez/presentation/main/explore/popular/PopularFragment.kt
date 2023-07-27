@@ -23,6 +23,7 @@ class PopularFragment :
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()
+        initFirstBtnListener()
     }
 
     override fun onAttach(context: Context) {
@@ -32,12 +33,11 @@ class PopularFragment :
     override fun onResume() {
         super.onResume()
         if (!isInitialLoad) {
-            initCategoryBtnListener()
+            initFirstBtnListener()
         }
     }
 
     private fun initCategoryBtnListener() {
-        selectOnlyOneButton(binding.tvExplorePopularAll)
         binding.tvExplorePopularAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExplorePopularAll)
         }
@@ -52,6 +52,10 @@ class PopularFragment :
         }
     }
 
+    private fun initFirstBtnListener() {
+        selectOnlyOneButton(binding.tvExplorePopularAll)
+    }
+
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExplorePopularAll.isSelected = false
         binding.tvExplorePopularCareer.isSelected = false
@@ -60,7 +64,10 @@ class PopularFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (isInitialLoad == false) {
+        if (isInitialLoad) {
+            viewModel.setFilterValue("")
+            viewModel.getPopularData()
+        } else {
             if (filterValue != binding.tvExplorePopularAll.text.toString()) {
                 viewModel.setFilterValue(filterValue)
                 viewModel.getPopularData()
@@ -72,7 +79,9 @@ class PopularFragment :
     }
 
     private fun initPopularAdapter() {
-        popularAdapter = PopularAdapter()
+        popularAdapter = PopularAdapter(
+            clickLike = viewModel::clickLike
+        )
         binding.rvExplorePopular.adapter = popularAdapter
         val animator = binding.rvExplorePopular.itemAnimator
         if (animator is SimpleItemAnimator) {
@@ -85,7 +94,6 @@ class PopularFragment :
             isInitialLoad = false
             list = popularList
             popularAdapter?.submitList(popularList)
-            viewModel.updateSaveState(popularList.flatMap { it.Likes })
         }
     }
 
