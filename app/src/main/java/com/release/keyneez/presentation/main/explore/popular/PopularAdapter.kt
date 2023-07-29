@@ -25,13 +25,11 @@ class PopularAdapter(
                 clickLike(popular.content, popular.Likes.isNotEmpty())
                 if (popular.Likes.isNotEmpty()) {
                     popular.Likes = listOf()
-                    // TODO : 객체 없애는 로직
                     return@setOnSingleClickListener
                 }
                 popular.Likes = listOf(ResponseGetPopularDto.Liked(0, 0, 0))
-                // TODO: 객체 집어 넣어주는 로직
             }
-            // 여기도 누르면 상세뷰로 가는 코드짜기
+            // 상세뷰로 가는 코드짜기
         }
     }
 
