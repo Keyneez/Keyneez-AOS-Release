@@ -12,23 +12,23 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ContentService {
-    @GET("contents/liked")
+    @GET("api/contents/liked")
     suspend fun getLike(@Query("filter") filter: String): BaseResponse<List<ResponseGetLikeDto>>
 
-    @GET("contents/")
+    @GET("api/contents/")
     suspend fun getRecent(@Query("filter") filter: String): BaseResponse<List<ResponseGetRecentDto>>
 
-    @GET("contents/popularity")
+    @GET("api/contents/popularity")
     suspend fun getPopular(@Query("filter") filter: String): BaseResponse<List<ResponseGetPopularDto>>
 
-    @GET("contents/search")
+    @GET("api/contents/search")
     suspend fun getSearch(
         @Query("keyword") keyword: String
     ): BaseResponse<List<ResponseGetSearchResultDto>>
 
-    @POST("contents/{pk}/like")
+    @POST("api/contents/{pk}/like")
     suspend fun postLike(@Path("pk") pk: Int): BaseResponse<ResponsePostLikeDto>
 
-    @POST("contents/{pk}/unlike")
+    @POST("api/contents/{pk}/unlike")
     suspend fun postUnlike(@Path("pk") pk: Int): BaseResponse<Unit>
 }
