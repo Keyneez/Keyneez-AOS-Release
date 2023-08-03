@@ -2,6 +2,7 @@ package com.release.keyneez.presentation.main.explore.popular
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -55,6 +56,7 @@ class PopularFragment :
 
     private fun initFirstBtnListener() {
         selectOnlyOneButton(binding.tvExplorePopularAll)
+        Log.d("1", "hello")
     }
 
     private fun selectOnlyOneButton(selectedButton: TextView) {
