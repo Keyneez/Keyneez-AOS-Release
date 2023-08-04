@@ -21,11 +21,6 @@ object RetrofitModule {
     private const val APPLICATION_JSON = "application/json"
     private const val AUTHORIZATION = "Authorization"
 
-    // Json 빌더 설정에 'coerceInputValues = true'를 추가하여 null 값을 기본 값으로 변환
-    val jsonBuilder = Json {
-        coerceInputValues = true
-    }
-
     @Provides
     @Singleton
     fun providesKeyneezInterceptor(): Interceptor = Interceptor { chain ->
