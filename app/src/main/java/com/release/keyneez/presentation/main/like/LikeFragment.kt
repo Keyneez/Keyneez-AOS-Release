@@ -31,7 +31,10 @@ class LikeFragment :
 
     override fun onResume() {
         super.onResume()
-        initCategoryBtnListener()
+        if (!isInitialLoad) {
+            selectOnlyOneButton(binding.tvLikeAll)
+        }
+        isInitialLoad = false
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +45,7 @@ class LikeFragment :
         initEditBtnClickListener()
         initCategoryBtnListener()
         initLikeEditBtnClickListener()
+        selectOnlyOneButton(binding.tvLikeAll)
     }
 
     private fun initLikeEditBtnClickListener() {
@@ -55,7 +59,6 @@ class LikeFragment :
     }
 
     private fun initCategoryBtnListener() {
-        selectOnlyOneButton(binding.tvLikeAll)
         binding.tvLikeAll.setOnClickListener {
             selectOnlyOneButton(binding.tvLikeAll)
         }

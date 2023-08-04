@@ -24,6 +24,7 @@ class PopularFragment :
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()
+        selectOnlyOneButton(binding.tvExplorePopularAll)
     }
 
     override fun onAttach(context: Context) {
@@ -33,10 +34,13 @@ class PopularFragment :
     override fun onResume() {
         super.onResume()
         initCategoryBtnListener()
+        if (!isInitialLoad) {
+            selectOnlyOneButton(binding.tvExplorePopularAll)
+        }
+        isInitialLoad = false
     }
 
     private fun initCategoryBtnListener() {
-        selectOnlyOneButton(binding.tvExplorePopularAll)
         binding.tvExplorePopularAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExplorePopularAll)
         }
@@ -50,6 +54,7 @@ class PopularFragment :
             selectOnlyOneButton(binding.tvExplorePopularOutside)
         }
     }
+
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExplorePopularAll.isSelected = false
         binding.tvExplorePopularCareer.isSelected = false

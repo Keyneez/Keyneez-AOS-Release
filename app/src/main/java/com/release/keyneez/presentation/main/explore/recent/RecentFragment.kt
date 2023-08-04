@@ -23,6 +23,7 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         initRecentAdapter()
         setupRecentActivityList()
         initCategoryBtnListener()
+        selectOnlyOneButton(binding.tvExploreRecentAll)
     }
 
     override fun onAttach(context: Context) {
@@ -31,11 +32,13 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
     override fun onResume() {
         super.onResume()
-        initCategoryBtnListener()
+        if (!isInitialLoad) {
+            selectOnlyOneButton(binding.tvExploreRecentAll)
+        }
+        isInitialLoad = false
     }
 
     private fun initCategoryBtnListener() {
-        selectOnlyOneButton(binding.tvExploreRecentAll)
         binding.tvExploreRecentAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExploreRecentAll)
         }
