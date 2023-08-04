@@ -15,11 +15,20 @@ interface ContentService {
     @GET("api/v1/contents/liked")
     suspend fun getLike(@Query("filter") filter: String): BaseResponse<List<ResponseGetLikeDto>>
 
+    @GET("api/v1/contents/liked")
+    suspend fun getAllLike(): BaseResponse<List<ResponseGetLikeDto>>
+
     @GET("api/v1/contents/")
     suspend fun getRecent(@Query("filter") filter: String): BaseResponse<List<ResponseGetRecentDto>>
 
+    @GET("api/v1/contents/")
+    suspend fun getAllRecent(): BaseResponse<List<ResponseGetRecentDto>>
+
     @GET("api/v1/contents/popularity")
     suspend fun getPopular(@Query("filter") filter: String): BaseResponse<List<ResponseGetPopularDto>>
+
+    @GET("api/v1/contents/popularity")
+    suspend fun getAllPopular(): BaseResponse<List<ResponseGetPopularDto>>
 
     @GET("api/v1/contents/search")
     suspend fun getSearch(

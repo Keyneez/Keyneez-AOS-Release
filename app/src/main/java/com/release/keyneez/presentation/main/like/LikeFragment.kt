@@ -31,9 +31,7 @@ class LikeFragment :
 
     override fun onResume() {
         super.onResume()
-        if (!isInitialLoad) {
-            initCategoryBtnListener()
-        }
+        initCategoryBtnListener()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,7 +41,6 @@ class LikeFragment :
         setupLikeData()
         initEditBtnClickListener()
         initCategoryBtnListener()
-        initFirstBtnListener()
         initLikeEditBtnClickListener()
     }
 
@@ -58,6 +55,7 @@ class LikeFragment :
     }
 
     private fun initCategoryBtnListener() {
+        selectOnlyOneButton(binding.tvLikeAll)
         binding.tvLikeAll.setOnClickListener {
             selectOnlyOneButton(binding.tvLikeAll)
         }
@@ -72,10 +70,6 @@ class LikeFragment :
         }
     }
 
-    private fun initFirstBtnListener() {
-        selectOnlyOneButton(binding.tvLikeAll)
-    }
-
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvLikeAll.isSelected = false
         binding.tvLikeCareer.isSelected = false
@@ -84,18 +78,12 @@ class LikeFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (isInitialLoad) {
-            likeViewModel.setFilterValue("")
+
+        if (filterValue != binding.tvLikeAll.text.toString()) {
+            likeViewModel.setFilterValue(filterValue)
             likeViewModel.getLikeData()
         } else {
-            if (filterValue != binding.tvLikeAll.text.toString()) {
-                Log.d("1", "또 말썽")
-                likeViewModel.setFilterValue(filterValue)
-                likeViewModel.getLikeData()
-            } else {
-                likeViewModel.setFilterValue("")
-                likeViewModel.getLikeData()
-            }
+            likeViewModel.getAllLikeData()
         }
     }
 

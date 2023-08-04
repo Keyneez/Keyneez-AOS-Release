@@ -2,7 +2,6 @@ package com.release.keyneez.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.release.keyneez.BuildConfig.BASE_URL
-import com.release.keyneez.data.source.LocalPrefDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,18 +21,23 @@ object RetrofitModule {
     private const val APPLICATION_JSON = "application/json"
     private const val AUTHORIZATION = "Authorization"
 
+    // Json 빌더 설정에 'coerceInputValues = true'를 추가하여 null 값을 기본 값으로 변환
+    val jsonBuilder = Json {
+        coerceInputValues = true
+    }
+
     @Provides
     @Singleton
-    fun providesKeyneezInterceptor(
-        localPrefDataSource: LocalPrefDataSource
-    ): Interceptor = Interceptor { chain ->
+    fun providesKeyneezInterceptor(): Interceptor = Interceptor { chain ->
         with(chain) {
-            proceed(
-                request().newBuilder().addHeader(CONTENT_TYPE, APPLICATION_JSON).addHeader(
+            val requestBuilder = request().newBuilder()
+                .addHeader(CONTENT_TYPE, APPLICATION_JSON)
+                .addHeader(
                     AUTHORIZATION,
-                    requireNotNull(localPrefDataSource.getAccessToken())
-                ).build()
-            )
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJLZWVuemUiLCJzdWIiOiIyIiwiaWF0IjoxNjkxMTQ3MjA3LCJleHAiOjE2OTExNTQ0MDd9.80aY7H3MdIMl8ir7selmL5esLJi1ISaLz7KRLWvRDv8"
+                ) // 엑세스 토큰 값을 직접 설정합니다.
+                .build()
+            proceed(requestBuilder)
         }
     }
 

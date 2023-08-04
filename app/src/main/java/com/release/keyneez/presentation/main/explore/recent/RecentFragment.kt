@@ -23,7 +23,6 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         initRecentAdapter()
         setupRecentActivityList()
         initCategoryBtnListener()
-        initFirstBtnListener()
     }
 
     override fun onAttach(context: Context) {
@@ -32,12 +31,11 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
     override fun onResume() {
         super.onResume()
-        if (!isInitialLoad) {
-            initFirstBtnListener()
-        }
+        initCategoryBtnListener()
     }
 
     private fun initCategoryBtnListener() {
+        selectOnlyOneButton(binding.tvExploreRecentAll)
         binding.tvExploreRecentAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExploreRecentAll)
         }
@@ -52,10 +50,6 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
         }
     }
 
-    private fun initFirstBtnListener() {
-        selectOnlyOneButton(binding.tvExploreRecentAll)
-    }
-
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExploreRecentAll.isSelected = false
         binding.tvExploreRecentCareer.isSelected = false
@@ -64,17 +58,11 @@ class RecentFragment : BindingFragment<FragmentRecentBinding>(R.layout.fragment_
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (isInitialLoad) {
-            viewModel.setFilterValue("")
+        if (filterValue != binding.tvExploreRecentAll.text.toString()) {
+            viewModel.setFilterValue(filterValue)
             viewModel.getRecentData()
         } else {
-            if (filterValue != binding.tvExploreRecentAll.text.toString()) {
-                viewModel.setFilterValue(filterValue)
-                viewModel.getRecentData()
-            } else {
-                viewModel.setFilterValue("")
-                viewModel.getRecentData()
-            }
+            viewModel.getAllRecentData()
         }
     }
 

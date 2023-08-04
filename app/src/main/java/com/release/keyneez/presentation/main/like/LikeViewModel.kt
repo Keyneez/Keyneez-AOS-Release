@@ -145,6 +145,29 @@ class LikeViewModel @Inject constructor(
         }
     }
 
+    fun getAllLikeData() {
+        viewModelScope.launch {
+            contentRepository.getAllLike()
+                .onSuccess { response ->
+                    Timber.tag(successTag).d("response : $response")
+
+                    if (response.data == null) {
+                        Timber.d("GET LIKE CONTENT IS NULL")
+                        _stateMessage.value = UiState.Failure(LIKE_DATA_NULL_CODE)
+                    }
+                    _likeList.value = response.data!!
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.tag(failTag).e("throwable : $it")
+                    if (it is HttpException) {
+                        Timber.tag(failTag).e("code : ${it.code()}")
+                        Timber.tag(failTag).e("message : ${it.message()}")
+                    }
+                }
+        }
+    }
+
     companion object {
         const val LIKE_DATA_NULL_CODE = 100
         private const val successTag = "GET_LIKE_CONTENT_SUCCESS"

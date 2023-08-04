@@ -35,6 +35,7 @@ class PopularViewModel @Inject constructor(
         filter.value = value
     }
 
+
     fun getPopularData() {
         viewModelScope.launch {
             contentRepository.getPopular(filter.value.toString())
@@ -57,7 +58,28 @@ class PopularViewModel @Inject constructor(
                 }
         }
     }
+    fun getAllPopularData() {
+        viewModelScope.launch {
+            contentRepository.getAllPopular()
+                .onSuccess { response ->
+                    Timber.tag(successTag).d("response : $response")
 
+                    if (response.data == null) {
+                        Timber.d("GET POPULAR CONTENT IS NULL")
+                        _stateMessage.value = UiState.Failure(POPULAR_DATA_NULL_CODE)
+                    }
+                    _popularList.value = response.data!!
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.tag(failTag).e("throwable : $it")
+                    if (it is HttpException) {
+                        Timber.tag(failTag).e("code : ${it.code()}")
+                        Timber.tag(failTag).e("message : ${it.message()}")
+                    }
+                }
+        }
+    }
     fun clickLike(index: Int, isSelected: Boolean) {
         if (isSelected) {
             postUnLike(index)

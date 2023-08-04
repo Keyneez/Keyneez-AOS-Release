@@ -16,11 +16,20 @@ class ContentRepositoryImpl @Inject constructor(
     override suspend fun getRecent(filter: String): Result<BaseResponse<List<ResponseGetRecentDto>>> =
         kotlin.runCatching { contentDataSource.getRecent(filter) }
 
+    override suspend fun getAllRecent(): Result<BaseResponse<List<ResponseGetRecentDto>>> =
+        kotlin.runCatching { contentDataSource.getAllRecent() }
+
     override suspend fun getPopular(filter: String): Result<BaseResponse<List<ResponseGetPopularDto>>> =
         kotlin.runCatching { contentDataSource.getPopular(filter) }
 
+    override suspend fun getAllPopular(): Result<BaseResponse<List<ResponseGetPopularDto>>> =
+        kotlin.runCatching { contentDataSource.getAllPopular() }
+
     override suspend fun getLike(filter: String): Result<BaseResponse<List<ResponseGetLikeDto>>> =
         kotlin.runCatching { contentDataSource.getLike(filter) }
+
+    override suspend fun getAllLike(): Result<BaseResponse<List<ResponseGetLikeDto>>> =
+        kotlin.runCatching { contentDataSource.getAllLike() }
 
     override suspend fun getSearch(keyword: String): Result<BaseResponse<List<ResponseGetSearchResultDto>>> =
         kotlin.runCatching { contentDataSource.getSearch(keyword) }

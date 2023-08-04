@@ -2,7 +2,6 @@ package com.release.keyneez.presentation.main.explore.popular
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
@@ -19,13 +18,12 @@ class PopularFragment :
     lateinit var list: List<ResponseGetPopularDto>
     private var popularAdapter: PopularAdapter? = null
     private var isInitialLoad = true
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPopularAdapter()
         setupPopularActivityList()
         initCategoryBtnListener()
-        // isInitialLoad가 false이든 아니든 기본적으로 호출
-        initFirstBtnListener()
     }
 
     override fun onAttach(context: Context) {
@@ -34,12 +32,11 @@ class PopularFragment :
 
     override fun onResume() {
         super.onResume()
-        if (!isInitialLoad) {
-            initCategoryBtnListener()
-        }
+        initCategoryBtnListener()
     }
 
     private fun initCategoryBtnListener() {
+        selectOnlyOneButton(binding.tvExplorePopularAll)
         binding.tvExplorePopularAll.setOnClickListener {
             selectOnlyOneButton(binding.tvExplorePopularAll)
         }
@@ -53,12 +50,6 @@ class PopularFragment :
             selectOnlyOneButton(binding.tvExplorePopularOutside)
         }
     }
-
-    private fun initFirstBtnListener() {
-        selectOnlyOneButton(binding.tvExplorePopularAll)
-        Log.d("1", "hello")
-    }
-
     private fun selectOnlyOneButton(selectedButton: TextView) {
         binding.tvExplorePopularAll.isSelected = false
         binding.tvExplorePopularCareer.isSelected = false
@@ -67,17 +58,11 @@ class PopularFragment :
 
         selectedButton.isSelected = true
         val filterValue = selectedButton.text.toString()
-        if (isInitialLoad) {
-            viewModel.setFilterValue("")
+        if (filterValue != binding.tvExplorePopularAll.text.toString()) {
+            viewModel.setFilterValue(filterValue)
             viewModel.getPopularData()
         } else {
-            if (filterValue != binding.tvExplorePopularAll.text.toString()) {
-                viewModel.setFilterValue(filterValue)
-                viewModel.getPopularData()
-            } else {
-                viewModel.setFilterValue("")
-                viewModel.getPopularData()
-            }
+            viewModel.getAllPopularData()
         }
     }
 

@@ -15,11 +15,20 @@ class ContentDataSource @Inject constructor(
     suspend fun getRecent(filter: String): BaseResponse<List<ResponseGetRecentDto>> =
         contentService.getRecent(filter)
 
+    suspend fun getAllRecent(): BaseResponse<List<ResponseGetRecentDto>> =
+        contentService.getAllRecent()
+
     suspend fun getPopular(filter: String): BaseResponse<List<ResponseGetPopularDto>> =
         contentService.getPopular(filter)
 
+    suspend fun getAllPopular(): BaseResponse<List<ResponseGetPopularDto>> =
+        contentService.getAllPopular()
+
     suspend fun getLike(filter: String): BaseResponse<List<ResponseGetLikeDto>> =
         contentService.getLike(filter)
+
+    suspend fun getAllLike(): BaseResponse<List<ResponseGetLikeDto>> =
+        contentService.getAllLike()
 
     suspend fun getSearch(keyword: String): BaseResponse<List<ResponseGetSearchResultDto>> =
         contentService.getSearch(keyword)

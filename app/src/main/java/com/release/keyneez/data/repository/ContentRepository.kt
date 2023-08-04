@@ -10,8 +10,11 @@ import com.release.keyneez.data.entity.response.wrapper.BaseResponse
 interface ContentRepository {
 
     suspend fun getRecent(filter: String): Result<BaseResponse<List<ResponseGetRecentDto>>>
+    suspend fun getAllRecent(): Result<BaseResponse<List<ResponseGetRecentDto>>>
     suspend fun getPopular(filter: String): Result<BaseResponse<List<ResponseGetPopularDto>>>
+    suspend fun getAllPopular(): Result<BaseResponse<List<ResponseGetPopularDto>>>
     suspend fun getLike(filter: String): Result<BaseResponse<List<ResponseGetLikeDto>>>
+    suspend fun getAllLike(): Result<BaseResponse<List<ResponseGetLikeDto>>>
     suspend fun getSearch(keyword: String): Result<BaseResponse<List<ResponseGetSearchResultDto>>>
     suspend fun postLike(pk: Int): Result<BaseResponse<ResponsePostLikeDto>>
     suspend fun postUnlike(pk: Int): Result<BaseResponse<Unit>>

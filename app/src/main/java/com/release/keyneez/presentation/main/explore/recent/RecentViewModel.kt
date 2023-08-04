@@ -31,7 +31,7 @@ class RecentViewModel @Inject constructor(
 
     val filter = MutableLiveData("")
 
-    fun setFilterValue(value: String) {
+    fun setFilterValue(value: String?) {
         filter.value = value
     }
 
@@ -48,6 +48,28 @@ class RecentViewModel @Inject constructor(
     fun getRecentData() {
         viewModelScope.launch {
             contentRepository.getRecent(filter.value.toString())
+                .onSuccess { response ->
+                    Timber.tag(successTag).d("response : $response")
+
+                    if (response.data == null) {
+                        Timber.d("GET RECENT CONTENT IS NULL")
+                        _stateMessage.value = UiState.Failure(RECENT_DATA_NULL_CODE)
+                    }
+                    _recentList.value = response.data!!
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.tag(failTag).e("throwable : $it")
+                    if (it is HttpException) {
+                        Timber.tag(failTag).e("code : ${it.code()}")
+                        Timber.tag(failTag).e("message : ${it.message()}")
+                    }
+                }
+        }
+    }
+    fun getAllRecentData() {
+        viewModelScope.launch {
+            contentRepository.getAllRecent()
                 .onSuccess { response ->
                     Timber.tag(successTag).d("response : $response")
 
