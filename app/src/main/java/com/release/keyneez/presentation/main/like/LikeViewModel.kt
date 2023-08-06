@@ -108,16 +108,16 @@ class LikeViewModel @Inject constructor(
             _likeList.value = updatedList.toList()
             // 서버 통신을 위해 선택된 아이템의 ID를 서버로 전송하여 좋아요 해제
             viewModelScope.launch {
-                for (selectedId in selectedIdsList) {
-                    try {
-                        contentRepository.postUnlike(selectedId)
-                        // 성공적으로 좋아요를 해제한 경우
-                        Timber.d("Unlike item with ID: $selectedId success")
-                    } catch (e: Exception) {
-                        // 좋아요 해제 실패 또는 예외 발생한 경우
-                        Timber.e(e, "Failed to unlike item with ID: $selectedId")
+                contentRepository.postUnlike(selectedIdsList)
+                    .onSuccess { response ->
+                        Timber.tag("POST UNLIKE STATE SUCCESS")
+                        Timber.d("response : $response")
+                        _stateMessage.value = UiState.Success
                     }
-                }
+                    .onFailure {
+                        Timber.d("throwable : $it")
+                        _stateMessage.value = UiState.Error
+                    }
             }
         }
     }
