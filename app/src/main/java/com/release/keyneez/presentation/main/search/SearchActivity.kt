@@ -54,7 +54,8 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
     private fun setupSearchActivityList() {
         viewModel.searchList.observe(this) { searchList ->
             searchAdapter?.submitList(searchList)
-            binding.tvSearchCount.text = searchList?.size.toString()
+            val itemCount = searchList?.size ?: 0
+            binding.tvSearchCount.text = itemCount.toString()
         }
     }
 
