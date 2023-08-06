@@ -46,7 +46,6 @@ class SearchViewModel @Inject constructor(
     fun clickLike(index: Int, isSelected: Boolean) {
         if (isSelected) {
             postUnLike(index)
-            postUnLike(index)
             return
         }
 
@@ -100,7 +99,7 @@ class SearchViewModel @Inject constructor(
 
     fun postUnLike(pk: Int) {
         viewModelScope.launch {
-            contentRepository.postUnlike(pk)
+            contentRepository.postUnlike(listOf(pk))
                 .onSuccess { response ->
                     Timber.tag("POST UNLIKE STATE SUCCES뷰S")
                     Timber.d("response : $response")

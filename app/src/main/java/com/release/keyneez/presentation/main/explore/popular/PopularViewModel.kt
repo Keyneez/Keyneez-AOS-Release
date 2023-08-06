@@ -35,7 +35,6 @@ class PopularViewModel @Inject constructor(
         filter.value = value
     }
 
-
     fun getPopularData() {
         viewModelScope.launch {
             contentRepository.getPopular(filter.value.toString())
@@ -58,6 +57,7 @@ class PopularViewModel @Inject constructor(
                 }
         }
     }
+
     fun getAllPopularData() {
         viewModelScope.launch {
             contentRepository.getAllPopular()
@@ -80,9 +80,9 @@ class PopularViewModel @Inject constructor(
                 }
         }
     }
+
     fun clickLike(index: Int, isSelected: Boolean) {
         if (isSelected) {
-            postUnLike(index)
             postUnLike(index)
             return
         }
@@ -108,7 +108,7 @@ class PopularViewModel @Inject constructor(
 
     fun postUnLike(pk: Int) {
         viewModelScope.launch {
-            contentRepository.postUnlike(pk)
+            contentRepository.postUnlike(listOf(pk))
                 .onSuccess { response ->
                     Timber.tag("POST UNLIKE STATE SUCCESS")
                     Timber.d("response : $response")

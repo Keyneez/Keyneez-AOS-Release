@@ -17,5 +17,5 @@ interface ContentRepository {
     suspend fun getAllLike(): Result<BaseResponse<List<ResponseGetLikeDto>>>
     suspend fun getSearch(keyword: String): Result<BaseResponse<List<ResponseGetSearchResultDto>>>
     suspend fun postLike(pk: Int): Result<BaseResponse<ResponsePostLikeDto>>
-    suspend fun postUnlike(pk: Int): Result<BaseResponse<Unit>>
+    suspend fun postUnlike(pk: List<Int>): Result<BaseResponse<Unit>>
 }

@@ -38,7 +38,6 @@ class RecentViewModel @Inject constructor(
     fun clickLike(index: Int, isSelected: Boolean) {
         if (isSelected) {
             postUnLike(index)
-            postUnLike(index)
             return
         }
 
@@ -67,6 +66,7 @@ class RecentViewModel @Inject constructor(
                 }
         }
     }
+
     fun getAllRecentData() {
         viewModelScope.launch {
             contentRepository.getAllRecent()
@@ -108,7 +108,7 @@ class RecentViewModel @Inject constructor(
 
     fun postUnLike(pk: Int) {
         viewModelScope.launch {
-            contentRepository.postUnlike(pk)
+            contentRepository.postUnlike(listOf(pk))
                 .onSuccess { response ->
                     Timber.tag("POST UNLIKE STATE SUCCESS")
                     Timber.d("response : $response")
