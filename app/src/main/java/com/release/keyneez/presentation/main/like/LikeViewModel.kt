@@ -106,7 +106,6 @@ class LikeViewModel @Inject constructor(
             }
 
             _likeList.value = updatedList.toList()
-            // 서버 통신을 위해 선택된 아이템의 ID를 서버로 전송하여 좋아요 해제
             viewModelScope.launch {
                 contentRepository.postUnlike(selectedIdsList)
                     .onSuccess { response ->
