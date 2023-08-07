@@ -39,5 +39,5 @@ interface ContentService {
     suspend fun postLike(@Path("pk") pk: Int): BaseResponse<ResponsePostLikeDto>
 
     @POST("api/v1/contents/{pk}/unlike")
-    suspend fun postUnlike(@Path("pk") pk: Int): BaseResponse<Unit>
+    suspend fun postUnlike(@Path("pk") pk: List<Int>): BaseResponse<Unit>
 }

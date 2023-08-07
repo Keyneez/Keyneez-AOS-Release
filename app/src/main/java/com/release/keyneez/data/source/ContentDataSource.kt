@@ -36,6 +36,6 @@ class ContentDataSource @Inject constructor(
     suspend fun postLike(pk: Int): BaseResponse<ResponsePostLikeDto> =
         contentService.postLike(pk)
 
-    suspend fun postUnlike(pk: Int): BaseResponse<Unit> =
+    suspend fun postUnlike(pk: List<Int>): BaseResponse<Unit> =
         contentService.postUnlike(pk)
 }

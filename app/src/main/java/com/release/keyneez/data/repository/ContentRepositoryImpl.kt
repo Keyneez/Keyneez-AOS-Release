@@ -37,6 +37,6 @@ class ContentRepositoryImpl @Inject constructor(
     override suspend fun postLike(pk: Int): Result<BaseResponse<ResponsePostLikeDto>> =
         kotlin.runCatching { contentDataSource.postLike(pk) }
 
-    override suspend fun postUnlike(pk: Int): Result<BaseResponse<Unit>> =
+    override suspend fun postUnlike(pk: List<Int>): Result<BaseResponse<Unit>> =
         kotlin.runCatching { contentDataSource.postUnlike(pk) }
 }
