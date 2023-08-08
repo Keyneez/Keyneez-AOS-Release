@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.release.keyneez.R
-import com.release.keyneez.data.entity.response.ResponseGetLikeDto
 import com.release.keyneez.databinding.FragmentLikeBinding
 import com.release.keyneez.presentation.main.MainViewModel
 import com.release.keyneez.util.binding.BindingFragment
@@ -21,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class LikeFragment :
     BindingFragment<FragmentLikeBinding>(com.release.keyneez.R.layout.fragment_like) {
     private var likeAdapter: LikeAdapter? = null
-    lateinit var likeList: List<ResponseGetLikeDto>
     private val likeViewModel by viewModels<LikeViewModel>()
     private val mainViewModel by activityViewModels<MainViewModel>()
     private var isInitialLoad = true
@@ -119,10 +117,9 @@ class LikeFragment :
     }
 
     private fun setupLikeData() {
-        likeViewModel.likeList.observe(viewLifecycleOwner) { activityList ->
+        likeViewModel.likeList.observe(viewLifecycleOwner) { likeList ->
             isInitialLoad = false
-            likeList = activityList
-            likeAdapter?.submitList(activityList)
+            likeAdapter?.submitList(likeList)
             likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
                 if (isEdit) {
                     val selectedCount = likeViewModel.getSelectedIdsCount().toString()
