@@ -39,11 +39,9 @@ class SearchAdapter(private val clickLike: (Int, Boolean) -> Unit) :
                 clickLike(search.content, search.Likes.isNotEmpty())
                 if (search.Likes.isNotEmpty()) {
                     search.Likes = listOf()
-                    // TODO : 객체 없애는 로직
                     return@setOnSingleClickListener
                 }
                 search.Likes = listOf(ResponseGetSearchResultDto.Liked(0, 0, 0))
-                // TODO: 객체 집어 넣어주는 로직
             }
             // 여기 상세뷰와 연결하는 코드 작성하기
         }
