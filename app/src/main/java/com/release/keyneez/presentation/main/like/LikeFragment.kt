@@ -120,13 +120,14 @@ class LikeFragment :
         likeViewModel.likeList.observe(viewLifecycleOwner) { likeList ->
             isInitialLoad = false
             likeAdapter?.submitList(likeList)
+            val itemCount = likeList?.size ?: 0
             likeViewModel.isEdit.observe(viewLifecycleOwner) { isEdit ->
                 if (isEdit) {
                     val selectedCount = likeViewModel.getSelectedIdsCount().toString()
                     binding.tvLikeNum.text = getString(R.string.like_select, selectedCount)
                     Log.d("1", "true일 때")
                 } else {
-                    binding.tvLikeNum.text = getString(R.string.like_num, likeList.size)
+                    binding.tvLikeNum.text = getString(R.string.like_num, itemCount.toString())
                     Log.d("1", "false일 때")
                 }
             }
