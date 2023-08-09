@@ -31,10 +31,10 @@ class PopularAdapter(
                 }
                 popular.Likes = listOf(ResponseGetPopularDto.Liked(0, 0, 0))
             }
-            binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, DetailActivity::class.java)
-                intent.putExtra("contentId", popular.content)
-                ContextCompat.startActivity(binding.root.context, intent, null)
+//            binding.root.setOnClickListener {
+//                val intent = Intent(binding.root.context, DetailActivity::class.java)
+//                intent.putExtra("contentId", popular.content)
+//                ContextCompat.startActivity(binding.root.context, intent, null)
 //            }
         }
     }
