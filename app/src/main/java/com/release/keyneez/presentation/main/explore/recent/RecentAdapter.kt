@@ -44,11 +44,11 @@ class RecentAdapter(private val clickLike: (Int, Boolean) -> Unit) :
                 }
                 recent.Likes = listOf(ResponseGetRecentDto.Liked(0, 0, 0))
             }
-            binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, DetailActivity::class.java)
-                intent.putExtra("contentId", recent.content)
-                ContextCompat.startActivity(binding.root.context, intent, null)
-            }
+//            binding.root.setOnClickListener {
+//                val intent = Intent(binding.root.context, DetailActivity::class.java)
+//                intent.putExtra("contentId", recent.content)
+//                ContextCompat.startActivity(binding.root.context, intent, null)
+//            }
         }
     }
 
