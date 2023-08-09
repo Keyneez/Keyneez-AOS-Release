@@ -1,7 +1,9 @@
 package com.release.keyneez.presentation.main.explore.recent
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.entity.response.ResponseGetRecentDto
@@ -42,7 +44,11 @@ class RecentAdapter(private val clickLike: (Int, Boolean) -> Unit) :
                 }
                 recent.Likes = listOf(ResponseGetRecentDto.Liked(0, 0, 0))
             }
-            // 여기도 누르면 상세뷰로 가는 코드짜기
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DetailActivity::class.java)
+                intent.putExtra("contentId", recent.content)
+                ContextCompat.startActivity(binding.root.context, intent, null)
+            }
         }
     }
 
