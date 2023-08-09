@@ -1,7 +1,9 @@
 package com.release.keyneez.presentation.main.search
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.release.keyneez.data.entity.response.ResponseGetSearchResultDto
@@ -43,7 +45,11 @@ class SearchAdapter(private val clickLike: (Int, Boolean) -> Unit) :
                 }
                 search.Likes = listOf(ResponseGetSearchResultDto.Liked(0, 0, 0))
             }
-            // 여기 상세뷰와 연결하는 코드 작성하기
+//            binding.root.setOnClickListener {
+//                val intent = Intent(binding.root.context, DetailActivity::class.java)
+//                intent.putExtra("contentId", search.content)
+//                ContextCompat.startActivity(binding.root.context, intent, null)
+//            }
         }
     }
 

@@ -40,11 +40,11 @@ class LikeAdapter(
                     }
                 }
             }
-            binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, DetailActivity::class.java)
-                intent.putExtra("contentId", item.content)
-                ContextCompat.startActivity(binding.root.context, intent, null)
-            }
+//            binding.root.setOnClickListener {
+//                val intent = Intent(binding.root.context, DetailActivity::class.java)
+//                intent.putExtra("contentId", item.content)
+//                ContextCompat.startActivity(binding.root.context, intent, null)
+//            }
             isEdit.observeForever { isEdit ->
                 if (isEdit == false) {
                     item.isSelected = false
