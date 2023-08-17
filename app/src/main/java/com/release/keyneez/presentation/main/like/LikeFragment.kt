@@ -132,7 +132,7 @@ class LikeFragment :
                 }
             }
         }
-//            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty() -> 이게 문제였음....와우
+//            binding.btnLikeEdit.isEnabled = likeList.isNotEmpty()
     }
 
     override fun onDestroyView() {
