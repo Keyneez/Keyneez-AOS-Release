@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.release.keyneez.data.entity.response.ResponseGetContentDto
+import com.release.keyneez.data.entity.response.ResponseGetPopularDto
 import com.release.keyneez.data.repository.ContentRepository
 import com.release.keyneez.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,27 +17,27 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor(
     private val contentRepository: ContentRepository
 ) : ViewModel() {
-    private val _popularList = MutableLiveData<List<ResponseGetContentDto>>()
-    val popularList: LiveData<List<ResponseGetContentDto>>
+    private val _popularList = MutableLiveData<List<ResponseGetPopularDto>>()
+    val popularList: LiveData<List<ResponseGetPopularDto>>
         get() = _popularList
 
     private val _stateMessage = MutableLiveData<UiState>()
     val stateMessage: LiveData<UiState>
         get() = _stateMessage
 
-    private val _saveState = MutableLiveData<Boolean>()
-    val saveState: LiveData<Boolean>
+    private val _saveState = MutableLiveData<List<Boolean>>()
+    val saveState: LiveData<List<Boolean>>
         get() = _saveState
 
     val filter = MutableLiveData("")
 
-    init {
-        getPopularList()
+    fun setFilterValue(value: String) {
+        filter.value = value
     }
 
-    private fun getPopularList() {
+    fun getPopularData() {
         viewModelScope.launch {
-            contentRepository.getContent(filter.value.toString())
+            contentRepository.getPopular(filter.value.toString())
                 .onSuccess { response ->
                     Timber.tag(successTag).d("response : $response")
 
@@ -54,6 +54,69 @@ class PopularViewModel @Inject constructor(
                         Timber.tag(failTag).e("code : ${it.code()}")
                         Timber.tag(failTag).e("message : ${it.message()}")
                     }
+                }
+        }
+    }
+
+    fun getAllPopularData() {
+        viewModelScope.launch {
+            contentRepository.getAllPopular()
+                .onSuccess { response ->
+                    Timber.tag(successTag).d("response : $response")
+
+                    if (response.data == null) {
+                        Timber.d("GET POPULAR CONTENT IS NULL")
+                        _stateMessage.value = UiState.Failure(POPULAR_DATA_NULL_CODE)
+                    }
+                    _popularList.value = response.data!!
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.tag(failTag).e("throwable : $it")
+                    if (it is HttpException) {
+                        Timber.tag(failTag).e("code : ${it.code()}")
+                        Timber.tag(failTag).e("message : ${it.message()}")
+                    }
+                }
+        }
+    }
+
+    fun clickLike(index: Int, isSelected: Boolean) {
+        if (isSelected) {
+            postUnLike(index)
+            return
+        }
+
+        postSave(index)
+    }
+
+    fun postSave(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postLike(pk).onSuccess { response ->
+
+                Timber.d("POST SAVE STATE SUCCESS")
+                Timber.d("response : $response")
+
+                _stateMessage.value = UiState.Success
+            }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
+        }
+    }
+
+    fun postUnLike(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postUnlike(listOf(pk))
+                .onSuccess { response ->
+                    Timber.tag("POST UNLIKE STATE SUCCESS")
+                    Timber.d("response : $response")
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
                 }
         }
     }

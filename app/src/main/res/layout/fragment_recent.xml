@@ -5,19 +5,14 @@
 
     <data>
 
-        <variable
-            name="vm"
-            type="com.release.keyneez.presentation.main.explore.recent.RecentViewModel" />
-
-        <variable
-            name="data"
-            type="com.release.keyneez.data.entity.response.ResponseGetContentDto" />
+        <import type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_home_recent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clickable="true">
 
         <TextView
             android:id="@+id/tv_explore_recent_all"
@@ -29,7 +24,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,7 +38,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_hobby"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_all"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +52,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_hobby"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +66,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_explore_recent_outside"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,6 +86,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_explore_recent_all"
             app:spanCount="2"
-            tools:listitem="@layout/item_explore_content" />
+            tools:listitem="@layout/item_recent_content" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

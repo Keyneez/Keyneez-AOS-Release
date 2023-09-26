@@ -9,6 +9,10 @@
             name="data"
             type="com.release.keyneez.data.entity.response.ResponseGetSearchResultDto" />
 
+        <variable
+            name="index"
+            type="Integer" />
+
         <import type="android.view.View" />
     </data>
 
@@ -58,7 +62,7 @@
             android:background="@null"
             android:contentDescription="@string/search_heart_contentdescription"
             android:padding="12dp"
-            android:src="@drawable/sel_search_drawable_bnv_like_icon"
+            android:src="@{!data.likes.isEmpty() ? @drawable/ic_heart_fill : @drawable/ic_heart_empty}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />

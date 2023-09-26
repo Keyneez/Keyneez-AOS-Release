@@ -1,6 +1,5 @@
 package com.release.keyneez.presentation.main
 
-import LikeFragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
@@ -10,6 +9,7 @@ import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivityMainBinding
 import com.release.keyneez.presentation.main.explore.ExploreFragment
 import com.release.keyneez.presentation.main.home.HomeFragment
+import com.release.keyneez.presentation.main.like.LikeFragment
 import com.release.keyneez.presentation.main.setting.SettingFragment
 import com.release.keyneez.util.binding.BindingActivity
 import dagger.hilt.android.AndroidEntryPoint

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.inputmethod.EditorInfo
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.release.keyneez.R
 import com.release.keyneez.databinding.ActivitySearchBinding
@@ -11,22 +12,12 @@ import com.release.keyneez.util.UiState
 import com.release.keyneez.util.binding.BindingActivity
 import com.release.keyneez.util.extension.hideKeyboard
 import com.release.keyneez.util.extension.setOnSingleClickListener
-import com.release.keyneez.util.extension.showSnackbar
-import com.release.keyneez.util.extension.showToast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.debounce
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_search) {
     private var searchAdapter: SearchAdapter? = null
     private val viewModel: SearchViewModel by viewModels()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.vm = viewModel
@@ -34,7 +25,6 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         initSearchAdapter()
         initBackBtnClickListener()
         initSearchBtnKeyListener()
-        initHideKeyboard()
         setupSearchState()
     }
 
@@ -42,36 +32,30 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
         viewModel.stateMessage.observe(this) {
             when (it) {
                 is UiState.Success -> setupSearchActivityList()
-                is UiState.Failure -> showSnackbar(
-                    binding.root,
-                    getString(R.string.msg_search_null)
-                )
+                is UiState.Failure ->
+                    Toast.makeText(this, R.string.msg_search_null, Toast.LENGTH_SHORT).show()
 
-                is UiState.Error -> showSnackbar(
-                    binding.root,
-                    getString(R.string.msg_server_error)
-                )
+                is UiState.Error -> Toast.makeText(
+                    this,
+                    R.string.msg_server_error,
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
     }
 
     private fun initSearchAdapter() {
-        searchAdapter = SearchAdapter()
+        searchAdapter = SearchAdapter(
+            clickLike = viewModel::clickLike
+        )
         binding.rvSearchResultContent.adapter = searchAdapter
     }
 
     private fun setupSearchActivityList() {
-        val searchList = viewModel.searchList.value ?: emptyList()
-        searchAdapter?.submitList(searchList)
-        binding.tvSearchCount.text = searchList.size.toString()
-        if (searchList.size == 0) {
-            showToast(getString(R.string.search_no_result))
-        }
-    }
-
-    private fun initHideKeyboard() {
-        binding.layoutSearch.setOnSingleClickListener {
-            hideKeyboard()
+        viewModel.searchList.observe(this) { searchList ->
+            searchAdapter?.submitList(searchList)
+            val itemCount = searchList?.size ?: 0
+            binding.tvSearchCount.text = itemCount.toString()
         }
     }
 
@@ -88,38 +72,14 @@ class SearchActivity : BindingActivity<ActivitySearchBinding>(R.layout.activity_
 
     private fun initSearchBtnClickListener() {
         binding.btnSearch.setOnSingleClickListener {
-            setupSearchActivityList()
-            viewModel.getSearchPostData()
-        }
-    }
-
-    private fun debounce(): kotlinx.coroutines.flow.Flow<Int> = flow<Int> {
-        emit(1)
-        emit(2)
-        delay(500L)
-        emit(3)
-        emit(4)
-        delay(200L)
-        emit(5)
-        delay(700L)
-        emit(6)
-    }.debounce(300L)
-
-    fun main() = runBlocking<Unit> {
-        debounce().collect { }
-    }
-
-    fun <T> debounce(
-        timeMillis: Long = 300L,
-        coroutineScope: CoroutineScope,
-        block: (T) -> Unit
-    ): (T) -> Unit {
-        var debounceJob: Job? = null
-        return {
-            debounceJob?.cancel()
-            debounceJob = coroutineScope.launch {
-                delay(timeMillis)
-                block(it)
+            val searchKeyword = binding.etSearchContent.text.toString().trim()
+            if (searchKeyword.isEmpty()) {
+                Toast.makeText(this, R.string.search_toast, Toast.LENGTH_SHORT).show()
+            }
+            if (searchKeyword.isNotEmpty()) {
+                viewModel.updateCount()
+                viewModel.getSearchPostData()
+                hideKeyboard()
             }
         }
     }

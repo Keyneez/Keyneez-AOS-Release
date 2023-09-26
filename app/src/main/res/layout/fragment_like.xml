@@ -46,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="37dp"
             android:layout_marginEnd="11dp"
+            android:clickable="true"
             android:padding="12dp"
             android:text="@{vm.isEdit ? @string/like_cancel : @string/like_edit}"
             android:textColor="@color/gray600"
@@ -64,7 +65,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_entire"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_like_toolbar" />
 
@@ -79,7 +80,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_hobby"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_like_all"
             app:layout_constraintTop_toBottomOf="@id/layout_like_toolbar" />
 
@@ -94,7 +95,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_activity"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_like_hobby"
             app:layout_constraintTop_toBottomOf="@id/layout_like_toolbar" />
 
@@ -109,7 +110,7 @@
             android:paddingHorizontal="16dp"
             android:paddingVertical="6dp"
             android:text="@string/explore_career"
-            android:textColor="@drawable/sel_explore_drawable_text_color"
+            android:textColor="@color/sel_explore_drawable_text_color"
             app:layout_constraintStart_toEndOf="@id/tv_like_outside"
             app:layout_constraintTop_toBottomOf="@id/layout_like_toolbar" />
 

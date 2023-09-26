@@ -26,7 +26,6 @@
             android:layout_marginTop="36dp"
             android:background="@null"
             android:contentDescription="@string/search_contentdescription"
-            android:onClick="@{()->vm.getSearchPostData()}"
             android:padding="12dp"
             android:src="@drawable/ic_search"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,45 +74,43 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_search_content" />
 
-        <TextView
-            android:id="@+id/tv_search_after"
-            style="@style/BodySemibold14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search_result"
-            android:textColor="@color/gray900" />
-
-        <TextView
-            android:id="@+id/tv_search_count"
-            style="@style/BodyBold14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search_count"
-            android:textColor="@color/gray900" />
-
-        <TextView
-            android:id="@+id/tv_search_end"
-            style="@style/BodySemibold14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="34dp"
-            android:text="@string/search_result_end"
-            android:textColor="@color/gray900"
-            android:visibility="@{vm.searchList == null ? View.GONE : View.VISIBLE}"
-            app:layout_constraintStart_toEndOf="@id/flow_search"
-            app:layout_constraintTop_toBottomOf="@id/view_search_baseline" />
-
-        <androidx.constraintlayout.helper.widget.Flow
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/flow_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"
-            android:visibility="@{vm.searchList == null ? View.GONE : View.VISIBLE}"
-            app:constraint_referenced_ids="tv_search_after,tv_search_count"
-            app:flow_horizontalGap="3dp"
+            android:visibility="@{vm.isFlowVisible ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_search_baseline" />
+            app:layout_constraintTop_toBottomOf="@id/view_search_baseline">
+
+            <TextView
+                android:id="@+id/tv_search_after"
+                style="@style/BodySemibold14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_result"
+                android:textColor="@color/gray900" />
+
+            <TextView
+                android:id="@+id/tv_search_count"
+                style="@style/BodyBold14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:text="@string/search_count"
+                android:textColor="@color/gray900"
+                app:layout_constraintStart_toEndOf="@id/tv_search_after" />
+
+            <TextView
+                android:id="@+id/tv_search_end"
+                style="@style/BodySemibold14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/search_result_end"
+                android:textColor="@color/gray900"
+                app:layout_constraintStart_toEndOf="@id/tv_search_count" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_search_result_content"

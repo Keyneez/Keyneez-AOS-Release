@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ResponseGetLikeDto(
+data class ResponsePostLikeDto(
     @SerialName("content_pk") val content: Int,
     @SerialName("title") val title: String,
     @SerialName("category") val category: String,

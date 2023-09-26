@@ -25,14 +25,31 @@ class SearchViewModel @Inject constructor(
     val stateMessage: LiveData<UiState>
         get() = _stateMessage
 
-    private val _saveState = MutableLiveData<Boolean>()
-    val saveState: LiveData<Boolean>
+    private val _isFlowVisible = MutableLiveData<Boolean>()
+    val isFlowVisible: LiveData<Boolean>
+        get() = _isFlowVisible
+
+    private val _saveState = MutableLiveData<List<Boolean>>()
+    val saveState: LiveData<List<Boolean>>
         get() = _saveState
 
     val key = MutableLiveData("")
 
     init {
-        getSearchPostData()
+        _isFlowVisible.value = false
+    }
+
+    fun updateCount() {
+        _isFlowVisible.value = true
+    }
+
+    fun clickLike(index: Int, isSelected: Boolean) {
+        if (isSelected) {
+            postUnLike(index)
+            return
+        }
+
+        postSave(index)
     }
 
     fun getSearchPostData() {
@@ -45,7 +62,6 @@ class SearchViewModel @Inject constructor(
                 }
                 Timber.d("GET SEARCH LIST SUCCESS")
                 Timber.d("response : $response")
-
                 _searchList.value = response.data!!
                 _stateMessage.value = UiState.Success
             }.onFailure {
@@ -62,6 +78,37 @@ class SearchViewModel @Inject constructor(
                     }
                 } else _stateMessage.value = UiState.Error
             }
+        }
+    }
+
+    fun postSave(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postLike(pk).onSuccess { response ->
+
+                Timber.d("POST SAVE STATE SUCCESS")
+                Timber.d("response : $response")
+
+                _stateMessage.value = UiState.Success
+            }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
+        }
+    }
+
+    fun postUnLike(pk: Int) {
+        viewModelScope.launch {
+            contentRepository.postUnlike(listOf(pk))
+                .onSuccess { response ->
+                    Timber.tag("POST UNLIKE STATE SUCCES뷰S")
+                    Timber.d("response : $response")
+                    _stateMessage.value = UiState.Success
+                }
+                .onFailure {
+                    Timber.d("throwable : $it")
+                    _stateMessage.value = UiState.Error
+                }
         }
     }
 

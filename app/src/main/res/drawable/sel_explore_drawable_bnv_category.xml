@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_shortAnimTime">
-    <item android:drawable="@drawable/shape_gray200_fill_9_rect" android:state_checked="false" />
-    <item android:drawable="@drawable/shape_gray900_fill_9_rect" android:state_checked="true" />
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray200" />
+            <corners android:radius="9dp" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray900" />
+            <corners android:radius="9dp" />
+        </shape>
+    </item>
 </selector>
